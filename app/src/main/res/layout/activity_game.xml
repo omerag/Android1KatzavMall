@@ -29,6 +29,7 @@
                 android:layout_gravity="center"
                 android:layout_marginHorizontal="5dp"
                 android:background="@drawable/shape1"
+
                 />
 
             <ImageView
@@ -229,34 +230,63 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="7dp"
-        android:layout_marginHorizontal="10dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
         android:paddingHorizontal="7dp">
 
 
         <ImageView
+            android:id="@+id/cart_life_1"
             android:layout_width="25dp"
             android:layout_height="40dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             android:src="@drawable/carton_bag"/>
 
         <ImageView
+            android:id="@+id/cart_life_2"
             android:layout_width="25dp"
             android:layout_height="40dp"
-            android:layout_marginHorizontal="10dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             android:src="@drawable/carton_bag"/>
 
         <ImageView
+            android:id="@+id/cart_life_3"
             android:layout_width="25dp"
             android:layout_height="40dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             android:src="@drawable/carton_bag"/>
 
     </LinearLayout>
 
-    <ImageView
-        android:layout_alignParentBottom="true"
-        android:layout_width="70dp"
-        android:layout_height="95dp"
-        android:layout_marginHorizontal="5dp"
-        android:layout_marginVertical="5dp"
-        android:src="@drawable/carton_bag"/>
+
+
+    <FrameLayout
+        android:id="@+id/frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="5dp"
+        android:animateLayoutChanges="true"
+        >
+
+        <TextView
+            android:id="@+id/startLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tap to start"
+            android:textSize="30sp"
+            android:layout_gravity="center_horizontal|center"
+            />
+
+        <ImageView
+            android:id="@+id/cart"
+            android:layout_width="70dp"
+            android:layout_height="95dp"
+            android:src="@drawable/carton_bag"
+            android:layout_gravity="bottom|center"/>
+
+    </FrameLayout>
 
 </RelativeLayout>
