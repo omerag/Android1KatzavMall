@@ -161,11 +161,11 @@
 
 
                 <LinearLayout
-                    android:id="@+id/lunch_layout"
+                    android:id="@+id/breakfast_layout"
                     android:layout_width="140dp"
                     android:layout_height="140dp"
                     android:layout_alignParentStart="true"
-                    android:background="@drawable/lunch">
+                    android:background="@drawable/breakfast">
 
                     <TextView
                         android:layout_width="140dp"
@@ -189,11 +189,11 @@
                     />
 
                 <LinearLayout
-                    android:id="@+id/breakfast_layout"
+                    android:id="@+id/lunch_layout"
                     android:layout_width="140dp"
                     android:layout_height="140dp"
                     android:layout_alignParentEnd="true"
-                    android:background="@drawable/breakfast"
+                    android:background="@drawable/lunch"
                     android:clickable="true">
 
                     <TextView
@@ -228,11 +228,11 @@
 
 
                 <LinearLayout
-                    android:id="@+id/passover_layout"
+                    android:id="@+id/rosh_hashana_layout"
                     android:layout_width="140dp"
                     android:layout_height="140dp"
                     android:layout_alignParentStart="true"
-                    android:background="@drawable/lunch">
+                    android:background="@drawable/rosh_hashana">
 
                     <TextView
                         android:layout_width="140dp"
@@ -255,11 +255,11 @@
                     android:src="@drawable/lock"/>
 
                 <LinearLayout
-                    android:id="@+id/rosh_hashana_layout"
+                    android:id="@+id/passover_layout"
                     android:layout_width="140dp"
                     android:layout_height="140dp"
                     android:layout_alignParentEnd="true"
-                    android:background="@drawable/rosh_hashana"
+                    android:background="@drawable/passover"
                     android:clickable="true">
 
                     <TextView
@@ -280,7 +280,8 @@
                     android:layout_width="140dp"
                     android:layout_height="140dp"
                     android:layout_alignParentEnd="true"
-                    android:src="@drawable/lock"/>
+                    android:layout_marginEnd="0dp"
+                    android:src="@drawable/lock" />
 
             </RelativeLayout>
             <RelativeLayout
@@ -295,10 +296,11 @@
 
                 <LinearLayout
                     android:id="@+id/custom_layout"
-                    android:layout_width="140dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="140dp"
+                    android:gravity="center"
                     android:layout_centerInParent="true"
-                    android:background="@drawable/lunch">
+                    android:background="@drawable/custom">
 
                     <TextView
                         android:layout_width="140dp"
@@ -310,6 +312,7 @@
                         android:textColor="@color/colorWhite"
                         android:textStyle="bold"
                         android:text="Melinda"
+
                         />
 
                 </LinearLayout>
@@ -318,7 +321,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="140dp"
                     android:layout_centerInParent="true"
-                    android:src="@drawable/lock"/>
+                    android:src="@drawable/big_lock"/>
 
             </RelativeLayout>
         </LinearLayout>
