@@ -16,12 +16,20 @@ public class MainActivity extends AppCompatActivity {
         //test
 
         Button playBtn = findViewById(R.id.play_btn);
+        Button highScoreBtn = findViewById(R.id.high_score_btn);
 
         playBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent levelIntent = new Intent(MainActivity.this, LevelSelectActivity.class);
                 startActivity(levelIntent);
+            }
+        });
+
+        highScoreBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //NEW DIALOG WITH SCORES.
             }
         });
     }
