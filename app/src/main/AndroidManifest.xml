@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".SecondActivity">
+        <activity android:name=".LevelSelectActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

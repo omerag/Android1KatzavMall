@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         playBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent levelIntent = new Intent(MainActivity.this,SecondActivity.class);
+                Intent levelIntent = new Intent(MainActivity.this, LevelSelectActivity.class);
                 startActivity(levelIntent);
             }
         });
