@@ -4,25 +4,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FoodContainer {
-    private List<FoodObject> flowerList = new ArrayList<>();
+    private List<FoodObject> foodList = new ArrayList<>();
     private List<FoodType> ForbiddenList = new ArrayList<>();
     private List<FoodType> ShoppingList = new ArrayList<>();
+    private List<FoodType> StaticShoppingList = new ArrayList<>();
 
     public FoodContainer(List<FoodType> ShoppingList, List<FoodType> ForbiddenList){
         this.ShoppingList.addAll(ShoppingList);
         this.ForbiddenList.addAll(ForbiddenList);
+        this.StaticShoppingList.addAll(ShoppingList);
     }
 
-    public  void addFlower(FoodObject flower){
-        flowerList.add(flower);
+    public  void addFood(FoodObject food){
+        foodList.add(food);
     }
 
-    public void removeFlower(FoodObject flower){
-        flowerList.remove(flower);
+    public void removeFood(FoodObject food){
+        foodList.remove(food);
     }
 
-    public List<FoodObject> getFlowerList(){
-        return flowerList;
+    public List<FoodObject> getFoodList(){
+        return foodList;
+    }
+
+    public List<FoodType> getStaticShoppingList() {
+        return StaticShoppingList;
     }
 
     public List<FoodType> getShoppingList() {

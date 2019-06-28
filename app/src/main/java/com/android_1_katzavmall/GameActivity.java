@@ -9,19 +9,15 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.os.Build;
-import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.animation.LinearInterpolator;
-import android.widget.CheckBox;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.solver.widgets.Rectangle;
 
 import java.util.ArrayList;
@@ -96,8 +92,8 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         screenWidth = getResources().getDisplayMetrics().widthPixels;
         screenHeight = getResources().getDisplayMetrics().heightPixels;
 
-        List<FoodType> shoppingList = new ArrayList<>(Arrays.asList(FoodType.food1,FoodType.food2));
-        List<FoodType> forbiddenList = new ArrayList<>(Arrays.asList(FoodType.food3,FoodType.food4));
+        List<FoodType> shoppingList = new ArrayList<>(Arrays.asList(FoodType.APPLE,FoodType.AVOKADO));
+        List<FoodType> forbiddenList = new ArrayList<>(Arrays.asList(FoodType.CHICKEN,FoodType.STEAK));
 
         container = new FoodContainer(shoppingList,forbiddenList);
         factory = new FoodFactory(this,container,frame);
@@ -265,7 +261,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 */
 
         //move flowers
-        List<FoodObject> foodList = container.getFlowerList();
+        List<FoodObject> foodList = container.getFoodList();
         for(int i = 0; i < foodList.size(); i++ ){
             final FoodObject foodObject = foodList.get(i);
 
@@ -277,7 +273,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
                     public void run() {
                         if(container.getShoppingList().contains(foodObject.getType())){
                             score++;
-                            updateCheckBox(foodObject.getType());
+                            updateFoodStatus(foodObject.getType());
                         }
                         else{
                             updateLives();
@@ -285,7 +281,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
                         }
                         scoreTV.setText("Score: " + score);
                         frame.removeView(foodObject);
-                        container.removeFlower(foodObject);
+                        container.removeFood(foodObject);
                     }
                 });
             }
@@ -302,7 +298,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
                         }
 
                         frame.removeView(foodObject);
-                        container.removeFlower(foodObject);
+                        container.removeFood(foodObject);
                     }
                 });
 
@@ -382,30 +378,43 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         return R1.contains(R2.x + R2.width, R2.y + R2.height);
     }
 
-    private void updateCheckBox(FoodType foodType){
-        CheckBox checkBox;
-        switch (foodType){
-            case food1:
-                checkBox = findViewById(R.id.checkbox_red);
+    private void updateFoodStatus(FoodType foodType){
+        TextView textView;
+        int index = container.getStaticShoppingList().indexOf(foodType);
+        switch (index){
+            case 0:
+                textView = findViewById(R.id.foodStatus0);
                 break;
-            case food2:
-                checkBox = findViewById(R.id.checkbox_blue);
+            case 1:
+                textView = findViewById(R.id.foodStatus1);
                 break;
-            case food3:
-                checkBox = findViewById(R.id.checkbox_purple);
+            case 2:
+                textView = findViewById(R.id.foodStatus2);
                 break;
-            case food4:
-                checkBox = findViewById(R.id.checkbox_orange);
+            case 3:
+                textView = findViewById(R.id.foodStatus3);
+                break;
+            case 4:
+                textView = findViewById(R.id.foodStatus4);
+                break;
+            case 5:
+                textView = findViewById(R.id.foodStatus5);
+                break;
+            case 6:
+                textView = findViewById(R.id.foodStatus6);
+                break;
+            case 7:
+                textView = findViewById(R.id.foodStatus7);
                 break;
             default:
                 return;
         }
 
-        int lefts = Integer.parseInt(checkBox.getText().toString());
+        int lefts = Integer.parseInt(textView.getText().toString());
         lefts--;
-        checkBox.setText( "" + (lefts));
+        textView.setText( "" + lefts);
         if(lefts == 0){
-            checkBox.setChecked(true);
+            textView.setText("");
             container.getForbiddenList().add(foodType);
             container.getShoppingList().remove(foodType);
         }

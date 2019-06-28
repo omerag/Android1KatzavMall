@@ -17,41 +17,97 @@ public class FoodFactory {
 
     public ImageView addFood(float x, FoodType foodType){
 
-        final FoodObject flower = new FoodObject(context,foodType);
+        final FoodObject food = new FoodObject(context,foodType);
 
         switch (foodType){
 
-            case food1:
-                flower.setImageResource(R.drawable.ic_flower_purple);
+            case MILK:
                 break;
-
-            case food2:
-                flower.setImageResource(R.drawable.ic_flower_red);
+            case WHITE_CHEESE:
                 break;
-
-            case food3:
-                flower.setImageResource(R.drawable.ic_flower_orange);
+            case HARD_CHEESE:
                 break;
-
-            case food4:
-                flower.setImageResource(R.drawable.ic_flower_blue);
+            case CHOCOLATE:
                 break;
-
+            case DANI:
+                break;
+            case STEAK:
+                break;
+            case CHICKEN:
+                break;
+            case SAUSAGE:
+                break;
+            case HAMBURGER:
+                break;
+            case SCHNITZEL:
+                break;
+            case WATERMELON:
+                break;
+            case EGGPLANT:
+                break;
+            case BROCOLI:
+                break;
+            case ORANGE:
+                break;
+            case AVOKADO:
+                break;
+            case BAGUETTE:
+                break;
+            case DONUTS:
+                break;
+            case CROISSANT:
+                break;
+            case BREAD:
+                break;
+            case BAGEL:
+                break;
+            case EGGS:
+                break;
+            case PANCAKES:
+                break;
+            case TOMATO:
+                break;
+            case POTATO:
+                break;
+            case CUCAMBER:
+                break;
+            case BEER:
+                break;
+            case FISH:
+                break;
+            case POMEGRANATE:
+                break;
+            case HONEY:
+                break;
+            case APPLE:
+                break;
+            case CHALLAH:
+                break;
+            case WINE:
+                break;
+            case CARROT:
+                break;
+            case MATZA:
+                break;
+            case CHOCOLATE_SPREAD:
+                break;
+            case BEETS:
+                break;
             default:
                 break;
         }
 
 
 
-        flower.setLayoutParams(new FrameLayout.LayoutParams(100,100));
+        food.setLayoutParams(new FrameLayout.LayoutParams(100,100));
 
-        flower.setY(-40);
-        flower.setX(x);
+        food.setY(-40);
+        food.setX(x);
 
-        frame.addView(flower);
-        container.addFlower(flower);
+        frame.addView(food);
+        container.addFood(food);
 
-        return flower;
+        return food;
     }
 
 }
