@@ -66,7 +66,7 @@
                         android:textSize="17sp"
                         android:textColor="@color/colorWhite"
                         android:textStyle="bold"
-                        android:text="Melinda"
+                        android:text="@string/milk_str"
                         />
 
                 </LinearLayout>
@@ -89,7 +89,7 @@
                         android:textSize="17sp"
                         android:textColor="@color/colorWhite"
                         android:textStyle="bold"
-                        android:text="Melinda"
+                        android:text="@string/meat_str"
                         />
 
                 </LinearLayout>
@@ -119,10 +119,11 @@
                         android:gravity="center"
                         android:layout_gravity="bottom"
                         android:layout_marginBottom="8dp"
+                        android:paddingEnd="7dp"
                         android:textSize="17sp"
                         android:textColor="@color/colorWhite"
                         android:textStyle="bold"
-                        android:text="Melinda"
+                        android:text="@string/vegetatian_str"
                         />
 
                 </LinearLayout>
@@ -144,7 +145,7 @@
                         android:textSize="17sp"
                         android:textColor="@color/colorWhite"
                         android:textStyle="bold"
-                        android:text="Melinda"
+                        android:text="@string/backery_str"
                         />
 
                 </LinearLayout>
@@ -176,7 +177,7 @@
                         android:textSize="17sp"
                         android:textColor="@color/colorWhite"
                         android:textStyle="bold"
-                        android:text="Melinda"
+                        android:text="@string/breakfast_str"
                         />
 
                 </LinearLayout>
@@ -205,7 +206,7 @@
                         android:textSize="17sp"
                         android:textColor="@color/colorWhite"
                         android:textStyle="bold"
-                        android:text="Melinda"
+                        android:text="@string/lunch_str"
                         />
 
                 </LinearLayout>
@@ -214,7 +215,8 @@
                     android:layout_width="140dp"
                     android:layout_height="140dp"
                     android:layout_alignParentEnd="true"
-                    android:src="@drawable/lock"/>
+                    android:src="@drawable/lock"
+                    />
 
             </RelativeLayout>
             <RelativeLayout
@@ -240,10 +242,11 @@
                         android:gravity="center"
                         android:layout_gravity="bottom"
                         android:layout_marginBottom="8dp"
+                        android:paddingEnd="7dp"
                         android:textSize="17sp"
                         android:textColor="@color/colorWhite"
                         android:textStyle="bold"
-                        android:text="Melinda"
+                        android:text="@string/rosh_hashana_str"
                         />
 
                 </LinearLayout>
@@ -252,7 +255,8 @@
                     android:layout_width="140dp"
                     android:layout_height="140dp"
                     android:layout_alignParentStart="true"
-                    android:src="@drawable/lock"/>
+                    android:src="@drawable/lock"
+                    />
 
                 <LinearLayout
                     android:id="@+id/passover_layout"
@@ -271,7 +275,7 @@
                         android:textSize="17sp"
                         android:textColor="@color/colorWhite"
                         android:textStyle="bold"
-                        android:text="Melinda"
+                        android:text="@string/passover_str"
                         />
 
                 </LinearLayout>
@@ -280,26 +284,26 @@
                     android:layout_width="140dp"
                     android:layout_height="140dp"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="0dp"
-                    android:src="@drawable/lock" />
+                    android:src="@drawable/lock"
+                    />
 
             </RelativeLayout>
+
             <RelativeLayout
                 android:layout_width="284dp"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center"
                 android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
                 android:layout_marginHorizontal="10dp"
                 >
 
 
                 <LinearLayout
                     android:id="@+id/custom_layout"
-                    android:layout_width="wrap_content"
+                    android:layout_width="140dp"
                     android:layout_height="140dp"
-                    android:gravity="center"
-                    android:layout_centerInParent="true"
                     android:background="@drawable/custom">
 
                     <TextView
@@ -311,17 +315,17 @@
                         android:textSize="17sp"
                         android:textColor="@color/colorWhite"
                         android:textStyle="bold"
-                        android:text="Melinda"
-
+                        android:text="@string/custom_list_str"
                         />
 
                 </LinearLayout>
 
                 <ImageView
-                    android:layout_width="match_parent"
+                    android:layout_width="140dp"
                     android:layout_height="140dp"
-                    android:layout_centerInParent="true"
-                    android:src="@drawable/big_lock"/>
+                    android:src="@drawable/lock"
+                    />
+
 
             </RelativeLayout>
         </LinearLayout>

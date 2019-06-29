@@ -2,4 +2,13 @@
     <string name="app_name">Android1_Final_Project</string>
     <string name="score">"Score: "</string>
     <string name="meal">What meal are you taking?</string>
+    <string name="meat_str">Meat</string>
+    <string name="milk_str">Milk</string>
+    <string name="vegetatian_str">Vegetatian</string>
+    <string name="backery_str">Backery</string>
+    <string name="breakfast_str">Breakfast</string>
+    <string name="lunch_str">Lunch</string>
+    <string name="rosh_hashana_str">Rosh Hashana</string>
+    <string name="passover_str">Passover</string>
+    <string name="custom_list_str">Custom</string>
 </resources>

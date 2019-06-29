@@ -3,4 +3,13 @@
     <string name="app_name">Android1_Final_Project</string>
     <string name="score">"ניקוד: "</string>
     <string name="meal">לאיזו ארוחה נערכים הפעם?</string>
+    <string name="backery_str">מאפים</string>
+    <string name="breakfast_str">ארוחת בוקר</string>
+    <string name="custom_list_str">בהתאמה אישית</string>
+    <string name="lunch_str">ארוחת צהריים</string>
+    <string name="meat_str">בשרי</string>
+    <string name="milk_str">חלבי</string>
+    <string name="passover_str">פסח</string>
+    <string name="rosh_hashana_str">ראש השנה</string>
+    <string name="vegetatian_str">צמחוני</string>
 </resources>
