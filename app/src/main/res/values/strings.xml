@@ -11,4 +11,8 @@
     <string name="rosh_hashana_str">Rosh Hashana</string>
     <string name="passover_str">Passover</string>
     <string name="custom_list_str">Custom</string>
+    <string name="new_game">New Game</string>
+    <string name="high_score">High Score</string>
+    <string name="how_to_play">How to Play</string>
+    <string name="settings">Settings</string>
 </resources>

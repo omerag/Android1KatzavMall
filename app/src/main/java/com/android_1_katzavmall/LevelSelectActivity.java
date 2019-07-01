@@ -28,6 +28,5 @@ public class LevelSelectActivity extends AppCompatActivity {
                 startActivity(levelIntent);
             }
         });
-
     }
 }

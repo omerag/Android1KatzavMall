@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
@@ -12,10 +13,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
         //test
 
-        Button playBtn = findViewById(R.id.play_btn);
+        Button playBtn = findViewById(R.id.new_game_btn);
         Button highScoreBtn = findViewById(R.id.high_score_btn);
 
         playBtn.setOnClickListener(new View.OnClickListener() {

@@ -12,4 +12,8 @@
     <string name="passover_str">פסח</string>
     <string name="rosh_hashana_str">ראש השנה</string>
     <string name="vegetatian_str">צמחוני</string>
+    <string name="high_score">טבלת שיאים</string>
+    <string name="how_to_play">איך משחקים</string>
+    <string name="new_game">משחק חדש</string>
+    <string name="settings">הגדרות</string>
 </resources>

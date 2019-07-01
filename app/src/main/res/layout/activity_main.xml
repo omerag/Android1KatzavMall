@@ -4,40 +4,91 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/background3"
-    tools:context=".MainActivity">
+    android:background="@drawable/main_activity_background4"
+    >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentLeft="true"
+            android:gravity="left"
+            android:layout_marginLeft="75dp"
+            android:layout_marginTop="55dp"
+            >
+
+            <Button
+                android:id="@+id/new_game_btn"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="4dp"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/colorBlack"
+                android:textAllCaps="false"
+                android:text="@string/new_game"
+                android:background="@drawable/main_button_shape1"
+                />
+
+            <Button
+                android:id="@+id/high_score_btn"
+                android:layout_width="215dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="4dp"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/colorBlack"
+                android:textAllCaps="false"
+                android:text="@string/high_score"
+                android:background="@drawable/main_button_shape2"
+                />
+
+            <Button
+                android:id="@+id/how_to_play_btn"
+                android:layout_width="205dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="4dp"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/colorBlack"
+                android:textAllCaps="false"
+                android:text="@string/how_to_play"
+                android:background="@drawable/main_button_shape1"
+                />
+
+            <Button
+                android:id="@+id/settings_btn"
+                android:layout_width="195dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="4dp"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/colorBlack"
+                android:textAllCaps="false"
+                android:text="@string/settings"
+                android:background="@drawable/main_button_shape2"
+                />
+
+        </LinearLayout>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center">
 
-    <Button
-        android:id="@+id/play_btn"
-        android:layout_width="200dp"
-        android:layout_height="80dp"
-        android:text="Play"
-        android:textSize="25sp"
-        android:textAllCaps="false"/>
+        <ImageView
+            android:id="@+id/man_with_bags"
+            android:layout_width="150dp"
+            android:layout_height="300dp"
+            android:src="@drawable/man_with_bags"
+            android:layout_alignParentLeft="true"
 
-        <Button
-            android:id="@+id/high_score_btn"
-            android:layout_width="200dp"
-            android:layout_height="80dp"
-            android:text="High Score"
-            android:textSize="25sp"
-            android:textAllCaps="false"/>
+            />
 
-        <Button
-            android:layout_width="200dp"
-            android:layout_height="80dp"
-            android:text="How to play"
-            android:textSize="25sp"
-            android:textAllCaps="false"/>
-
-    </LinearLayout>
-
+    </RelativeLayout>
 </RelativeLayout>
+
