@@ -32,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
         highScoreBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //NEW DIALOG WITH SCORES.
+                Intent highScoreIntent = new Intent(MainActivity.this,HighScoreActivity.class);
+                startActivity(highScoreIntent);
             }
         });
     }
