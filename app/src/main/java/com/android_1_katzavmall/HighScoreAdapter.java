@@ -52,7 +52,7 @@ public class HighScoreAdapter extends RecyclerView.Adapter<HighScoreAdapter.High
     public void onBindViewHolder(HighScoreViewHolder holder, int position) {
 
         HighScore highScore = highScores.get(position);
-        holder.rankTv.setText(highScore.getRank());
+        holder.rankTv.setText(highScore.getRank()+"");
         holder.level_img.setImageResource(highScore.getLevel_img_id());
         holder.difficultyTv.setText(highScore.getDifficulty());
         holder.nameTv.setText(highScore.getName());
