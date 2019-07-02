@@ -11,6 +11,8 @@ import java.util.List;
 
 public class HighScoreActivity extends AppCompatActivity {
 
+    List<HighScore> highScores;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,22 +23,44 @@ public class HighScoreActivity extends AppCompatActivity {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        List<HighScore> highScores = new ArrayList<>();
+        highScores = new ArrayList<>();
 
-        highScores.add(new HighScore("1",R.drawable.breakfast,"hard","Player",10000));
-        highScores.add(new HighScore("2",R.drawable.breakfast,"hard","Player1",9000));
-        highScores.add(new HighScore("3",R.drawable.breakfast,"hard","Player4",8000));
-        highScores.add(new HighScore("4",R.drawable.breakfast,"hard","Player7",7000));
-        highScores.add(new HighScore("5",R.drawable.breakfast,"medium","Player3",6000));
-        highScores.add(new HighScore("6",R.drawable.breakfast,"medium","Player9",5000));
-        highScores.add(new HighScore("7",R.drawable.breakfast,"medium","Player6",4000));
-        highScores.add(new HighScore("8",R.drawable.breakfast,"easy","Player2",3000));
-        highScores.add(new HighScore("9",R.drawable.breakfast,"easy","Player8",2000));
-        highScores.add(new HighScore("10",R.drawable.breakfast,"easy","Player5",1000));
+        highScores.add(new HighScore(1,R.drawable.breakfast,"---","---",0));
+        highScores.add(new HighScore(2,R.drawable.breakfast,"---","---",0));
+        highScores.add(new HighScore(3,R.drawable.breakfast,"---","---",0));
+        highScores.add(new HighScore(4,R.drawable.breakfast,"---","---",0));
+        highScores.add(new HighScore(5,R.drawable.breakfast,"---","---",0));
+        highScores.add(new HighScore(6,R.drawable.breakfast,"---","---",0));
+        highScores.add(new HighScore(7,R.drawable.breakfast,"---","---",0));
+        highScores.add(new HighScore(8,R.drawable.breakfast,"---","---",0));
+        highScores.add(new HighScore(9,R.drawable.breakfast,"---","---",0));
+        highScores.add(new HighScore(10,R.drawable.breakfast,"---","---",0));
 
         HighScoreAdapter highScoreAdapter = new HighScoreAdapter(highScores);
         recyclerView.setAdapter(highScoreAdapter);
 
+
+    }
+
+    public boolean isNewHighScore(int score)
+    {
+        for(int i = 0; i < highScores.size(); i++)
+        {
+            if(score > highScores.get(i).getScore()) return true;
+        }
+        return false;
+    }
+
+    public void insertScore(String name,String difficulty,int level_img_id,int score)
+    {
+        //insert new score to the table
+        int i = 0;
+        while (score < highScores.get(i).getScore())
+        {
+            i++;
+        }
+
+        HighScore highScore = new HighScore(i,level_img_id,difficulty,name,score);
 
     }
 }

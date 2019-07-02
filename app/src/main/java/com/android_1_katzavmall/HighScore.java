@@ -4,13 +4,13 @@ import android.widget.ImageView;
 
 public class HighScore
 {
-    private String rank;
+    private int rank;
     private int level_img_id;
     private String difficulty;
     private String name;
     private int score;
 
-    public HighScore(String rank, int level_img_id, String difficulty, String name, int score) {
+    public HighScore(int rank, int level_img_id, String difficulty, String name, int score) {
         this.rank = rank;
         this.level_img_id = level_img_id;
         this.difficulty = difficulty;
@@ -18,11 +18,11 @@ public class HighScore
         this.score = score;
     }
 
-    public String getRank() {
+    public int getRank() {
         return rank;
     }
 
-    public void setRank(String rank) {
+    public void setRank(int rank) {
         this.rank = rank;
     }
 
