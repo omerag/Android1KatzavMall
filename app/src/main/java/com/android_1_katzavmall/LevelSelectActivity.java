@@ -33,13 +33,20 @@ public class LevelSelectActivity extends AppCompatActivity {
                 ArrayList<Integer> shoppingListCounts = new ArrayList<>();
                 ArrayList<FoodType> forbiddenList = new ArrayList<>();
 
-                shoppingList.add(FoodType.DONUTS);
-                shoppingListCounts.add(10);
-                shoppingList.add(FoodType.PANCAKES);
-                shoppingListCounts.add(13);
+                shoppingList.add(FoodType.DANI);
+                shoppingListCounts.add(5);
+                shoppingList.add(FoodType.HARD_CHEESE);
+                shoppingListCounts.add(2);
+                shoppingList.add(FoodType.MILK);
+                shoppingListCounts.add(2);
+                shoppingList.add(FoodType.WHITE_CHEESE);
+                shoppingListCounts.add(2);
+                shoppingList.add(FoodType.CHOCOLATE);
+                shoppingListCounts.add(1);
 
                 forbiddenList.add(FoodType.BAGUETTE);
-                forbiddenList.add(FoodType.MILK);
+                forbiddenList.add(FoodType.STEAK);
+                forbiddenList.add(FoodType.ORANGE);
 
                 levelIntent.putExtra("shoppingList",shoppingList);
                 levelIntent.putExtra("shoppingListCounts",shoppingListCounts);
