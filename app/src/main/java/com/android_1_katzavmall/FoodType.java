@@ -13,7 +13,7 @@ public enum FoodType {
     STEAK,
     CHICKEN,
     SAUSAGE,
-    HAMBURGER,
+    SKEWER,
     SCHNITZEL,
 
     //Vegan products
@@ -45,14 +45,14 @@ public enum FoodType {
     POMEGRANATE,
     HONEY,
     APPLE,
-    CHALLAH,
+    PEANUTS,
     WINE,
     CARROT,
 
     //Pesah products
     MATZA,
     CHOCOLATE_SPREAD,
-    BEETS,
+    PROMEGRANATE,
 
 
 }
