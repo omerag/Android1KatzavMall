@@ -1,12 +1,7 @@
 package com.android_1_katzavmall;
 
-import androidx.annotation.NonNull;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.android_1_katzavmall.FoodType.MILK;
-import static com.android_1_katzavmall.FoodType.WHITE_CHEESE;
 
 public class FoodContainer {
     private List<FoodObject> foodList = new ArrayList<>();
@@ -59,74 +54,41 @@ public class FoodContainer {
 
         switch (foodType){
 
-            case MILK: return R.drawable.milk_em;
-            case WHITE_CHEESE:
-                break;
-            case HARD_CHEESE:
-                break;
-            case CHOCOLATE:
-                break;
-            case DANI:
-                break;
-            case STEAK:
-                break;
-            case CHICKEN:
-                break;
-            case SAUSAGE:
-                break;
-            case HAMBURGER:
-                break;
-            case SCHNITZEL:
-                break;
-            case WATERMELON:
-                break;
-            case EGGPLANT:
-                break;
-            case BROCOLI:
-                break;
-            case ORANGE:
-                break;
-            case AVOKADO:
-                break;
-            case BAGUETTE: return R.drawable.baguette_em;
-            case DONUTS: return R.drawable.donutes_em;
-            case CROISSANT:
-                break;
-            case BREAD:
-                break;
-            case BAGEL:
-                break;
-            case EGGS:
-                break;
-            case PANCAKES: return R.drawable.pancakes_em;
-            case TOMATO:
-                break;
-            case POTATO:
-                break;
-            case CUCAMBER:
-                break;
-            case BEER:
-                break;
-            case FISH:
-                break;
-            case POMEGRANATE:
-                break;
-            case HONEY:
-                break;
-            case APPLE:
-                break;
-            case CHALLAH:
-                break;
-            case WINE:
-                break;
-            case CARROT:
-                break;
-            case MATZA:
-                break;
-            case CHOCOLATE_SPREAD:
-                break;
-            case BEETS:
-                break;
+            case MILK: return R.drawable.em_milk;
+            case WHITE_CHEESE: return R.drawable.em_cream_cheese;
+            case HARD_CHEESE: return R.drawable.em_yellow_cheese;
+            case CHOCOLATE: return R.drawable.em_chocolate_milk;
+            case DANI: return R.drawable.em_yogurt;
+            case STEAK: return R.drawable.em_steik;
+            case CHICKEN: return R.drawable.em_chicken;
+            case SAUSAGE: return R.drawable.em_hotdog;
+            case SKEWER: return R.drawable.em_skewer;
+            case SCHNITZEL: return R.drawable.em_schnitzel;
+            case WATERMELON: return R.drawable.em_watermelon;
+            case EGGPLANT: return R.drawable.em_eggplant;
+            case BROCOLI: return R.drawable.em_broccoli;
+            case ORANGE: return R.drawable.em_tangerine;
+            case AVOKADO:return R.drawable.em_avocado;
+            case BAGUETTE: return R.drawable.em_baguette;
+            case DONUTS: return R.drawable.em_doughnut;
+            case CROISSANT: return R.drawable.em_croissant;
+            case BREAD: return R.drawable.em_bread;
+            case BAGEL: return R.drawable.em_pretzel;
+            case EGGS:return R.drawable.em_egg;
+            case PANCAKES: return R.drawable.em_pancakes;
+            case TOMATO: return R.drawable.em_tomato;
+            case POTATO: return R.drawable.em_potato;
+            case CUCAMBER: return R.drawable.em_cucumber;
+            case BEER: return R.drawable.em_beer;
+            case FISH: return R.drawable.em_fish;
+            case POMEGRANATE: return R.drawable.em_pomegranate;
+            case HONEY: return R.drawable.em_honey;
+            case APPLE: return R.drawable.em_apple;
+            case PEANUTS: return R.drawable.em_peanuts;
+            case WINE: return R.drawable.em_wine;
+            case CARROT: return R.drawable.em_carrot;
+            case MATZA:return R.drawable.em_matzah;
+            case CHOCOLATE_SPREAD: return R.drawable.em_chocolate_jar;
         }
 
         //foodType not found

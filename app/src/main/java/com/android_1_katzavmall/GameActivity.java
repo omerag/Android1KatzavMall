@@ -423,6 +423,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         textView.setText( "" + lefts);
         if(lefts == 0){
             textView.setText("");
+            textView.setBackgroundResource(R.drawable.v_sign_with_background);
             container.getForbiddenList().add(foodType);
             container.getShoppingList().remove(foodType);
         }
