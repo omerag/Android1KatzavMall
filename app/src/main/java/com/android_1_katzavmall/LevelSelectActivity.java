@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,13 +15,15 @@ public class LevelSelectActivity extends AppCompatActivity {
 
     LinearLayout milkLayout;
     LinearLayout meatLayout;
-    LinearLayout vegetatianLayout;
-    LinearLayout breadsLayout;
+    LinearLayout vegetarianLayout;
+    LinearLayout backeryLayout;
     LinearLayout breakfastLayout;
     LinearLayout lunchLayout;
     LinearLayout roshHashanaLayout;
     LinearLayout passoverLayout;
     LinearLayout customChoiceLayout;
+
+    int shoppingListIntName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +34,8 @@ public class LevelSelectActivity extends AppCompatActivity {
 
         milkLayout = findViewById(R.id.milk_layout);
         meatLayout = findViewById(R.id.meat_layout);
-        vegetatianLayout = findViewById(R.id.vegetatian_layout);
-        breadsLayout = findViewById(R.id.breads_layout);
+        vegetarianLayout = findViewById(R.id.vegetarian_layout);
+        backeryLayout = findViewById(R.id.backery_layout);
         breakfastLayout = findViewById(R.id.breakfast_layout);
         lunchLayout = findViewById(R.id.lunch_layout);
         roshHashanaLayout = findViewById(R.id.rosh_hashana_layout);
@@ -41,8 +44,8 @@ public class LevelSelectActivity extends AppCompatActivity {
 
         milkLayout.setOnClickListener(new selectLevelListener());
         meatLayout.setOnClickListener(new selectLevelListener());
-        vegetatianLayout.setOnClickListener(new selectLevelListener());
-        breadsLayout.setOnClickListener(new selectLevelListener());
+        vegetarianLayout.setOnClickListener(new selectLevelListener());
+        backeryLayout.setOnClickListener(new selectLevelListener());
         breakfastLayout.setOnClickListener(new selectLevelListener());
         lunchLayout.setOnClickListener(new selectLevelListener());
         roshHashanaLayout.setOnClickListener(new selectLevelListener());
@@ -55,6 +58,7 @@ public class LevelSelectActivity extends AppCompatActivity {
         public void onClick(View view) {
             Intent levelIntent = new Intent(LevelSelectActivity.this, GameActivity.class);
 
+
             ArrayList<FoodType> shoppingList = new ArrayList<>();
             ArrayList<Integer> shoppingListCounts = new ArrayList<>();
             ArrayList<FoodType> forbiddenList = new ArrayList<>();
@@ -62,6 +66,8 @@ public class LevelSelectActivity extends AppCompatActivity {
 
             switch (view.getId()){
                 case R.id.milk_layout:
+                    shoppingListIntName = R.string.milk_str;
+
                     shoppingList.add(FoodType.DANI);
                     shoppingListCounts.add(5);
                     shoppingList.add(FoodType.HARD_CHEESE);
@@ -77,7 +83,10 @@ public class LevelSelectActivity extends AppCompatActivity {
                     forbiddenList.add(FoodType.STEAK);
                     forbiddenList.add(FoodType.ORANGE);
                     break;
+
                 case R.id.meat_layout:
+                    shoppingListIntName = R.string.meat_str;
+
                     shoppingList.add(FoodType.STEAK);
                     shoppingListCounts.add(1);
                     shoppingList.add(FoodType.SKEWER);
@@ -94,7 +103,10 @@ public class LevelSelectActivity extends AppCompatActivity {
                     forbiddenList.add(FoodType.ORANGE);
 
                     break;
-                case R.id.vegetatian_layout:
+
+                case R.id.vegetarian_layout:
+                    shoppingListIntName = R.string.vegetarian_str;
+
                     shoppingList.add(FoodType.WATERMELON);
                     shoppingListCounts.add(5);
                     shoppingList.add(FoodType.ORANGE);
@@ -110,7 +122,10 @@ public class LevelSelectActivity extends AppCompatActivity {
                     forbiddenList.add(FoodType.HARD_CHEESE);
                     forbiddenList.add(FoodType.EGGS);
                     break;
-                case R.id.breads_layout:
+
+                case R.id.backery_layout:
+                    shoppingListIntName = R.string.backery_str;
+
                     shoppingList.add(FoodType.BAGEL);
                     shoppingListCounts.add(5);
                     shoppingList.add(FoodType.DONUTS);
@@ -126,7 +141,10 @@ public class LevelSelectActivity extends AppCompatActivity {
                     forbiddenList.add(FoodType.AVOKADO);
                     forbiddenList.add(FoodType.WINE);
                     break;
+
                 case R.id.breakfast_layout:
+                    shoppingListIntName = R.string.breakfast_str;
+
                     shoppingList.add(FoodType.DANI);
                     shoppingListCounts.add(5);
                     shoppingList.add(FoodType.TOMATO);
@@ -142,7 +160,10 @@ public class LevelSelectActivity extends AppCompatActivity {
                     forbiddenList.add(FoodType.WATERMELON);
                     forbiddenList.add(FoodType.SCHNITZEL);
                     break;
+
                 case R.id.lunch_layout:
+                    shoppingListIntName = R.string.lunch_str;
+
                     shoppingList.add(FoodType.TOMATO);
                     shoppingListCounts.add(5);
                     shoppingList.add(FoodType.STEAK);
@@ -160,7 +181,10 @@ public class LevelSelectActivity extends AppCompatActivity {
                     forbiddenList.add(FoodType.EGGS);
                     forbiddenList.add(FoodType.DONUTS);
                     break;
+
                 case R.id.rosh_hashana_layout:
+                    shoppingListIntName = R.string.rosh_hashana_str;
+
                     shoppingList.add(FoodType.WINE);
                     shoppingListCounts.add(5);
                     shoppingList.add(FoodType.POTATO);
@@ -182,7 +206,10 @@ public class LevelSelectActivity extends AppCompatActivity {
                     forbiddenList.add(FoodType.STEAK);
                     forbiddenList.add(FoodType.ORANGE);
                     break;
+
                 case R.id.passover_layout:
+                    shoppingListIntName = R.string.passover_str;
+
                     shoppingList.add(FoodType.WINE);
                     shoppingListCounts.add(5);
                     shoppingList.add(FoodType.POTATO);
@@ -204,11 +231,15 @@ public class LevelSelectActivity extends AppCompatActivity {
                     forbiddenList.add(FoodType.BREAD);
                     forbiddenList.add(FoodType.DONUTS);
                     break;
+
                 case R.id.custom_layout:
+                    shoppingListIntName = R.string.custom_list_str;
 
                     break;
             }
 
+            String shoppingListStr = Integer.toString(shoppingListIntName);
+            levelIntent.putExtra("shoppingListStr", shoppingListStr);
             levelIntent.putExtra("shoppingList",shoppingList);
             levelIntent.putExtra("shoppingListCounts",shoppingListCounts);
             levelIntent.putExtra("forbiddenList",forbiddenList);

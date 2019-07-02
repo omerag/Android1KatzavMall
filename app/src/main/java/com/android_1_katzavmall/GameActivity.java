@@ -33,6 +33,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
     private TextView scoreTV;
     private TextView startLabel;
+    private TextView levelName;
     private ImageView cart;
     private FrameLayout frame;
     boolean isCartAnimated = false;
@@ -85,6 +86,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
         scoreTV = findViewById(R.id.scoreTV);
         startLabel = findViewById(R.id.startLabel);
+        levelName = findViewById(R.id.level_name_tv);
         cart = findViewById(R.id.cart);
         frame = findViewById(R.id.frame);
 
@@ -93,12 +95,13 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         screenHeight = getResources().getDisplayMetrics().heightPixels;
 
 
-        //getting shoppingList and forbiddenList from previous activity
+        //getting shoppingListName shoppingList and forbiddenList from previous activity
+        String shoppingListStr = getIntent().getStringExtra("shoppingListStr");
         List<FoodType> shoppingList = (ArrayList<FoodType> )getIntent().getSerializableExtra("shoppingList");
         List<Integer> shoppingListCounts = getIntent().getIntegerArrayListExtra("shoppingListCounts");
         List<FoodType> forbiddenList = (ArrayList<FoodType> )getIntent().getSerializableExtra("forbiddenList");
 
-
+        levelName.setText("" + shoppingListStr);
 
         container = new FoodContainer(shoppingList,forbiddenList);
         factory = new FoodFactory(this,container,frame);
