@@ -10,6 +10,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Handler;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
@@ -21,7 +22,6 @@ import android.widget.TextView;
 import androidx.constraintlayout.solver.widgets.Rectangle;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.Random;
@@ -92,11 +92,19 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         screenWidth = getResources().getDisplayMetrics().widthPixels;
         screenHeight = getResources().getDisplayMetrics().heightPixels;
 
-        List<FoodType> shoppingList = new ArrayList<>(Arrays.asList(FoodType.APPLE,FoodType.AVOKADO));
-        List<FoodType> forbiddenList = new ArrayList<>(Arrays.asList(FoodType.CHICKEN,FoodType.STEAK));
+
+        //getting shoppingList and forbiddenList from previous activity
+        List<FoodType> shoppingList = (ArrayList<FoodType> )getIntent().getSerializableExtra("shoppingList");
+        List<Integer> shoppingListCounts = getIntent().getIntegerArrayListExtra("shoppingListCounts");
+        List<FoodType> forbiddenList = (ArrayList<FoodType> )getIntent().getSerializableExtra("forbiddenList");
+
+
 
         container = new FoodContainer(shoppingList,forbiddenList);
         factory = new FoodFactory(this,container,frame);
+
+        setShoppingListLayout(shoppingList,shoppingListCounts);
+
 
 
         ///////////
@@ -116,7 +124,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
                     public void run() {
                         if(startFlag && lives > -99){
                             updatePositions();
-                            createFlowers();
+                            createFood();
                         }
 
                     }
@@ -316,7 +324,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     }
 
 
-    private synchronized void createFlowers(){
+    private synchronized void createFood(){
 
 
         //create item from shopping list
@@ -419,6 +427,35 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             container.getShoppingList().remove(foodType);
         }
     }
+
+    private void setShoppingListLayout(List<FoodType> shoppingList,List<Integer> shoppingListCounts){
+        //setting shoppingListLayout with shopping list food images and counts
+
+
+        int[] foodArray = {R.id.food0, R.id.food1, R.id.food2, R.id.food3, R.id.food4, R.id.food5,
+                R.id.food6, R.id.food7};
+        int[] foodStatusArray = {R.id.foodStatus0, R.id.foodStatus1, R.id.foodStatus2, R.id.foodStatus3,
+                R.id.foodStatus4, R.id.foodStatus5, R.id.foodStatus6, R.id.foodStatus7};
+
+        for (int i = 0; i < 8; i++){
+            ImageView foodImage = findViewById(foodArray[i]);
+            TextView textView = findViewById(foodStatusArray[i]);
+
+
+
+            if(i < shoppingList.size()){
+                System.out.println("foodType id = " + container.getFoodTypeDrawable(shoppingList.get(i)));
+                foodImage.setImageResource(container.getFoodTypeDrawable(shoppingList.get(i)));
+                textView.setText("" + shoppingListCounts.get(i));
+            }
+            else {
+                foodImage.setVisibility(View.GONE);
+                textView.setVisibility(View.GONE);
+            }
+        }
+
+    }
+
 
     private void updateLives(){
         ImageView cartLives;

@@ -8,6 +8,9 @@ import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class LevelSelectActivity extends AppCompatActivity {
 
     LinearLayout milk_layout;
@@ -25,6 +28,22 @@ public class LevelSelectActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent levelIntent = new Intent(LevelSelectActivity.this, GameActivity.class);
+
+                ArrayList<FoodType> shoppingList = new ArrayList<>();
+                ArrayList<Integer> shoppingListCounts = new ArrayList<>();
+                ArrayList<FoodType> forbiddenList = new ArrayList<>();
+
+                shoppingList.add(FoodType.DONUTS);
+                shoppingListCounts.add(10);
+                shoppingList.add(FoodType.PANCAKES);
+                shoppingListCounts.add(13);
+
+                forbiddenList.add(FoodType.BAGUETTE);
+                forbiddenList.add(FoodType.MILK);
+
+                levelIntent.putExtra("shoppingList",shoppingList);
+                levelIntent.putExtra("shoppingListCounts",shoppingListCounts);
+                levelIntent.putExtra("forbiddenList",forbiddenList);
                 startActivity(levelIntent);
             }
         });
