@@ -342,7 +342,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
                     int pick = rand.nextInt(size);
 
-                    int x = ((rand.nextInt(100)*10 + 40) % screenWidth); //new flowers wont be too close to each other
+                    int x = ((rand.nextInt(100)*10 + 40) % (screenWidth - cart.getWidth())); //new flowers wont be too close to each other
                     System.out.println("new flower at " + x);
                     factory.addFood(x,container.getShoppingList().get(pick));
                 }
@@ -446,7 +446,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
             if(i < shoppingList.size()){
                 System.out.println("foodType id = " + container.getFoodTypeDrawable(shoppingList.get(i)));
-                foodImage.setImageResource(container.getFoodTypeDrawable(shoppingList.get(i)));
+                foodImage.setBackgroundResource(container.getFoodTypeDrawable(shoppingList.get(i)));
                 textView.setText("" + shoppingListCounts.get(i));
             }
             else {
