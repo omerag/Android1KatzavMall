@@ -82,6 +82,8 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     private int score = 0;
     private int lives = 3;
 
+    List<FoodType> shoppingList;
+    private List<Integer> shoppingListCounts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,8 +118,8 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
         //getting shoppingListName shoppingList and forbiddenList from previous activity
         String shoppingListStr = getIntent().getStringExtra("shoppingListStr");
-        List<FoodType> shoppingList = (ArrayList<FoodType> )getIntent().getSerializableExtra("shoppingList");
-        List<Integer> shoppingListCounts = getIntent().getIntegerArrayListExtra("shoppingListCounts");
+        shoppingList = (ArrayList<FoodType> )getIntent().getSerializableExtra("shoppingList");
+        shoppingListCounts = getIntent().getIntegerArrayListExtra("shoppingListCounts");
         List<FoodType> forbiddenList = (ArrayList<FoodType> )getIntent().getSerializableExtra("forbiddenList");
 
         levelName.setText("" + shoppingListStr);
@@ -567,8 +569,12 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         cartLife3.setVisibility(View.VISIBLE);
 
         score = 0;
-        scoreTV.setText("" + 0);
+        scoreTV.setText("Score: " + score);
         startLabel.setVisibility(View.GONE);
+
+        setShoppingListLayout(shoppingList,shoppingListCounts);
+
+
 
     }
 
