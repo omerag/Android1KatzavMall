@@ -1,7 +1,9 @@
 package com.android_1_katzavmall;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
@@ -17,6 +19,7 @@ import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -497,6 +500,20 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         if(lives == 0){
             startLabel.setText("GAME OVER");
             startLabel.setVisibility(View.VISIBLE);
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this);
+            View dialogView = getLayoutInflater().inflate(R.layout.game_over_dialog,null);
+
+            Button homeBtn = dialogView.findViewById(R.id.home_btn);
+            builder.setView(dialogView);
+            homeBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(GameActivity.this,MainActivity.class);
+                    startActivity(intent);
+                }
+            });
+            builder.show();
         }
     }
 
