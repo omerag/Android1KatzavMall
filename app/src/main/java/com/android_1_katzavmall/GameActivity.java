@@ -37,6 +37,7 @@ import java.util.TimerTask;
 public class GameActivity extends AppCompatActivity implements SensorEventListener {
 
     private LinearLayout groceriesLayout;
+    private LinearLayout level_name_layout;
     private TextView scoreTV;
     private TextView startLabel;
     private TextView levelName;
@@ -96,6 +97,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         setContentView(R.layout.activity_game);
 
         groceriesLayout = findViewById(R.id.groceriesLayout);
+        level_name_layout = findViewById(R.id.level_name_layout);
         scoreTV = findViewById(R.id.scoreTV);
         startLabel = findViewById(R.id.startLabel);
         levelName = findViewById(R.id.level_name_tv);
@@ -111,8 +113,8 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
         // ZoomIn animation:
         final Animation zoomAnimation = AnimationUtils.loadAnimation(this, R.anim.level_name_anim);
-        startLabel.startAnimation(zoomAnimation);
-        levelName.startAnimation(zoomAnimation);
+        level_name_layout.startAnimation(zoomAnimation);
+
 
 
         screenWidth = getResources().getDisplayMetrics().widthPixels;

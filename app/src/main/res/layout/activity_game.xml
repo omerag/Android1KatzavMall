@@ -287,29 +287,36 @@
         android:padding="5dp"
         android:layoutDirection="ltr">
 
+        <LinearLayout
+            android:id="@+id/level_name_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="135dp"
+            android:gravity="center">
+
 
         <TextView
             android:id="@+id/level_name_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="145dp"
             android:textColor="@color/colorBlack"
             android:textStyle="bold"
-            android:textSize="35sp"
+            android:textSize="45sp"
             />
 
         <TextView
             android:id="@+id/startLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="190dp"
             android:textColor="@color/colorBlack"
             android:textStyle="bold"
-            android:textSize="25sp"
+            android:textSize="35dp"
             android:text="@string/tap_to_start"
             />
+
+        </LinearLayout>
 
         <ImageView
             android:id="@+id/cart"
