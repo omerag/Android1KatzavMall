@@ -144,7 +144,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-                        if(startFlag && lives > -99){
+                        if(startFlag && lives > 0){
                             updatePositions();
                             createFood();
                         }
@@ -500,6 +500,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         if(lives == 0){
             startLabel.setText("GAME OVER");
             startLabel.setVisibility(View.VISIBLE);
+            cleanLevel();
 
             AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this);
             View dialogView = getLayoutInflater().inflate(R.layout.game_over_dialog,null);
@@ -518,6 +519,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
                 public void onClick(View view) {
                     Intent intent = new Intent(GameActivity.this,MainActivity.class);
                     startActivity(intent);
+                    finish();
                 }
             });
 
@@ -554,8 +556,29 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         return true;
     }
 
-    public void resetLevel()
-    {
+    private void resetLevel() {
+        ImageView cartLife1 = findViewById(R.id.cart_life_1);
+        ImageView cartLife2 = findViewById(R.id.cart_life_2);
+        ImageView cartLife3 = findViewById(R.id.cart_life_3);
 
+        lives = 3;
+        cartLife1.setVisibility(View.VISIBLE);
+        cartLife2.setVisibility(View.VISIBLE);
+        cartLife3.setVisibility(View.VISIBLE);
+
+        score = 0;
+        scoreTV.setText("" + 0);
+        startLabel.setVisibility(View.GONE);
+
+    }
+
+    private void cleanLevel(){
+
+        List<FoodObject> foodList = container.getFoodList();
+        int size = foodList.size();
+        for(int i = 0; i < size; i++){
+            frame.removeView(foodList.get(i));
+        }
+        foodList.clear();
     }
 }
