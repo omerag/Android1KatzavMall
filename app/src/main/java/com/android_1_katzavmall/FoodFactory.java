@@ -21,7 +21,7 @@ public class FoodFactory {
 
         food.setImageResource(container.getFoodTypeDrawable(foodType));
 
-        food.setLayoutParams(new FrameLayout.LayoutParams(100,100));
+        food.setLayoutParams(new FrameLayout.LayoutParams(120,120));
 
         food.setY(-40);
         food.setX(x);
