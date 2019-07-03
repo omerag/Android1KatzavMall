@@ -490,8 +490,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         for (int i = 0; i < 8; i++){
             ImageView foodImage = findViewById(foodArray[i]);
             TextView textView = findViewById(foodStatusArray[i]);
-
-
+            textView.setBackgroundResource(R.drawable.shape1);
 
             if(i < shoppingList.size()){
                 System.out.println("foodType id = " + container.getFoodTypeDrawable(shoppingList.get(i)));
