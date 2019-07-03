@@ -12,6 +12,13 @@
         android:textSize="25sp"
         android:layout_gravity="center_horizontal"/>
 
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/game_over_img"/>
 
     <LinearLayout
         android:layout_width="match_parent"
