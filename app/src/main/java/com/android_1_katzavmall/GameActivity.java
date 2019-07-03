@@ -504,8 +504,8 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             startLabel.setVisibility(View.VISIBLE);
             cleanLevel();
 
-            AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this);
-            View dialogView = getLayoutInflater().inflate(R.layout.game_over_dialog,null);
+            final AlertDialog dialog = new AlertDialog.Builder(GameActivity.this).create();
+            final View dialogView = getLayoutInflater().inflate(R.layout.game_over_dialog,null);
 
             Button homeBtn = dialogView.findViewById(R.id.home_btn);
             Button playAgainBtn = dialogView.findViewById(R.id.play_again_btn);
@@ -515,7 +515,8 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             homeBtn.startAnimation(zoomBtnAnimation);
             playAgainBtn.startAnimation(zoomBtnAnimation);
 
-            builder.setView(dialogView);
+            dialog.setView(dialogView);
+
             homeBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -529,9 +530,10 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
                 @Override
                 public void onClick(View view) {
                     resetLevel();
+                    dialog.dismiss();
                 }
             });
-            builder.show();
+            dialog.show();
         }
     }
 
