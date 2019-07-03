@@ -507,6 +507,11 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             Button homeBtn = dialogView.findViewById(R.id.home_btn);
             Button playAgainBtn = dialogView.findViewById(R.id.play_again_btn);
 
+            // ZoomIn/Out animation:
+            final Animation zoomBtnAnimation = AnimationUtils.loadAnimation(this, R.anim.dlg_btns_anim);
+            homeBtn.startAnimation(zoomBtnAnimation);
+            playAgainBtn.startAnimation(zoomBtnAnimation);
+
             builder.setView(dialogView);
             homeBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
