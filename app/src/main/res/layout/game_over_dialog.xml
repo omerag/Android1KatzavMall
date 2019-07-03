@@ -24,14 +24,16 @@
         android:layout_height="wrap_content"
         android:text="@string/home_btn"
         android:textAllCaps="false"
-        android:layout_marginEnd="20dp"/>
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/main_button_shape2"/>
 
     <Button
         android:id="@+id/play_again_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/play_again"
-        android:textAllCaps="false" />
+        android:textAllCaps="false"
+        android:background="@drawable/main_button_shape2"/>
 
     </LinearLayout>
 
