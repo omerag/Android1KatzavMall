@@ -82,8 +82,11 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     private int score = 0;
     private int lives = 3;
 
-    List<FoodType> shoppingList;
+    private List<FoodType> shoppingList;
     private List<Integer> shoppingListCounts;
+
+    private int[] foodStatusArray = {R.id.foodStatus0, R.id.foodStatus1, R.id.foodStatus2, R.id.foodStatus3,
+            R.id.foodStatus4, R.id.foodStatus5, R.id.foodStatus6, R.id.foodStatus7};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -149,6 +152,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
                         if(startFlag && lives > 0){
                             updatePositions();
                             createFood();
+                            winCheck();
                         }
 
                     }
@@ -394,7 +398,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         }
     }
 
-    public boolean checkCollision(View v1,View v2) {
+    private boolean checkCollision(View v1,View v2) {
         Rectangle R1=new Rectangle();
         Rectangle R2=new Rectangle();
 
@@ -408,6 +412,27 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         R2.width = v2.getWidth();
         R2.height = v2.getHeight();
         return R1.contains(R2.x + R2.width, R2.y + R2.height);
+    }
+
+    private void winCheck(){
+
+        boolean win = true;
+        TextView foodStatus;
+        for(int i = 0; i < container.getStaticShoppingList().size();i++){
+            foodStatus = findViewById(foodStatusArray[i]);
+            if(!foodStatus.getText().toString().equals("") && Integer.parseInt(foodStatus.getText().toString()) > 0){
+                win = false;
+            }
+        }
+
+        if(win){
+            startFlag = false;
+            startLabel.setVisibility(View.VISIBLE);
+            startLabel.setText("WIN!");
+
+
+        }
+
     }
 
     private void updateFoodStatus(FoodType foodType){
