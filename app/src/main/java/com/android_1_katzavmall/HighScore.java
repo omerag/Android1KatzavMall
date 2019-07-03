@@ -18,6 +18,7 @@ public class HighScore
         this.score = score;
     }
 
+
     public int getRank() {
         return rank;
     }
