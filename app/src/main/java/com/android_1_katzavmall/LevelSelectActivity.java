@@ -23,7 +23,17 @@ public class LevelSelectActivity extends AppCompatActivity {
     LinearLayout passoverLayout;
     LinearLayout customChoiceLayout;
 
-    int shoppingListIntName;
+    TextView milkTV;
+    TextView meatTV;
+    TextView vegetarianTV;
+    TextView backeryTV;
+    TextView breakfastTV;
+    TextView lunchTV;
+    TextView roshHashanaTV;
+    TextView passoverTV;
+    TextView customChoiceTV;
+
+    String shoppingListName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +51,16 @@ public class LevelSelectActivity extends AppCompatActivity {
         roshHashanaLayout = findViewById(R.id.rosh_hashana_layout);
         passoverLayout = findViewById(R.id.passover_layout);
         customChoiceLayout = findViewById(R.id.custom_layout);
+
+        milkTV = findViewById(R.id.milk_tv);
+        meatTV = findViewById(R.id.meat_tv);
+        vegetarianTV = findViewById(R.id.vegetarian_tv);
+        backeryTV = findViewById(R.id.bakery_tv);
+        breakfastTV = findViewById(R.id.breakfast_tv);
+        lunchTV = findViewById(R.id.lunch_tv);
+        roshHashanaTV = findViewById(R.id.rosh_hashana_tv);
+        passoverTV = findViewById(R.id.passover_tv);
+        customChoiceTV = findViewById(R.id.custom_tv);
 
         milkLayout.setOnClickListener(new selectLevelListener());
         meatLayout.setOnClickListener(new selectLevelListener());
@@ -66,7 +86,7 @@ public class LevelSelectActivity extends AppCompatActivity {
 
             switch (view.getId()){
                 case R.id.milk_layout:
-                    shoppingListIntName = R.string.milk_str;
+                    shoppingListName = milkTV.getText().toString();
 
                     shoppingList.add(FoodType.DANI);
                     shoppingListCounts.add(5);
@@ -85,7 +105,7 @@ public class LevelSelectActivity extends AppCompatActivity {
                     break;
 
                 case R.id.meat_layout:
-                    shoppingListIntName = R.string.meat_str;
+                    shoppingListName = meatTV.getText().toString();
 
                     shoppingList.add(FoodType.STEAK);
                     shoppingListCounts.add(1);
@@ -105,7 +125,7 @@ public class LevelSelectActivity extends AppCompatActivity {
                     break;
 
                 case R.id.vegetarian_layout:
-                    shoppingListIntName = R.string.vegetarian_str;
+                    shoppingListName = vegetarianTV.getText().toString();
 
                     shoppingList.add(FoodType.WATERMELON);
                     shoppingListCounts.add(5);
@@ -124,7 +144,7 @@ public class LevelSelectActivity extends AppCompatActivity {
                     break;
 
                 case R.id.backery_layout:
-                    shoppingListIntName = R.string.backery_str;
+                    shoppingListName = backeryTV.getText().toString();
 
                     shoppingList.add(FoodType.BAGEL);
                     shoppingListCounts.add(5);
@@ -143,7 +163,7 @@ public class LevelSelectActivity extends AppCompatActivity {
                     break;
 
                 case R.id.breakfast_layout:
-                    shoppingListIntName = R.string.breakfast_str;
+                    shoppingListName = breakfastTV.getText().toString();
 
                     shoppingList.add(FoodType.DANI);
                     shoppingListCounts.add(5);
@@ -162,7 +182,7 @@ public class LevelSelectActivity extends AppCompatActivity {
                     break;
 
                 case R.id.lunch_layout:
-                    shoppingListIntName = R.string.lunch_str;
+                    shoppingListName = lunchTV.getText().toString();
 
                     shoppingList.add(FoodType.TOMATO);
                     shoppingListCounts.add(5);
@@ -183,7 +203,7 @@ public class LevelSelectActivity extends AppCompatActivity {
                     break;
 
                 case R.id.rosh_hashana_layout:
-                    shoppingListIntName = R.string.rosh_hashana_str;
+                    shoppingListName = roshHashanaTV.getText().toString();
 
                     shoppingList.add(FoodType.WINE);
                     shoppingListCounts.add(5);
@@ -208,7 +228,7 @@ public class LevelSelectActivity extends AppCompatActivity {
                     break;
 
                 case R.id.passover_layout:
-                    shoppingListIntName = R.string.passover_str;
+                    shoppingListName = passoverTV.getText().toString();
 
                     shoppingList.add(FoodType.WINE);
                     shoppingListCounts.add(5);
@@ -233,13 +253,13 @@ public class LevelSelectActivity extends AppCompatActivity {
                     break;
 
                 case R.id.custom_layout:
-                    shoppingListIntName = R.string.custom_list_str;
+                    shoppingListName = customChoiceTV.getText().toString();
 
                     break;
             }
 
-            String shoppingListStr = Integer.toString(shoppingListIntName);
-            levelIntent.putExtra("shoppingListStr", shoppingListStr);
+            //String shoppingListStr = Integer.toString(shoppingListIntName);
+            levelIntent.putExtra("shoppingListStr", shoppingListName);
             levelIntent.putExtra("shoppingList",shoppingList);
             levelIntent.putExtra("shoppingListCounts",shoppingListCounts);
             levelIntent.putExtra("forbiddenList",forbiddenList);
