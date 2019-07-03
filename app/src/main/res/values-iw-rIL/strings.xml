@@ -19,4 +19,5 @@
     <string name="tap_to_start">לחץ להתחלה</string>
     <string name="game_over">נפסלת !</string>
     <string name="home_btn">בית</string>
+    <string name="play_again">שחק שוב</string>
 </resources>

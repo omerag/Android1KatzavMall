@@ -505,12 +505,21 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             View dialogView = getLayoutInflater().inflate(R.layout.game_over_dialog,null);
 
             Button homeBtn = dialogView.findViewById(R.id.home_btn);
+            Button playAgainBtn = dialogView.findViewById(R.id.play_again_btn);
+
             builder.setView(dialogView);
             homeBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(GameActivity.this,MainActivity.class);
                     startActivity(intent);
+                }
+            });
+
+            playAgainBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    resetLevel();
                 }
             });
             builder.show();
@@ -538,5 +547,10 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             startLabel.setVisibility(View.GONE);
         }
         return true;
+    }
+
+    public void resetLevel()
+    {
+
     }
 }
