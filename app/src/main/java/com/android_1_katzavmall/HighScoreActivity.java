@@ -44,7 +44,7 @@ public class HighScoreActivity extends AppCompatActivity {
 
     public boolean isNewHighScore(int score)
     {
-        for(int i = 0; i < highScores.size(); i++)
+        for(int i = 0; i < 10; i++)
         {
             if(score > highScores.get(i).getScore()) return true;
         }
@@ -61,6 +61,20 @@ public class HighScoreActivity extends AppCompatActivity {
         }
 
         HighScore highScore = new HighScore(i,level_img_id,difficulty,name,score);
+
+        if(i == 9)
+        {
+            highScores.set(9,highScore);
+        }
+        else
+        {
+            for(int j = 9; j > i; j--)
+            {
+                highScores.set(j,highScores.get(j-1));
+            }
+
+            highScores.set(i,highScore);
+        }
 
     }
 }
