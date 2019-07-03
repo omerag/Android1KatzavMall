@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -35,6 +38,13 @@ public class LevelSelectActivity extends AppCompatActivity {
 
     String shoppingListName;
 
+    ImageView breakfastLock;
+    ImageView lunchLock;
+    ImageView roshHashanaLock;
+    ImageView passoverLock;
+    ImageView customLock;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +72,12 @@ public class LevelSelectActivity extends AppCompatActivity {
         passoverTV = findViewById(R.id.passover_tv);
         customChoiceTV = findViewById(R.id.custom_tv);
 
+        breakfastLock = findViewById(R.id.breakfast_lock);
+        lunchLock = findViewById(R.id.lunch_lock);
+        roshHashanaLock = findViewById(R.id.rosh_hashana_lock);
+        passoverLock = findViewById(R.id.passover_lock);
+        customLock = findViewById(R.id.custom_lock);
+
         milkLayout.setOnClickListener(new selectLevelListener());
         meatLayout.setOnClickListener(new selectLevelListener());
         vegetarianLayout.setOnClickListener(new selectLevelListener());
@@ -70,6 +86,24 @@ public class LevelSelectActivity extends AppCompatActivity {
         lunchLayout.setOnClickListener(new selectLevelListener());
         roshHashanaLayout.setOnClickListener(new selectLevelListener());
         passoverLayout.setOnClickListener(new selectLevelListener());
+
+        // ZoomIn/Out animation:
+        final Animation zoomBtnAnimation = AnimationUtils.loadAnimation(this, R.anim.level_slct_btns_anim);
+        milkLayout.startAnimation(zoomBtnAnimation);
+        meatLayout.startAnimation(zoomBtnAnimation);
+        vegetarianLayout.startAnimation(zoomBtnAnimation);
+        backeryLayout.startAnimation(zoomBtnAnimation);
+        breakfastLayout.startAnimation(zoomBtnAnimation);
+        breakfastLock.startAnimation(zoomBtnAnimation);
+        lunchLayout.startAnimation(zoomBtnAnimation);
+        lunchLock.startAnimation(zoomBtnAnimation);
+        roshHashanaLayout.startAnimation(zoomBtnAnimation);
+        roshHashanaLock.startAnimation(zoomBtnAnimation);
+        passoverLayout.startAnimation(zoomBtnAnimation);
+        passoverLock.startAnimation(zoomBtnAnimation);
+        customChoiceLayout.startAnimation(zoomBtnAnimation);
+        customLock.startAnimation(zoomBtnAnimation);
+
     }
 
     private class selectLevelListener implements View.OnClickListener {

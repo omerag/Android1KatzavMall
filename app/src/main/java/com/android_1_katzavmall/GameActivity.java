@@ -14,9 +14,12 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.constraintlayout.solver.widgets.Rectangle;
@@ -30,7 +33,7 @@ import java.util.TimerTask;
 
 public class GameActivity extends AppCompatActivity implements SensorEventListener {
 
-
+    private LinearLayout groceriesLayout;
     private TextView scoreTV;
     private TextView startLabel;
     private TextView levelName;
@@ -84,11 +87,24 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         getSupportActionBar().hide();
         setContentView(R.layout.activity_game);
 
+        groceriesLayout = findViewById(R.id.groceriesLayout);
         scoreTV = findViewById(R.id.scoreTV);
         startLabel = findViewById(R.id.startLabel);
         levelName = findViewById(R.id.level_name_tv);
         cart = findViewById(R.id.cart);
         frame = findViewById(R.id.frame);
+
+
+        //Bounce animation:
+        final Animation bounceAnimation = AnimationUtils.loadAnimation(this, R.anim.groceries_list_anim);
+        BounceInterpolator interpolator = new BounceInterpolator(0.5, 10);
+        bounceAnimation.setInterpolator(interpolator);
+        groceriesLayout.startAnimation(bounceAnimation);
+
+        // ZoomIn animation:
+        final Animation zoomAnimation = AnimationUtils.loadAnimation(this, R.anim.level_name_anim);
+        startLabel.startAnimation(zoomAnimation);
+        levelName.startAnimation(zoomAnimation);
 
 
         screenWidth = getResources().getDisplayMetrics().widthPixels;
