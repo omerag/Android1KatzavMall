@@ -50,6 +50,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
     private LinearLayout groceriesLayout;
     private LinearLayout level_name_layout;
+    private TextView scoreLabel;
     private TextView scoreTV;
     private TextView startLabel;
     private TextView levelName;
@@ -113,7 +114,9 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
         groceriesLayout = findViewById(R.id.groceriesLayout);
         level_name_layout = findViewById(R.id.level_name_layout);
+        scoreLabel = findViewById(R.id.scoreLabel);
         scoreTV = findViewById(R.id.scoreTV);
+
         startLabel = findViewById(R.id.startLabel);
         levelName = findViewById(R.id.level_name_tv);
         cart = findViewById(R.id.cart);
@@ -264,7 +267,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
                             updateLives();
 
                         }
-                        scoreTV.setText("Score: " + score);
+                        scoreTV.setText("" + score);
                         frame.removeView(foodObject);
                         container.removeFood(foodObject);
                     }
@@ -278,7 +281,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
                         if(container.getShoppingList().contains(foodObject.getType())){
                             updateLives();
-                            scoreTV.setText("Score: " + score);
+                            scoreTV.setText("" + score);
 
                         }
 
@@ -573,13 +576,13 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
         switch (lives){
             case 3:
-                cartLives = findViewById(R.id.cart_life_3);
+                cartLives = findViewById(R.id.cart_life_1);
                 break;
             case 2:
                 cartLives = findViewById(R.id.cart_life_2);
                 break;
             case 1:
-                cartLives = findViewById(R.id.cart_life_1);
+                cartLives = findViewById(R.id.cart_life_3);
                 break;
             default:
                 return;
@@ -692,7 +695,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         cartLife3.setVisibility(View.VISIBLE);
 
         score = 0;
-        scoreTV.setText("Score: " + score);
+        scoreTV.setText("" + score);
         startLabel.setVisibility(View.GONE);
 
         setShoppingListLayout(shoppingList,shoppingListCounts);
