@@ -44,13 +44,6 @@ public class FoodContainer {
     public int getFoodTypeDrawable(FoodType foodType){
 
 
-        if(foodType == null){
-            System.out.println("foodType = null!!!!!!!");
-            return 0;
-        }
-        else{
-            System.out.println("" + foodType + "is fine");
-        }
 
         switch (foodType){
 

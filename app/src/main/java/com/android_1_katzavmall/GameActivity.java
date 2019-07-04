@@ -18,6 +18,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewPropertyAnimator;
 import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -242,12 +243,6 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
 
             float target = 0;
-            if(move != 0 && cart.getX() > 0 && cart.getX() + cart.getWidth() < screenWidth){
-                target = - move * 80;
-            }
-            else{
-                //target = cart.getX();
-            }
 
             animationCart = ObjectAnimator.ofFloat(cart, "translationX" ,target);
             animationCart.setDuration(200);
@@ -277,36 +272,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             animationCart.start();
         }
 
-        if(cart.getX() < 0){
-            cart.setX(0);
-        }
-        else if(cart.getX() + cart.getWidth() > screenWidth){
-            cart.setX(screenWidth - cart.getWidth());
-        }
-        else{
-            cart.setX(cart.getX() + move*(-1)*10);
-        }
 
-
-       /* if(cart.getX() < 0 && isCartAnimated){
-            animationCart.cancel();
-            cart.setX(0);
-        }else if(cart.getX() + cart.getWidth() > screenWidth && isCartAnimated){
-            animationCart.cancel();
-            cart.setX(screenWidth - cart.getWidth());
-        }
-
-*/
-
-
-        /*
-            if(moveRight && cart.getX() < screenWidth - cart.getWidth()){
-                cart.setX(cart.getX() + 20);
-            }
-            else if(moveLeft && cart.getX() > 0){
-                cart.setX(cart.getX() - 20);
-            }
-*/
 
         //move flowers
         List<FoodObject> foodList = container.getFoodList();
@@ -383,7 +349,6 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
                     int pick = rand.nextInt(size);
 
                     int x = ((rand.nextInt(100)*10 + 40) % (screenWidth - cart.getWidth())); //new flowers wont be too close to each other
-                    System.out.println("new flower at " + x);
                     factory.addFood(x,container.getShoppingList().get(pick));
                 }
             });
@@ -396,12 +361,9 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
                 public void run() {
 
 
-                    System.out.println("ForbiddenList: " + container.getForbiddenList().size());
 
 
                     int pick = rand.nextInt(container.getForbiddenList().size());
-
-                    System.out.println("Pick: " + pick);
 
                     int x = rand.nextInt(screenWidth - cart.getWidth());
                     factory.addFood(x,container.getForbiddenList().get(pick));
@@ -439,9 +401,6 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
         if(win){
             startFlag = false;
-            startLabel.setVisibility(View.VISIBLE);
-            startLabel.setText("WIN!");
-
 
             if (isNewHighScore(score))
             {
@@ -576,7 +535,6 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             textView.setBackgroundResource(R.drawable.shape1);
 
             if(i < shoppingList.size()){
-                System.out.println("foodType id = " + container.getFoodTypeDrawable(shoppingList.get(i)));
                 foodImage.setBackgroundResource(container.getFoodTypeDrawable(shoppingList.get(i)));
                 textView.setText("" + shoppingListCounts.get(i));
             }
@@ -666,6 +624,38 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             startFlag = true;
             startLabel.setVisibility(View.GONE);
         }
+
+        if(startFlag  && !isCartAnimated && me.getAction() == MotionEvent.ACTION_UP){
+
+            float target = me.getRawX() - (float)cart.getLeft() - (float)cart.getWidth()/2;
+
+            ObjectAnimator animationCart = ObjectAnimator.ofFloat(cart, "translationX" ,target);
+            animationCart.setDuration(200);
+            animationCart.setInterpolator(new LinearInterpolator());
+            animationCart.addListener(new Animator.AnimatorListener(){
+
+
+                @Override
+                public void onAnimationStart(Animator animator) {
+                    isCartAnimated = true;
+
+                }
+
+                @Override
+                public void onAnimationEnd(Animator animator) {
+                    isCartAnimated = false;
+                }
+
+                @Override
+                public void onAnimationCancel(Animator animator) { isCartAnimated = false; }
+
+                @Override
+                public void onAnimationRepeat(Animator animator) { }
+            });
+
+            animationCart.start();
+        }
+
         return true;
     }
 
