@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     ImageView man_with_bags;
     Button playBtn;
     Button highScoreBtn;
+    Button howToPlayBtn;
+    Button settingsBtn;
     List<HighScore> highScores;
 
     @Override
@@ -39,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
         man_with_bags = findViewById(R.id.man_with_bags);
         playBtn = findViewById(R.id.new_game_btn);
         highScoreBtn = findViewById(R.id.high_score_btn);
+        howToPlayBtn = findViewById(R.id.how_to_play_btn);
+        settingsBtn = findViewById(R.id.settings_btn);
 
         loadData();
 
@@ -51,6 +55,13 @@ public class MainActivity extends AppCompatActivity {
         // slide right animation
         final Animation slideRightAnimation = AnimationUtils.loadAnimation(this, R.anim.man_with_bags_anim);
         man_with_bags.startAnimation(slideRightAnimation);
+
+        // ZoomIn/Out animation:
+        //final Animation zoomBtnAnimation = AnimationUtils.loadAnimation(this, R.anim.main_btns_anim);
+        //playBtn.startAnimation(zoomBtnAnimation);
+        //highScoreBtn.startAnimation(zoomBtnAnimation);
+        //howToPlayBtn.startAnimation(zoomBtnAnimation);
+        //settingsBtn.startAnimation(zoomBtnAnimation);
 
         playBtn.setOnClickListener(new View.OnClickListener() {
             @Override
