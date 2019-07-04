@@ -4,6 +4,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
@@ -541,6 +543,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             homeBtn.startAnimation(zoomBtnAnimation);
             playAgainBtn.startAnimation(zoomBtnAnimation);
 
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             dialog.setView(dialogView);
 
             homeBtn.setOnClickListener(new View.OnClickListener() {
