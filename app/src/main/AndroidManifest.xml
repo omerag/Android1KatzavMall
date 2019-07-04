@@ -3,6 +3,8 @@
     package="com.android_1_katzavmall">
 
     <uses-feature android:name="android.hardware.sensor.accelerometer" />
+    <uses-permission android:name="android.permission.VIBRATE"/>
+
 
     <application
         android:allowBackup="true"

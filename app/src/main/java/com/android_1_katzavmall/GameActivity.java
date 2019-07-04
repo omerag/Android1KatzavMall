@@ -3,11 +3,13 @@ package com.android_1_katzavmall;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
@@ -16,6 +18,8 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Handler;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
@@ -52,7 +56,6 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     private ImageView cart;
     private FrameLayout frame;
     boolean isCartAnimated = false;
-    private ObjectAnimator animationCart;
     private List<HighScore> highScores;
 
     private FoodContainer container;
@@ -147,7 +150,6 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         setShoppingListLayout(shoppingList,shoppingListCounts);
 
 
-
         ///////////
 
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
@@ -225,11 +227,6 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             }
 
 
-
-
-
-
-
         }
     }
 
@@ -245,7 +242,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
             float target = 0;
 
-            animationCart = ObjectAnimator.ofFloat(cart, "translationX" ,target);
+            ObjectAnimator animationCart = ObjectAnimator.ofFloat(cart, "translationX", target);
             animationCart.setDuration(200);
             animationCart.setInterpolator(new LinearInterpolator());
             animationCart.addListener(new Animator.AnimatorListener(){
@@ -589,6 +586,18 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
     private void updateLives(){
         ImageView cartLives;
+
+
+        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        // Vibrate for 500 milliseconds
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            v.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
+        } else {
+            //deprecated in API 26
+            v.vibrate(500);
+        }
+
+
         switch (lives){
             case 3:
                 cartLives = findViewById(R.id.cart_life_3);
