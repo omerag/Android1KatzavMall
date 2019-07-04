@@ -4,9 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Window;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,16 +26,10 @@ public class HighScoreActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_high_score);
 
+        loadData();
         RecyclerView recyclerView = findViewById(R.id.recyclerV);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        highScores = new ArrayList<>();
-
-        for(int i = 0; i < 3; i++)
-        {
-            highScores.add(new HighScore(i+1,R.drawable.breakfast,"---","---",0));
-        }
 
         HighScoreAdapter highScoreAdapter = new HighScoreAdapter(highScores);
         recyclerView.setAdapter(highScoreAdapter);
@@ -38,39 +37,12 @@ public class HighScoreActivity extends AppCompatActivity {
 
     }
 
-    public boolean isNewHighScore(int score)
+    private void loadData()
     {
-        for(int i = 0; i < 10; i++)
-        {
-            if(score > highScores.get(i).getScore()) return true;
-        }
-        return false;
-    }
-
-    public void insertScore(String name,String difficulty,int level_img_id,int score)
-    {
-        //insert new score to the table
-        int i = 0;
-        while (score < highScores.get(i).getScore())
-        {
-            i++;
-        }
-
-        HighScore highScore = new HighScore(i,level_img_id,difficulty,name,score);
-
-        if(i == 9)
-        {
-            highScores.set(9,highScore);
-        }
-        else
-        {
-            for(int j = 9; j > i; j--)
-            {
-                highScores.set(j,highScores.get(j-1));
-            }
-
-            highScores.set(i,highScore);
-        }
-
+        SharedPreferences sp = getSharedPreferences("sp",MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = sp.getString("score_table",null);
+        Type type = new TypeToken<ArrayList<HighScore>>() {}.getType();
+        highScores = gson.fromJson(json,type);
     }
 }

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -22,13 +23,19 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.constraintlayout.solver.widgets.Rectangle;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -47,7 +54,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     private FrameLayout frame;
     boolean isCartAnimated = false;
     private ObjectAnimator animationCart;
-    private HighScoreActivity highScoreActivity;
+    private List<HighScore> highScores;
 
     private FoodContainer container;
     private FoodFactory factory;
@@ -435,34 +442,48 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             startLabel.setVisibility(View.VISIBLE);
             startLabel.setText("WIN!");
 
-                    final AlertDialog dialog = new AlertDialog.Builder(GameActivity.this).create();
-                    final View dialogView = getLayoutInflater().inflate(R.layout.win_new_highscore_dialog, null);
 
-                    Button saveScoreBtn = dialogView.findViewById(R.id.save_score_btn);
-                    Button cancelBtn = dialogView.findViewById(R.id.cancel_btn);
+            if (isNewHighScore(score))
+            {
+                final AlertDialog dialog = new AlertDialog.Builder(GameActivity.this).create();
+                final View dialogView = getLayoutInflater().inflate(R.layout.win_new_highscore_dialog, null);
 
-                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                    dialog.setView(dialogView);
-                    dialog.setCanceledOnTouchOutside(false);
+                Button saveScoreBtn = dialogView.findViewById(R.id.save_score_btn);
+                Button cancelBtn = dialogView.findViewById(R.id.cancel_btn);
+                final EditText nameEt = dialogView.findViewById(R.id.name_et);
 
-                    saveScoreBtn.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.setView(dialogView);
+                dialog.setCanceledOnTouchOutside(false);
 
-                        }
-                    });
+                saveScoreBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String name = nameEt.getText().toString();
+                        insertScore(name,"easy",R.drawable.breakfast,score);
+                        Toast.makeText(GameActivity.this,"Score Saved",Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(GameActivity.this,MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
 
-                    cancelBtn.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
+                cancelBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
 
-                            Intent intent = new Intent(GameActivity.this, MainActivity.class);
-                            startActivity(intent);
-                            finish();
-                        }
-                    });
+                        Intent intent = new Intent(GameActivity.this, MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
 
-                    dialog.show();
+                dialog.show();
+            }
+            else
+            {
+
+            }
 
         }
 
@@ -648,4 +669,68 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         }
         foodList.clear();
     }
+
+    public boolean isNewHighScore(int score)
+    {
+        loadData();
+
+        for(int i = 0; i < 10; i++)
+        {
+            if(score > highScores.get(i).getScore()) return true;
+        }
+        return false;
+    }
+
+    public void insertScore(String name,String difficulty,int level_img_id,int score)
+    {
+        loadData();
+
+        //insert new score to the table
+        int i = 0;
+        while (score < highScores.get(i).getScore())
+        {
+            i++;
+        }
+
+        HighScore highScore = new HighScore(i+1,level_img_id,difficulty,name,score);
+
+        if(i == 9)
+        {
+            highScores.set(9,highScore);
+        }
+        else
+        {
+            for(int j = 9; j > i; j--)
+            {
+                HighScore tempObj = highScores.get(j-1);
+                tempObj.setRank(tempObj.getRank()+1);
+                highScores.set(j,highScores.get(j-1));
+            }
+
+            highScores.set(i,highScore);
+        }
+
+        saveData();
+
+    }
+
+    private void loadData()
+    {
+        SharedPreferences sp = getSharedPreferences("sp",MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = sp.getString("score_table",null);
+        Type type = new TypeToken<ArrayList<HighScore>>() {}.getType();
+        highScores = gson.fromJson(json,type);
+    }
+
+    private void saveData()
+    {
+        SharedPreferences sp = getSharedPreferences("sp",MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(highScores);
+        editor.putString("score_table",json);
+        editor.apply();
+    }
+
 }
