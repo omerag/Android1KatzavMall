@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.animation.Animator;
@@ -373,19 +374,11 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     }
 
     private boolean checkCollision(View v1,View v2) {
-        Rectangle R1=new Rectangle();
-        Rectangle R2=new Rectangle();
-
-        R1.x = (int)v1.getX();
-        R1.y = (int)v1.getY();
-        R1.width = v1.getWidth();
-        R1.height = v1.getHeight();
-
-        R2.x = (int)v2.getX();
-        R2.y = (int)v2.getY();
-        R2.width = v2.getWidth();
-        R2.height = v2.getHeight();
-        return R1.contains(R2.x + R2.width, R2.y + R2.height);
+        Rect rect1 = new Rect();
+        Rect rect2 = new Rect();
+        v1.getHitRect(rect1);
+        v2.getHitRect(rect2);
+        return Rect.intersects(rect1,rect2);
     }
 
     private void winCheck(){
@@ -674,9 +667,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         startLabel.setVisibility(View.GONE);
 
         setShoppingListLayout(shoppingList,shoppingListCounts);
-
-
-
+        container.resetShoppingList();
     }
 
     private void cleanLevel(){

@@ -39,11 +39,13 @@ public class FoodContainer {
         return ForbiddenList;
     }
 
+    public void resetShoppingList(){
+        this.ShoppingList.addAll(StaticShoppingList);
+    }
+
 
 
     public int getFoodTypeDrawable(FoodType foodType){
-
-
 
         switch (foodType){
 
