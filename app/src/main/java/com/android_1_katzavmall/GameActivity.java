@@ -79,7 +79,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     private float move = 0;
 
 
-    private int shopCounter = 180;
+    private int shopCounter = 100;
     private int shopCounterReset = shopCounter;
     private boolean shopFlag = false;
 
