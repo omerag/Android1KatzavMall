@@ -52,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
         final Animation slideRightAnimation = AnimationUtils.loadAnimation(this, R.anim.man_with_bags_anim);
         man_with_bags.startAnimation(slideRightAnimation);
 
-
         playBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
