@@ -25,4 +25,6 @@
     <string name="save_score">Save Record</string>
     <string name="cancel_btn">Cancel</string>
     <string name="editext_hint">Enter your name</string>
+    <string name="winner_str3">You won !</string>
+    <string name="winner_str4">Want to break a record ?</string>
 </resources>

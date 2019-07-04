@@ -26,4 +26,6 @@
     <string name="save_score">שמר שיא</string>
     <string name="cancel_btn">ביטול</string>
     <string name="editext_hint">הכנס שם</string>
+    <string name="winner_str3">ניצחת !</string>
+    <string name="winner_str4">מעוניין לשבור שיא ?</string>
 </resources>

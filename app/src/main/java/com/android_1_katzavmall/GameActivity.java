@@ -485,7 +485,33 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             }
             else
             {
+                final AlertDialog dialog = new AlertDialog.Builder(GameActivity.this).create();
+                final View dialogView = getLayoutInflater().inflate(R.layout.win_no_highscore_dialog, null);
 
+                Button playAgainBtn = dialogView.findViewById(R.id.btn_play_again);
+                Button homeBtn = dialogView.findViewById(R.id.home_btn);
+
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.setView(dialogView);
+                dialog.setCanceledOnTouchOutside(false);
+
+                playAgainBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        resetLevel();
+                        dialog.dismiss();
+                    }
+                });
+
+                homeBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(GameActivity.this,MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+                dialog.show();
             }
 
         }
@@ -679,7 +705,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
         for(int i = 0; i < 10; i++)
         {
-            if(score > highScores.get(i).getScore()) return true;
+            if(score >= highScores.get(i).getScore()) return true;
         }
         return false;
     }
