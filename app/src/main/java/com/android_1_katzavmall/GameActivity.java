@@ -82,6 +82,10 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     private int shopCounter = 100;
     private int shopCounterReset = shopCounter;
     private boolean shopFlag = false;
+    private boolean bonusFlag = true;
+    private boolean isBonusStated = false;
+    private int bonusCounter = 500;
+    private int bonusCounterReset = bonusCounter;
 
     private long lastUpdate = 0;
 
@@ -171,7 +175,10 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
                         if(startFlag && lives > 0){
                             updatePositions();
                             createFood();
-                            winCheck();
+                            if(checkWin() && bonusFlag){
+                                bonusFlag = false;
+                                startBonus();
+                            }
                         }
 
                     }
@@ -296,13 +303,10 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
                 long velFood = 4000;
                 animation.setDuration(velFood);
                 animation.setInterpolator(new AccelerateInterpolator());
-                animation.start();
                 foodObject.setAnimated(true);
-                // foodObject.setY(foodObject.getY() + velFlower);
+                animation.start();
             }
-
         }
-
     }
 
 
@@ -313,7 +317,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         if (shopCounter < 1){
             shopCounter = shopCounterReset;
 
-            if(shopFlag){
+            if(shopFlag || isBonusStated){
                 shopFlag =false;
                 this.runOnUiThread(new Runnable() {
                     final Random rand = new Random();
@@ -329,11 +333,12 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
                         int pick = rand.nextInt(size);
 
-                        int x = ((rand.nextInt(100)*10 + 40) % (screenWidth - cart.getWidth())); //new flowers wont be too close to each other
+                        int x = ((rand.nextInt(100)*10 + 40) % (screenWidth - cart.getWidth())); //new food wont be too close to each other
                         factory.addFood(x,container.getShoppingList().get(pick));
                     }
                 });
-            }else{
+            }
+            else {
                 shopFlag = true;
                 this.runOnUiThread(new Runnable() {
                     final Random rand = new Random();
@@ -352,44 +357,14 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
         }
 
- /*
-        //create item from shopping list
-        if(System.currentTimeMillis() % 1000 < 5){
-            final Random rand = new Random();
-            this.runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-
-                    int size = container.getShoppingList().size();
-
-                    if(size == 0){
-                        return;
-                    }
-
-                    int pick = rand.nextInt(size);
-
-                    int x = ((rand.nextInt(100)*10 + 40) % (screenWidth - cart.getWidth())); //new flowers wont be too close to each other
-                    factory.addFood(x,container.getShoppingList().get(pick));
-                }
-            });
-        }else if (System.currentTimeMillis() % 1000 > 500 && System.currentTimeMillis() % 1000 < 505){
-            //create item from forbidden list
-
-            final Random rand = new Random();
-            this.runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-
-
-                    int pick = rand.nextInt(container.getForbiddenList().size());
-
-                    int x = rand.nextInt(screenWidth - cart.getWidth());
-                    factory.addFood(x,container.getForbiddenList().get(pick));
-                }
-            });
+        if(isBonusStated && bonusCounter > 0){
+            bonusCounter--;
+        }
+        else if(bonusCounter < 1){
+            endBonus();
         }
 
-        */
+
 
     }
 
@@ -401,94 +376,110 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         return Rect.intersects(rect1,rect2);
     }
 
-    private void winCheck(){
+    private boolean checkWin(){
 
-        boolean win = true;
         TextView foodStatus;
         for(int i = 0; i < container.getStaticShoppingList().size();i++){
             foodStatus = findViewById(foodStatusArray[i]);
             if(!foodStatus.getText().toString().equals("") && Integer.parseInt(foodStatus.getText().toString()) > 0){
-                win = false;
+                return  false;
             }
         }
 
-        if(win){
-            startFlag = false;
+        return true;
+    }
 
-            if (isNewHighScore(score))
-            {
-                final AlertDialog dialog = new AlertDialog.Builder(GameActivity.this).create();
-                final View dialogView = getLayoutInflater().inflate(R.layout.win_new_highscore_dialog, null);
+    private void startBonus(){
 
-                Button saveScoreBtn = dialogView.findViewById(R.id.save_score_btn);
-                Button cancelBtn = dialogView.findViewById(R.id.cancel_btn);
-                final EditText nameEt = dialogView.findViewById(R.id.name_et);
+        isBonusStated = true;
+        shopCounter = 30;
+        shopCounterReset = shopCounter;
 
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                dialog.setView(dialogView);
-                dialog.setCanceledOnTouchOutside(false);
+        cleanLevel();
 
-                saveScoreBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        String name = nameEt.getText().toString();
-                        int img_id = getIntent().getIntExtra("level_img",0);
+        container.getShoppingList().add(FoodType.DONUTS);
 
-                        insertScore(name,"easy",img_id,score);
-                        Toast.makeText(GameActivity.this,"Score Saved",Toast.LENGTH_LONG).show();
-
-                        Intent intent = new Intent(GameActivity.this,MainActivity.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                });
-
-                cancelBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
-                        Intent intent = new Intent(GameActivity.this, MainActivity.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                });
-
-                dialog.show();
-            }
-            else
-            {
-                final AlertDialog dialog = new AlertDialog.Builder(GameActivity.this).create();
-                final View dialogView = getLayoutInflater().inflate(R.layout.win_no_highscore_dialog, null);
-
-                Button playAgainBtn = dialogView.findViewById(R.id.btn_play_again);
-                Button homeBtn = dialogView.findViewById(R.id.home_btn);
-
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                dialog.setView(dialogView);
-                dialog.setCanceledOnTouchOutside(false);
-
-                playAgainBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        resetLevel();
-                        dialog.dismiss();
-                    }
-                });
-
-                homeBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(GameActivity.this,MainActivity.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                });
-                dialog.show();
-            }
-
-        }
 
     }
+
+    private void endBonus(){
+
+        cleanLevel();
+        startFlag = false;
+
+        if (isNewHighScore(score))
+        {
+            final AlertDialog dialog = new AlertDialog.Builder(GameActivity.this).create();
+            final View dialogView = getLayoutInflater().inflate(R.layout.win_new_highscore_dialog, null);
+
+            Button saveScoreBtn = dialogView.findViewById(R.id.save_score_btn);
+            Button cancelBtn = dialogView.findViewById(R.id.cancel_btn);
+            final EditText nameEt = dialogView.findViewById(R.id.name_et);
+
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            dialog.setView(dialogView);
+            dialog.setCanceledOnTouchOutside(false);
+
+            saveScoreBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String name = nameEt.getText().toString();
+                    int img_id = getIntent().getIntExtra("level_img",0);
+
+                    insertScore(name,"easy",img_id,score);
+                    Toast.makeText(GameActivity.this,"Score Saved",Toast.LENGTH_LONG).show();
+
+                    Intent intent = new Intent(GameActivity.this,MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+
+            cancelBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Intent intent = new Intent(GameActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+
+            dialog.show();
+        }
+        else
+        {
+            final AlertDialog dialog = new AlertDialog.Builder(GameActivity.this).create();
+            final View dialogView = getLayoutInflater().inflate(R.layout.win_no_highscore_dialog, null);
+
+            Button playAgainBtn = dialogView.findViewById(R.id.btn_play_again);
+            Button homeBtn = dialogView.findViewById(R.id.home_btn);
+
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            dialog.setView(dialogView);
+            dialog.setCanceledOnTouchOutside(false);
+
+            playAgainBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    resetLevel();
+                    dialog.dismiss();
+                }
+            });
+
+            homeBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(GameActivity.this,MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+            dialog.show();
+        }
+    }
+
+
 
     private void updateFoodStatus(FoodType foodType){
         TextView textView;
@@ -590,8 +581,6 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         lives--;
         cartLives.setVisibility(View.INVISIBLE);
         if(lives == 0){
-            startLabel.setText("GAME OVER");
-            startLabel.setVisibility(View.VISIBLE);
             cleanLevel();
 
             final AlertDialog dialog = new AlertDialog.Builder(GameActivity.this).create();
