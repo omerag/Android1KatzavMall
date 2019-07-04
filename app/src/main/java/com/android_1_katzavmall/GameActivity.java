@@ -443,6 +443,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
                     dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                     dialog.setView(dialogView);
+                    dialog.setCanceledOnTouchOutside(false);
 
                     saveScoreBtn.setOnClickListener(new View.OnClickListener() {
                         @Override
