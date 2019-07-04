@@ -78,7 +78,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     private float move = 0;
 
 
-    private int shopCounter = 240;
+    private int shopCounter = 180;
     private int shopCounterReset = shopCounter;
     private boolean shopFlag = false;
 
@@ -235,51 +235,24 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
     public synchronized void updatePositions(){
 
-        //move cart
-
-        if(!isCartAnimated && false){
-
-
-            float target = 0;
-
-            ObjectAnimator animationCart = ObjectAnimator.ofFloat(cart, "translationX", target);
-            animationCart.setDuration(200);
-            animationCart.setInterpolator(new LinearInterpolator());
-            animationCart.addListener(new Animator.AnimatorListener(){
-
-
-                @Override
-                public void onAnimationStart(Animator animator) {
-                    isCartAnimated = true;
-
-                }
-
-                @Override
-                public void onAnimationEnd(Animator animator) {
-                    isCartAnimated = false;
-                }
-
-                @Override
-                public void onAnimationCancel(Animator animator) { isCartAnimated = false; }
-
-                @Override
-                public void onAnimationRepeat(Animator animator) { }
-            });
-
-
-            animationCart.start();
+        //move cart with accelerometer
+        if(cart.getX() < 0){
+            cart.setX(0);
+        }
+        else if(cart.getX() + cart.getWidth() > screenWidth){
+            cart.setX(screenWidth - cart.getWidth());
+        }
+        else{
+            cart.setX(cart.getX() + move*(-1)*10);
         }
 
 
-
-        //move flowers
+        //move food
         List<FoodObject> foodList = container.getFoodList();
         for(int i = 0; i < foodList.size(); i++ ){
             final FoodObject foodObject = foodList.get(i);
 
             if(checkCollision(cart,foodObject)){
-
-
                 this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -317,7 +290,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             }
             else if(!foodObject.isAnimated()){
                 ObjectAnimator animation = ObjectAnimator.ofFloat(foodObject, "translationY", screenHeight);
-                long velFood = 8000;
+                long velFood = 4000;
                 animation.setDuration(velFood);
                 animation.setInterpolator(new AccelerateInterpolator());
                 animation.start();
