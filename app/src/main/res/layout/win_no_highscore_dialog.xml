@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dialog_shape">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/winner_str3"
+        android:textSize="25sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/winner_str4"
+        android:textSize="25sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="10dp">
+
+        <Button
+            android:id="@+id/btn_play_again"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:text="@string/play_again"
+            android:textAllCaps="false"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/main_button_shape2"/>
+
+        <Button
+            android:id="@+id/btn_home"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:text="@string/home_btn"
+            android:textAllCaps="false"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/main_button_shape2"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>
