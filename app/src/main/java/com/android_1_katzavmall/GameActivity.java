@@ -16,11 +16,10 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Handler;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewPropertyAnimator;
 import android.view.Window;
+import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
@@ -31,8 +30,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.constraintlayout.solver.widgets.Rectangle;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -77,8 +74,12 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     private float deltaXMax = 0;
     private float move = 0;
 
+
+    private int shopCounter = 240;
+    private int shopCounterReset = shopCounter;
+    private boolean shopFlag = false;
+
     private long lastUpdate = 0;
-    private static final int SHAKE_THRESHOLD = 600;
 
 
     ////////////////
@@ -91,7 +92,6 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     private boolean moveLeft = false;
     private boolean isResumed = false;
 
-    private long velFlower = 4000;
     private int score = 0;
     private int lives = 3;
 
@@ -320,7 +320,9 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             }
             else if(!foodObject.isAnimated()){
                 ObjectAnimator animation = ObjectAnimator.ofFloat(foodObject, "translationY", screenHeight);
-                animation.setDuration(velFlower);
+                long velFood = 8000;
+                animation.setDuration(velFood);
+                animation.setInterpolator(new AccelerateInterpolator());
                 animation.start();
                 foodObject.setAnimated(true);
                 // foodObject.setY(foodObject.getY() + velFlower);
@@ -334,8 +336,52 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     private synchronized void createFood(){
 
 
+        shopCounter--;
+        if (shopCounter < 1){
+            shopCounter = shopCounterReset;
+
+            if(shopFlag){
+                shopFlag =false;
+                this.runOnUiThread(new Runnable() {
+                    final Random rand = new Random();
+
+                    @Override
+                    public void run() {
+
+                        int size = container.getShoppingList().size();
+
+                        if(size == 0){
+                            return;
+                        }
+
+                        int pick = rand.nextInt(size);
+
+                        int x = ((rand.nextInt(100)*10 + 40) % (screenWidth - cart.getWidth())); //new flowers wont be too close to each other
+                        factory.addFood(x,container.getShoppingList().get(pick));
+                    }
+                });
+            }else{
+                shopFlag = true;
+                this.runOnUiThread(new Runnable() {
+                    final Random rand = new Random();
+
+                    @Override
+                    public void run() {
+
+
+                        int pick = rand.nextInt(container.getForbiddenList().size());
+
+                        int x = rand.nextInt(screenWidth - cart.getWidth());
+                        factory.addFood(x,container.getForbiddenList().get(pick));
+                    }
+                });
+            }
+
+        }
+
+ /*
         //create item from shopping list
-        if(System.currentTimeMillis() % 1000 < 10){
+        if(System.currentTimeMillis() % 1000 < 5){
             final Random rand = new Random();
             this.runOnUiThread(new Runnable() {
                 @Override
@@ -353,15 +399,13 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
                     factory.addFood(x,container.getShoppingList().get(pick));
                 }
             });
-        }else if (System.currentTimeMillis() % 1000 > 10 && System.currentTimeMillis() % 1000 < 20){
+        }else if (System.currentTimeMillis() % 1000 > 500 && System.currentTimeMillis() % 1000 < 505){
             //create item from forbidden list
 
             final Random rand = new Random();
             this.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-
-
 
 
                     int pick = rand.nextInt(container.getForbiddenList().size());
@@ -371,6 +415,9 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
                 }
             });
         }
+
+        */
+
     }
 
     private boolean checkCollision(View v1,View v2) {
