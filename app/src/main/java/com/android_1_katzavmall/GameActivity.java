@@ -460,8 +460,11 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
                     @Override
                     public void onClick(View view) {
                         String name = nameEt.getText().toString();
-                        insertScore(name,"easy",R.drawable.breakfast,score);
+                        int img_id = getIntent().getIntExtra("level_img",0);
+
+                        insertScore(name,"easy",img_id,score);
                         Toast.makeText(GameActivity.this,"Score Saved",Toast.LENGTH_LONG).show();
+
                         Intent intent = new Intent(GameActivity.this,MainActivity.class);
                         startActivity(intent);
                         finish();

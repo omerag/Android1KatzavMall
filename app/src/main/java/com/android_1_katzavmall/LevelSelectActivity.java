@@ -116,6 +116,7 @@ public class LevelSelectActivity extends AppCompatActivity {
             ArrayList<FoodType> shoppingList = new ArrayList<>();
             ArrayList<Integer> shoppingListCounts = new ArrayList<>();
             ArrayList<FoodType> forbiddenList = new ArrayList<>();
+            int level_img_id = 0;
 
 
             switch (view.getId()){
@@ -136,6 +137,8 @@ public class LevelSelectActivity extends AppCompatActivity {
                     forbiddenList.add(FoodType.BAGUETTE);
                     forbiddenList.add(FoodType.STEAK);
                     forbiddenList.add(FoodType.ORANGE);
+
+                    level_img_id = R.drawable.milk;
                     break;
 
                 case R.id.meat_layout:
@@ -156,6 +159,8 @@ public class LevelSelectActivity extends AppCompatActivity {
                     forbiddenList.add(FoodType.MILK);
                     forbiddenList.add(FoodType.ORANGE);
 
+                    level_img_id = R.drawable.meat;
+
                     break;
 
                 case R.id.vegetarian_layout:
@@ -175,6 +180,9 @@ public class LevelSelectActivity extends AppCompatActivity {
                     forbiddenList.add(FoodType.CHICKEN);
                     forbiddenList.add(FoodType.HARD_CHEESE);
                     forbiddenList.add(FoodType.EGGS);
+
+                    level_img_id = R.drawable.vegetarian;
+
                     break;
 
                 case R.id.backery_layout:
@@ -194,6 +202,9 @@ public class LevelSelectActivity extends AppCompatActivity {
                     forbiddenList.add(FoodType.EGGPLANT);
                     forbiddenList.add(FoodType.AVOKADO);
                     forbiddenList.add(FoodType.WINE);
+
+                    level_img_id = R.drawable.bakery;
+
                     break;
 
                 case R.id.breakfast_layout:
@@ -213,6 +224,9 @@ public class LevelSelectActivity extends AppCompatActivity {
                     forbiddenList.add(FoodType.STEAK);
                     forbiddenList.add(FoodType.WATERMELON);
                     forbiddenList.add(FoodType.SCHNITZEL);
+
+                    level_img_id = R.drawable.breakfast;
+
                     break;
 
                 case R.id.lunch_layout:
@@ -234,6 +248,9 @@ public class LevelSelectActivity extends AppCompatActivity {
                     forbiddenList.add(FoodType.MILK);
                     forbiddenList.add(FoodType.EGGS);
                     forbiddenList.add(FoodType.DONUTS);
+
+                    level_img_id = R.drawable.lunch;
+
                     break;
 
                 case R.id.rosh_hashana_layout:
@@ -259,6 +276,9 @@ public class LevelSelectActivity extends AppCompatActivity {
                     forbiddenList.add(FoodType.BAGUETTE);
                     forbiddenList.add(FoodType.STEAK);
                     forbiddenList.add(FoodType.ORANGE);
+
+                    level_img_id = R.drawable.rosh_hashana;
+
                     break;
 
                 case R.id.passover_layout:
@@ -284,10 +304,15 @@ public class LevelSelectActivity extends AppCompatActivity {
                     forbiddenList.add(FoodType.BAGUETTE);
                     forbiddenList.add(FoodType.BREAD);
                     forbiddenList.add(FoodType.DONUTS);
+
+                    level_img_id = R.drawable.passover;
+
                     break;
 
                 case R.id.custom_layout:
                     shoppingListName = customChoiceTV.getText().toString();
+
+                    level_img_id = R.drawable.custom;
 
                     break;
             }
@@ -297,6 +322,7 @@ public class LevelSelectActivity extends AppCompatActivity {
             levelIntent.putExtra("shoppingList",shoppingList);
             levelIntent.putExtra("shoppingListCounts",shoppingListCounts);
             levelIntent.putExtra("forbiddenList",forbiddenList);
+            levelIntent.putExtra("level_img",level_img_id);
             startActivity(levelIntent);
         }
     }
