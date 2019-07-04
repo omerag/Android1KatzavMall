@@ -23,21 +23,14 @@ public class HighScoreActivity extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.recyclerV);
         recyclerView.setHasFixedSize(true);
-
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         highScores = new ArrayList<>();
 
-        highScores.add(new HighScore(1,R.drawable.breakfast,"---","---",0));
-        highScores.add(new HighScore(2,R.drawable.breakfast,"---","---",0));
-        highScores.add(new HighScore(3,R.drawable.breakfast,"---","---",0));
-        highScores.add(new HighScore(4,R.drawable.breakfast,"---","---",0));
-        highScores.add(new HighScore(5,R.drawable.breakfast,"---","---",0));
-        highScores.add(new HighScore(6,R.drawable.breakfast,"---","---",0));
-        highScores.add(new HighScore(7,R.drawable.breakfast,"---","---",0));
-        highScores.add(new HighScore(8,R.drawable.breakfast,"---","---",0));
-        highScores.add(new HighScore(9,R.drawable.breakfast,"---","---",0));
-        highScores.add(new HighScore(10,R.drawable.breakfast,"---","---",0));
+        for(int i = 0; i < 3; i++)
+        {
+            highScores.add(new HighScore(i+1,R.drawable.breakfast,"---","---",0));
+        }
 
         HighScoreAdapter highScoreAdapter = new HighScoreAdapter(highScores);
         recyclerView.setAdapter(highScoreAdapter);

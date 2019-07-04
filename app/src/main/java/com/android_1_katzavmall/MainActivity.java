@@ -11,12 +11,16 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     ImageView logo;
     ImageView man_with_bags;
     Button playBtn;
     Button highScoreBtn;
+    List<HighScore> highScores;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
         man_with_bags = findViewById(R.id.man_with_bags);
         playBtn = findViewById(R.id.new_game_btn);
         highScoreBtn = findViewById(R.id.high_score_btn);
+
+        highScores = new ArrayList<>();
 
         //Bounce animation:
         final Animation bounceAnimation = AnimationUtils.loadAnimation(this, R.anim.logo_anim);

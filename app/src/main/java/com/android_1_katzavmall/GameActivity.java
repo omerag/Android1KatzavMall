@@ -435,33 +435,33 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             startLabel.setVisibility(View.VISIBLE);
             startLabel.setText("WIN!");
 
-                final AlertDialog dialog = new AlertDialog.Builder(GameActivity.this).create();
-                final View dialogView = getLayoutInflater().inflate(R.layout.win_new_highscore_dialog,null);
+                    final AlertDialog dialog = new AlertDialog.Builder(GameActivity.this).create();
+                    final View dialogView = getLayoutInflater().inflate(R.layout.win_new_highscore_dialog, null);
 
-                Button saveScoreBtn = dialogView.findViewById(R.id.save_score_btn);
-                Button cancelBtn = dialogView.findViewById(R.id.cancel_btn);
+                    Button saveScoreBtn = dialogView.findViewById(R.id.save_score_btn);
+                    Button cancelBtn = dialogView.findViewById(R.id.cancel_btn);
 
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                dialog.setView(dialogView);
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    dialog.setView(dialogView);
 
-                saveScoreBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
+                    saveScoreBtn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
 
-                    }
-                });
+                        }
+                    });
 
-                cancelBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
+                    cancelBtn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
 
-                        Intent intent = new Intent(GameActivity.this,MainActivity.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                });
+                            Intent intent = new Intent(GameActivity.this, MainActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    });
 
-                dialog.show();
+                    dialog.show();
 
         }
 
@@ -573,6 +573,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             dialog.setView(dialogView);
+            dialog.setCanceledOnTouchOutside(false);
 
             homeBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
