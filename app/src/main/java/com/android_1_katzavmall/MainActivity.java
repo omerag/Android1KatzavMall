@@ -123,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         SharedPreferences sp = getSharedPreferences("sp",MODE_PRIVATE);
                         sp.edit().remove("score_table").apply();
+                        loadData();
                         Toast.makeText(MainActivity.this,R.string.reset_score_toast,Toast.LENGTH_LONG).show();
                     }
                 });
