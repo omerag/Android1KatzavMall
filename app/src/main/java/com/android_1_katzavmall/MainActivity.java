@@ -1,16 +1,22 @@
 package com.android_1_katzavmall;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -76,6 +82,52 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent highScoreIntent = new Intent(MainActivity.this,HighScoreActivity.class);
                 startActivity(highScoreIntent);
+            }
+        });
+
+        settingsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                final AlertDialog dialog = new AlertDialog.Builder(MainActivity.this).create();
+                final View dialogView = getLayoutInflater().inflate(R.layout.settings_dialog,null);
+
+                Button saveBtn = dialogView.findViewById(R.id.save_settings_btn);
+                Button cancelBtn = dialogView.findViewById(R.id.btn_cancel);
+                Button resetScoreBtn = dialogView.findViewById(R.id.reset_score_table);
+                Spinner difficultySpinner = dialogView.findViewById(R.id.difficulty_spinner);
+                Spinner controlSpinner = dialogView.findViewById(R.id.control_spinner);
+                CheckBox musicCheckBox = dialogView.findViewById(R.id.music_checkBox);
+                CheckBox soundsCheckBox = dialogView.findViewById(R.id.sounds_checkBox);
+
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.setView(dialogView);
+                dialog.setCanceledOnTouchOutside(false);
+
+                saveBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                    }
+                });
+
+                cancelBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
+
+                resetScoreBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        SharedPreferences sp = getSharedPreferences("sp",MODE_PRIVATE);
+                        sp.edit().remove("score_table").apply();
+                        Toast.makeText(MainActivity.this,R.string.reset_score_toast,Toast.LENGTH_LONG).show();
+                    }
+                });
+
+                dialog.show();
             }
         });
     }
