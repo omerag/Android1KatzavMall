@@ -90,33 +90,14 @@
         android:layout_marginBottom="10dp"
         android:background="@drawable/main_button_shape1"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:layout_marginTop="10dp">
-
-        <Button
-            android:id="@+id/save_settings_btn"
-            android:layout_width="100dp"
-            android:layout_height="60dp"
-            android:text="@string/save_btn"
-            android:textAllCaps="false"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/main_button_shape2"/>
-
         <Button
             android:id="@+id/btn_cancel"
             android:layout_width="100dp"
             android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
             android:text="@string/cancel_btn"
             android:textAllCaps="false"
             android:layout_marginBottom="10dp"
             android:background="@drawable/main_button_shape2"/>
-
-    </LinearLayout>
-
-
 
 </LinearLayout>

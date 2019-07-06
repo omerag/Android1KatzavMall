@@ -153,7 +153,6 @@ public class MainActivity extends AppCompatActivity {
                 final AlertDialog dialog = new AlertDialog.Builder(MainActivity.this).create();
                 final View dialogView = getLayoutInflater().inflate(R.layout.settings_dialog,null);
 
-                Button saveBtn = dialogView.findViewById(R.id.save_settings_btn);
                 Button cancelBtn = dialogView.findViewById(R.id.btn_cancel);
                 Button resetScoreBtn = dialogView.findViewById(R.id.reset_score_table);
                 Spinner difficultySpinner = dialogView.findViewById(R.id.difficulty_spinner);
@@ -171,13 +170,6 @@ public class MainActivity extends AppCompatActivity {
 
                 if (control.equalsIgnoreCase(getString(R.string.control1))) controlSpinner.setSelection(0);
                 else controlSpinner.setSelection(1);
-
-                saveBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
-                    }
-                });
 
                 cancelBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
