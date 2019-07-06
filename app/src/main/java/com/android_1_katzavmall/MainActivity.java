@@ -18,6 +18,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -41,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
     List<HighScore> highScores;
     String difficulty;
     String control;
+    Boolean isMusic;
+    Boolean isSounds;
     SharedPreferences sp;
 
     @Override
@@ -171,6 +174,12 @@ public class MainActivity extends AppCompatActivity {
                 if (control.equalsIgnoreCase(getString(R.string.control1))) controlSpinner.setSelection(0);
                 else controlSpinner.setSelection(1);
 
+                if (isMusic) musicCheckBox.setChecked(true);
+                else musicCheckBox.setChecked(false);
+
+                if (isSounds) soundsCheckBox.setChecked(true);
+                else soundsCheckBox.setChecked(false);
+
                 cancelBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -220,6 +229,27 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
+                musicCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                        isMusic = compoundButton.isChecked();
+                        SharedPreferences.Editor editor = sp.edit();
+                        editor.putBoolean("music",isMusic);
+                        editor.apply();
+
+                    }
+                });
+
+                soundsCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                        isSounds = compoundButton.isChecked();
+                        SharedPreferences.Editor editor = sp.edit();
+                        editor.putBoolean("sounds",isSounds);
+                        editor.apply();
+                    }
+                });
+
                 dialog.show();
             }
         });
@@ -260,6 +290,8 @@ public class MainActivity extends AppCompatActivity {
 
         difficulty = sp.getString("difficulty","");
         control = sp.getString("control","");
+        isMusic = sp.getBoolean("music",true);
+        isSounds = sp.getBoolean("sounds",true);
 
         if (difficulty.equals(""))
         {
