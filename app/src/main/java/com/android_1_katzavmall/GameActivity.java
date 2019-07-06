@@ -238,12 +238,12 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
                 lastUpdate = curTime;
 
                 float deltaX = Math.abs(event.values[0] - lastX);
-                if (deltaX < 2.0f ) {
+                if (deltaX < 2.0f  ) {
 
                     move = event.values[0];
                 }
                 else{
-                    move = 0;
+                   // move = 0;
                 }
                 lastX = event.values[0];
             }
@@ -282,7 +282,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
                             score++;
                             updateFoodStatus(foodObject.getType());
                         }
-                        else{
+                        else {
                             updateLives();
 
                         }
@@ -298,9 +298,8 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
                     @Override
                     public void run() {
 
-                        if(container.getShoppingList().contains(foodObject.getType())){
+                        if(container.getShoppingList().contains(foodObject.getType()) && !isBonusStated){
                             updateLives();
-                            scoreTV.setText("" + score);
 
                         }
 
