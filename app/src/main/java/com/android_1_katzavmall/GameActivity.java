@@ -82,6 +82,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     private float deltaXMax = 0;
     private float move = 0;
 
+    ////////////////
 
     private int shopCounter = 100;
     private int shopCounterReset = shopCounter;
@@ -92,9 +93,6 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     private int bonusCounterReset = bonusCounter;
 
     private long lastUpdate = 0;
-
-
-    ////////////////
 
     private int screenHeight;
     private int screenWidth;
@@ -112,6 +110,9 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
     private int[] foodStatusArray = {R.id.foodStatus0, R.id.foodStatus1, R.id.foodStatus2, R.id.foodStatus3,
             R.id.foodStatus4, R.id.foodStatus5, R.id.foodStatus6, R.id.foodStatus7};
+
+    private long diffultyFoodVel = 4000;
+    private boolean controlSensor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -167,6 +168,9 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         factory = new FoodFactory(this,container,frame);
 
         setShoppingListLayout(shoppingList,shoppingListCounts);
+
+        setSettings();
+
 
 
         ///////////
@@ -226,7 +230,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     @Override
     public void onSensorChanged(SensorEvent event) {
 
-        if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+        if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER && controlSensor) {
             accelerometerData = event.values;
             //     cart.onSensorEvent(event);
 
@@ -311,8 +315,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             }
             else if(!foodObject.isAnimated()){
                 ObjectAnimator animation = ObjectAnimator.ofFloat(foodObject, "translationY", screenHeight);
-                long velFood = 4000;
-                animation.setDuration(velFood);
+                animation.setDuration(diffultyFoodVel);
                 animation.setInterpolator(new AccelerateInterpolator());
                 foodObject.setAnimated(true);
                 animation.start();
@@ -568,16 +571,20 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             default:
                 return;
         }
-
-        int lefts = Integer.parseInt(textView.getText().toString());
-        lefts--;
-        textView.setText( "" + lefts);
-        if(lefts == 0){
-            textView.setText("");
-            textView.setBackgroundResource(R.drawable.v_sign_with_background);
-            container.getForbiddenList().add(foodType);
-            container.getShoppingList().remove(foodType);
+        int lefts = 0;
+        String leftStr = textView.getText().toString();
+        if(!leftStr.equalsIgnoreCase("")){
+            lefts = Integer.parseInt(leftStr);
+            lefts--;
+            textView.setText( "" + lefts);
+            if(lefts == 0){
+                textView.setText("");
+                textView.setBackgroundResource(R.drawable.v_sign_with_background);
+                container.getForbiddenList().add(foodType);
+                container.getShoppingList().remove(foodType);
+            }
         }
+
     }
 
     private void setShoppingListLayout(List<FoodType> shoppingList,List<Integer> shoppingListCounts){
@@ -705,7 +712,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             startLabel.setVisibility(View.GONE);
         }
 
-        if(startFlag  && !isCartAnimated && me.getAction() == MotionEvent.ACTION_UP){
+        if(!controlSensor && startFlag  && !isCartAnimated && me.getAction() == MotionEvent.ACTION_UP){
 
             float target = me.getRawX() - (float)cart.getLeft() - (float)cart.getWidth()/2;
 
@@ -830,4 +837,20 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         editor.apply();
     }
 
+    private void setSettings(){
+        SharedPreferences sp = getSharedPreferences("sp",MODE_PRIVATE);
+        String difficultyStr = sp.getString("difficulty","");
+
+        String controlStr = sp.getString("control","");
+
+        controlSensor = controlStr.equalsIgnoreCase(getString(R.string.control1));
+
+        if(difficultyStr.equalsIgnoreCase(getString(R.string.difficulty2))){
+            diffultyFoodVel = 3000;
+        }
+        else if (difficultyStr.equalsIgnoreCase(getString(R.string.difficulty3))){
+            diffultyFoodVel = 2000;
+        }
+
+    }
 }
