@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
         howToPlayBtn = findViewById(R.id.how_to_play_btn);
         settingsBtn = findViewById(R.id.settings_btn);
 
+        menuAudioPlayer = MediaPlayer.create(this,R.raw.menu_audio);
         loadSettings();
         loadData();
 
@@ -268,6 +269,7 @@ public class MainActivity extends AppCompatActivity {
                         isMusic = compoundButton.isChecked();
                         if (!isMusic) menuAudioPlayer.pause();
                         else menuAudioPlayer.start();
+
                         SharedPreferences.Editor editor = sp.edit();
                         editor.putBoolean("music",isMusic);
                         editor.apply();
@@ -346,10 +348,8 @@ public class MainActivity extends AppCompatActivity {
 
         if (isMusic)
         {
-            menuAudioPlayer = MediaPlayer.create(MainActivity.this,R.raw.menu_audio);
             menuAudioPlayer.setLooping(true);
             menuAudioPlayer.start();
-
         }
     }
 
@@ -358,6 +358,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         setIntent(intent);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        menuAudioPlayer.pause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (isMusic) menuAudioPlayer.start();
     }
 }
 
