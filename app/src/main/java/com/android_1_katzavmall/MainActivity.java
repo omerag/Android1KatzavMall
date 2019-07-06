@@ -347,7 +347,9 @@ public class MainActivity extends AppCompatActivity {
         if (isMusic)
         {
             menuAudioPlayer = MediaPlayer.create(MainActivity.this,R.raw.menu_audio);
+            menuAudioPlayer.setLooping(true);
             menuAudioPlayer.start();
+
         }
     }
 
