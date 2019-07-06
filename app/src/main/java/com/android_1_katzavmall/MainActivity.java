@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         howToPlayBtn = findViewById(R.id.how_to_play_btn);
         settingsBtn = findViewById(R.id.settings_btn);
 
-        menuAudioPlayer = MediaPlayer.create(this,R.raw.menu_audio);
+        menuAudioPlayer = MediaPlayer.create(MainActivity.this,R.raw.menu_audio);
         loadSettings();
         loadData();
 
