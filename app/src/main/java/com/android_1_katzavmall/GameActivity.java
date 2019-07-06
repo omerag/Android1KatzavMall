@@ -292,6 +292,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
                         //if we took food is in our shopping list
                         if(container.getShoppingList().contains(foodObject.getType())){
                             score = score + 10*scoreMultiplier;
+                            cart.playGoodSound();
                             cart.animateCoach();
                             updateFoodStatus(foodObject.getType());
                             scoreTV.setText("" + score);
@@ -652,6 +653,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     private void updateLives(){
         ImageView cartLives;
 
+        cart.playBadSound();
         vibrate();
         switch (lives){
             case 3:

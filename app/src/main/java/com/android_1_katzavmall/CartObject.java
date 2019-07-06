@@ -5,6 +5,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.util.AttributeSet;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.Animation;
@@ -19,6 +20,8 @@ public class CartObject extends AppCompatImageView {
 
 
     private boolean isAnimated = false;
+    private MediaPlayer goodSoundPlayer = MediaPlayer.create(getContext(),R.raw.good_item_sound);
+    private MediaPlayer badSoundPlayer = MediaPlayer.create(getContext(),R.raw.bad_item_sound);
 
 
     public CartObject(Context context, AttributeSet st) {
@@ -36,6 +39,16 @@ public class CartObject extends AppCompatImageView {
         scaleUp.setInterpolator(new LinearInterpolator());
         startAnimation(scaleUp);
 
+    }
+
+    public void playGoodSound()
+    {
+        goodSoundPlayer.start();
+    }
+
+    public void playBadSound()
+    {
+        badSoundPlayer.start();
     }
 
 
