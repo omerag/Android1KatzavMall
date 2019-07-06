@@ -67,6 +67,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     private SharedPreferences sp;
     private MediaPlayer winner_sound_player;
     private MediaPlayer looser_sound_player;
+    private MediaPlayer level_sound_player;
 
     private FoodContainer container;
     private FoodFactory factory;
@@ -140,6 +141,10 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
         winner_sound_player = MediaPlayer.create(this,R.raw.winner);
         looser_sound_player = MediaPlayer.create(this,R.raw.looser);
+        level_sound_player = MediaPlayer.create(this,R.raw.game_level_sound);
+        level_sound_player.setLooping(true);
+        level_sound_player.start();
+
 
 
         // font
@@ -216,6 +221,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     @Override
     protected void onPause() {
 
+        level_sound_player.pause();
         mSensorManager.unregisterListener(this);
         super.onPause();
         startFlag = false;
@@ -224,6 +230,10 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
     @Override
     protected void onResume() {
+
+        SharedPreferences sp = getSharedPreferences("sp",MODE_PRIVATE);
+        boolean isMusic = sp.getBoolean("music",true);
+        if (isMusic) level_sound_player.start();
 
         mSensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_GAME);
         super.onResume();
@@ -455,6 +465,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             CommonConfetti.rainingConfetti(frame, new int[] { Color.MAGENTA,Color.RED,Color.YELLOW })
                     .infinite();
 
+            level_sound_player.stop();
             final AlertDialog dialog = new AlertDialog.Builder(GameActivity.this).create();
             final View dialogView = getLayoutInflater().inflate(R.layout.win_new_highscore_dialog, null);
             winner_sound_player.start();
@@ -523,6 +534,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             CommonConfetti.rainingConfetti(frame, new int[] { Color.GREEN,Color.BLUE,Color.BLACK })
                     .infinite();
 
+            level_sound_player.stop();
             final AlertDialog dialog = new AlertDialog.Builder(GameActivity.this).create();
             final View dialogView = getLayoutInflater().inflate(R.layout.win_no_highscore_dialog, null);
             winner_sound_player.start();
@@ -558,6 +570,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
                 public void onClick(View view) {
                     resetLevel();
                     dialog.dismiss();
+                    level_sound_player.start();
                 }
             });
 
@@ -682,6 +695,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         if(lives == 0){
             cleanLevel();
 
+            level_sound_player.stop();
             final AlertDialog dialog = new AlertDialog.Builder(GameActivity.this).create();
             final View dialogView = getLayoutInflater().inflate(R.layout.game_over_dialog,null);
             looser_sound_player.start();
@@ -722,6 +736,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
                 public void onClick(View view) {
                     resetLevel();
                     dialog.dismiss();
+                    level_sound_player.start();
                 }
             });
             dialog.show();
