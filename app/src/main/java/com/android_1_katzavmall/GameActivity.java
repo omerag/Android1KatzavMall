@@ -771,14 +771,8 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             }
         }
         else{
-            Handler playHandler = new Handler();
-            playHandler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    startFlag = true;
-                    startLabel.setVisibility(View.GONE);
-                }
-            }, 500);
+                startFlag = true;
+                startLabel.setVisibility(View.GONE);
         }
 
         if(!controlSensor && startFlag  && !cart.isAnimated() && me.getAction() == MotionEvent.ACTION_UP){
