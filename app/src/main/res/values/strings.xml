@@ -44,5 +44,7 @@
     <string name="select">Select</string>
     <string name="quantity">quantity</string>
     <string name="play">Play</string>
+    <string name="bonus">Bonus!!</string>
+    <string name="collect_all">Collect All</string>
 
 </resources>

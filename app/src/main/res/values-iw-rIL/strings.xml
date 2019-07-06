@@ -45,4 +45,6 @@
     <string name="select">בחר</string>
     <string name="quantity">כמות</string>
     <string name="play">שחק</string>
+    <string name="bonus">שלב בונוס!!</string>
+    <string name="collect_all">אסוף הכל</string>
 </resources>

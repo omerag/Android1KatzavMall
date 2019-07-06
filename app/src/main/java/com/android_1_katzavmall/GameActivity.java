@@ -59,7 +59,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     private TextView scoreTV;
     private TextView startLabel;
     private TextView levelName;
-   // private ImageView cart;
+    // private ImageView cart;
     private CartObject cart;
     private FrameLayout frame;
     private List<HighScore> highScores;
@@ -140,22 +140,19 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         cart = findViewById(R.id.cart);
         frame = findViewById(R.id.frame);
 
-        winner_sound_player = MediaPlayer.create(this,R.raw.winner);
-        looser_sound_player = MediaPlayer.create(this,R.raw.looser);
+        winner_sound_player = MediaPlayer.create(this, R.raw.winner);
+        looser_sound_player = MediaPlayer.create(this, R.raw.looser);
 
-        sp = getSharedPreferences("sp",MODE_PRIVATE);
-        isMusic = sp.getBoolean("music",true);
-        isSounds = sp.getBoolean("sounds",true);
+        sp = getSharedPreferences("sp", MODE_PRIVATE);
+        isMusic = sp.getBoolean("music", true);
+        isSounds = sp.getBoolean("sounds", true);
 
-        if (isMusic)
-        {
-            level_sound_player = MediaPlayer.create(this,R.raw.game_level_sound);
+        if (isMusic) {
+            level_sound_player = MediaPlayer.create(this, R.raw.game_level_sound);
             level_sound_player.setLooping(true);
-            level_sound_player.setVolume(0.1f,0.1f);
+            level_sound_player.setVolume(0.1f, 0.1f);
             level_sound_player.start();
         }
-
-
 
 
         // font
@@ -174,9 +171,8 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         groceriesLayout.startAnimation(listAnimation);
 
         // ZoomIn animation
-        final Animation zoomAnimation = AnimationUtils.loadAnimation(this, R.anim.level_name_anim);
+        final Animation zoomAnimation = AnimationUtils.loadAnimation(GameActivity.this, R.anim.level_name_anim);
         level_name_layout.startAnimation(zoomAnimation);
-
 
         screenWidth = getResources().getDisplayMetrics().widthPixels;
         screenHeight = getResources().getDisplayMetrics().heightPixels;
@@ -217,6 +213,11 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
                             createFood();
                             if(bonusFlag && checkWin()){
                                 bonusFlag = false;
+                                levelName.setText(R.string.bonus);
+                                startLabel.setVisibility(View.VISIBLE);
+                                startLabel.setText(R.string.collect_all);
+                                final Animation zoomAnimation = AnimationUtils.loadAnimation(GameActivity.this, R.anim.level_name_anim);
+                                level_name_layout.startAnimation(zoomAnimation);
                                 startBonus();
                             }
                         }
@@ -471,7 +472,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         {
             /* Confetti 1 */
 
-            CommonConfetti.rainingConfetti(frame, new int[] { Color.MAGENTA,Color.RED,Color.YELLOW })
+            CommonConfetti.rainingConfetti(frame, new int[] { Color.MAGENTA,Color.RED,Color.YELLOW, Color.GREEN, Color.BLUE })
                     .infinite();
 
             level_sound_player.stop();
@@ -769,8 +770,14 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             }
         }
         else{
-            startFlag = true;
-            startLabel.setVisibility(View.GONE);
+            Handler playHandler = new Handler();
+            playHandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    startFlag = true;
+                    startLabel.setVisibility(View.GONE);
+                }
+            }, 500);
         }
 
         if(!controlSensor && startFlag  && !cart.isAnimated() && me.getAction() == MotionEvent.ACTION_UP){
