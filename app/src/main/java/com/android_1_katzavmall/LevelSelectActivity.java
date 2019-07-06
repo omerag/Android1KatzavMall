@@ -1,12 +1,15 @@
 package com.android_1_katzavmall;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.ContextThemeWrapper;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -22,6 +25,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.menu.MenuBuilder;
+import androidx.appcompat.view.menu.MenuPopupHelper;
 import androidx.core.content.res.ResourcesCompat;
 
 import java.util.ArrayList;
@@ -116,6 +121,7 @@ public class LevelSelectActivity extends AppCompatActivity {
                 selectCustomDialogBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+
                         PopupMenu popupMenu = new PopupMenu(LevelSelectActivity.this, view);
                         popupMenu.getMenuInflater().inflate(R.menu.groceries_menu, popupMenu.getMenu());
                         popupMenu.show();

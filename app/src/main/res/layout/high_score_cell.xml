@@ -29,6 +29,7 @@
                 android:textSize="20sp"
                 android:text=""
                 android:textStyle="bold"
+                android:fontFamily="kid"
                 android:textColor="#000"/>
 
         </LinearLayout>
@@ -44,7 +45,7 @@
                 android:id="@+id/level_img"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:src="@mipmap/ic_launcher_round"/>
+                android:src="@drawable/no_image_square"/>
 
             <TextView
                 android:id="@+id/difTv"
@@ -53,6 +54,7 @@
                 android:textColor="@color/colorBlack"
                 android:textStyle="bold"
                 android:textSize="20sp"
+                android:fontFamily="kid"
                 android:text=""/>
         </LinearLayout>
 
@@ -70,6 +72,7 @@
                 android:text=""
                 android:textColor="@color/colorBlack"
                 android:textStyle="bold"
+                android:fontFamily="kid"
                 android:textSize="20sp"/>
 
         </LinearLayout>
@@ -79,7 +82,8 @@
             android:layout_height="100dp"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            >
 
             <TextView
                 android:id="@+id/score_tv"
@@ -88,6 +92,7 @@
                 android:textColor="@color/colorBlack"
                 android:textStyle="bold"
                 android:textSize="20sp"
+                android:fontFamily="kid"
                 android:text="@string/score"/>
 
             <TextView
@@ -96,6 +101,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorBlack"
                 android:textStyle="bold"
+                android:fontFamily="kid"
                 android:textSize="20sp"
                 android:text=""/>
 

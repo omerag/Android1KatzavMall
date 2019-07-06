@@ -439,8 +439,8 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             final AlertDialog dialog = new AlertDialog.Builder(GameActivity.this).create();
             final View dialogView = getLayoutInflater().inflate(R.layout.win_new_highscore_dialog, null);
 
-            //TextView congratulations_tv = findViewById(R.id.congratulations_tv);
-            //TextView new_record_tv = findViewById(R.id.new_record_tv);
+            TextView congratulations_tv = dialogView.findViewById(R.id.congratulations_tv);
+            TextView new_record_tv = dialogView.findViewById(R.id.new_record_tv);
             Button saveScoreBtn = dialogView.findViewById(R.id.save_score_btn);
             Button cancelBtn = dialogView.findViewById(R.id.cancel_btn);
             final EditText nameEt = dialogView.findViewById(R.id.name_et);
@@ -448,8 +448,8 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             // font
             if (Locale.getDefault().toString().equals("iw_IL")) {
                 Typeface typeface1 = ResourcesCompat.getFont(this, R.font.koby);
-                //congratulations_tv.setTypeface(typeface1);
-                //new_record_tv.setTypeface(typeface1);
+                congratulations_tv.setTypeface(typeface1);
+                new_record_tv.setTypeface(typeface1);
                 nameEt.setTypeface(typeface1);
                 Typeface typeface2 = ResourcesCompat.getFont(this, R.font.abraham);
                 saveScoreBtn.setTypeface(typeface2);
@@ -503,8 +503,8 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             final AlertDialog dialog = new AlertDialog.Builder(GameActivity.this).create();
             final View dialogView = getLayoutInflater().inflate(R.layout.win_no_highscore_dialog, null);
 
-            //TextView you_won_tv = findViewById(R.id.you_won_tv);
-            //TextView want_record_tv = findViewById(R.id.want_record_tv);
+            TextView you_won_tv = dialogView.findViewById(R.id.you_won_tv);
+            TextView want_record_tv = dialogView.findViewById(R.id.want_record_tv);
             Button playAgainBtn = dialogView.findViewById(R.id.btn_play_again);
             Button homeBtn = dialogView.findViewById(R.id.home_btn);
 
@@ -512,8 +512,8 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             // font
             if (Locale.getDefault().toString().equals("iw_IL")) {
                 Typeface typeface1 = ResourcesCompat.getFont(this, R.font.koby);
-                //you_won_tv.setTypeface(typeface1);
-                //want_record_tv.setTypeface(typeface1);
+                you_won_tv.setTypeface(typeface1);
+                want_record_tv.setTypeface(typeface1);
                 Typeface typeface2 = ResourcesCompat.getFont(this, R.font.abraham);
                 playAgainBtn.setTypeface(typeface2);
                 homeBtn.setTypeface(typeface2);
@@ -661,14 +661,14 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             final AlertDialog dialog = new AlertDialog.Builder(GameActivity.this).create();
             final View dialogView = getLayoutInflater().inflate(R.layout.game_over_dialog,null);
 
-            //TextView game_over_tv = findViewById(R.id.game_over_tv);
+            TextView game_over_tv = dialogView.findViewById(R.id.game_over_tv);
             Button homeBtn = dialogView.findViewById(R.id.home_btn);
             Button playAgainBtn = dialogView.findViewById(R.id.play_again_btn);
 
             // font
             if (Locale.getDefault().toString().equals("iw_IL")) {
                 Typeface typeface1 = ResourcesCompat.getFont(this, R.font.koby);
-                //game_over_tv.setTypeface(typeface1);
+                game_over_tv.setTypeface(typeface1);
                 Typeface typeface2 = ResourcesCompat.getFont(this, R.font.abraham);
                 homeBtn.setTypeface(typeface2);
                 playAgainBtn.setTypeface(typeface2);
