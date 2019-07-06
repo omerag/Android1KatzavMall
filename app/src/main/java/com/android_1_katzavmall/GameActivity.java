@@ -68,6 +68,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     private MediaPlayer looser_sound_player;
     private MediaPlayer level_sound_player;
     boolean isMusic;
+    boolean isSounds;
 
     private FoodContainer container;
     private FoodFactory factory;
@@ -144,11 +145,13 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
         sp = getSharedPreferences("sp",MODE_PRIVATE);
         isMusic = sp.getBoolean("music",true);
+        isSounds = sp.getBoolean("sounds",true);
 
         if (isMusic)
         {
             level_sound_player = MediaPlayer.create(this,R.raw.game_level_sound);
             level_sound_player.setLooping(true);
+            level_sound_player.setVolume(0.1f,0.1f);
             level_sound_player.start();
         }
 
@@ -311,14 +314,14 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
                         //if we took food is in our shopping list
                         if(container.getShoppingList().contains(foodObject.getType())){
                             score = score + 10*scoreMultiplier;
-                            cart.playGoodSound();
+                            if (isSounds) cart.playGoodSound();
                             cart.animateCoach();
                             updateFoodStatus(foodObject.getType());
                             scoreTV.setText("" + score);
 
                         }
                         else { //if we took food that is not in our shopping list
-                            cart.playBadSound();
+                            if (isSounds) cart.playBadSound();
                             updateLives();
 
                         }
