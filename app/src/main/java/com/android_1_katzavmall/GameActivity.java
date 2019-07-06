@@ -299,6 +299,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
                         }
                         else { //if we took food that is not in our shopping list
+                            cart.playBadSound();
                             updateLives();
 
                         }
@@ -653,7 +654,6 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     private void updateLives(){
         ImageView cartLives;
 
-        cart.playBadSound();
         vibrate();
         switch (lives){
             case 3:
