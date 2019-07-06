@@ -24,13 +24,35 @@
         android:textSize="20sp"/>
 
 
-    <Spinner
-        android:id="@+id/difficulty_spinner"
+    <RadioGroup
+        android:id="@+id/difficulty_rg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:entries="@array/difficulty"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"/>
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal">
+
+        <RadioButton
+            android:id="@+id/easy_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/difficulty1"
+            android:checked="true"/>
+
+        <RadioButton
+            android:id="@+id/medium_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/difficulty2"
+            android:checked="false"/>
+
+        <RadioButton
+            android:id="@+id/hard_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/difficulty3"
+            android:checked="false"/>
+    </RadioGroup>
 
     <TextView
         android:layout_width="wrap_content"
@@ -40,13 +62,29 @@
         android:text="@string/select_control"
         android:textSize="20sp"/>
 
-    <Spinner
-        android:id="@+id/control_spinner"
+    <RadioGroup
+        android:id="@+id/control_rg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:entries="@array/control"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"/>
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal">
+
+        <RadioButton
+            android:id="@+id/accelerometer_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/control1"
+            android:checked="true"/>
+
+        <RadioButton
+            android:id="@+id/touch_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/control2"
+            android:checked="false"/>
+
+    </RadioGroup>
 
     <TextView
         android:layout_width="wrap_content"
@@ -75,7 +113,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_gravity="center_horizontal"
-            android:checked="true"/>
+            android:checked="true" />
 
     </LinearLayout>
 

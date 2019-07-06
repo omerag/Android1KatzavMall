@@ -20,6 +20,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -158,8 +160,17 @@ public class MainActivity extends AppCompatActivity {
 
                 Button backBtn = dialogView.findViewById(R.id.back_btn);
                 Button resetScoreBtn = dialogView.findViewById(R.id.reset_score_table);
-                Spinner difficultySpinner = dialogView.findViewById(R.id.difficulty_spinner);
-                Spinner controlSpinner = dialogView.findViewById(R.id.control_spinner);
+
+                RadioGroup diffRadioGroup = dialogView.findViewById(R.id.difficulty_rg);
+                RadioButton easyBtn = dialogView.findViewById(R.id.easy_btn);
+                RadioButton mediumBtn = dialogView.findViewById(R.id.medium_btn);
+                RadioButton hardBtn = dialogView.findViewById(R.id.hard_btn);
+
+                RadioGroup controlRadioGroup = dialogView.findViewById(R.id.control_rg);
+                RadioButton accelerometerBtn = dialogView.findViewById(R.id.accelerometer_btn);
+                RadioButton touchBtn = dialogView.findViewById(R.id.touch_btn);
+
+
                 CheckBox musicCheckBox = dialogView.findViewById(R.id.music_checkBox);
                 CheckBox soundsCheckBox = dialogView.findViewById(R.id.sounds_checkBox);
 
@@ -167,12 +178,12 @@ public class MainActivity extends AppCompatActivity {
                 dialog.setView(dialogView);
                 dialog.setCanceledOnTouchOutside(false);
 
-                if (difficulty.equalsIgnoreCase(getString(R.string.difficulty1))) difficultySpinner.setSelection(0);
-                else if (difficulty.equalsIgnoreCase(getString(R.string.difficulty2))) difficultySpinner.setSelection(1);
-                else difficultySpinner.setSelection(2);
+                if (difficulty.equalsIgnoreCase(getString(R.string.difficulty1))) easyBtn.setChecked(true);
+                else if (difficulty.equalsIgnoreCase(getString(R.string.difficulty2))) mediumBtn.setChecked(true);
+                else hardBtn.setChecked(true);
 
-                if (control.equalsIgnoreCase(getString(R.string.control1))) controlSpinner.setSelection(0);
-                else controlSpinner.setSelection(1);
+                if (control.equalsIgnoreCase(getString(R.string.control1))) accelerometerBtn.setChecked(true);
+                else touchBtn.setChecked(true);
 
                 if (isMusic) musicCheckBox.setChecked(true);
                 else musicCheckBox.setChecked(false);
@@ -197,35 +208,55 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-                difficultySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                diffRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                     @Override
-                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-                        difficulty = adapterView.getItemAtPosition(i).toString();
+                    public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                        int id = radioGroup.getCheckedRadioButtonId();
                         SharedPreferences.Editor editor = sp.edit();
-                        editor.putString("difficulty",difficulty);
-                        editor.apply();
-                    }
 
-                    @Override
-                    public void onNothingSelected(AdapterView<?> adapterView) {
+                        switch (id)
+                        {
+                            case R.id.easy_btn:
+                                difficulty = getString(R.string.difficulty1);
+                                editor.putString("difficulty",difficulty);
+                                editor.apply();
+                                break;
 
+                            case R.id.medium_btn:
+                                difficulty = getString(R.string.difficulty2);
+                                editor.putString("difficulty",difficulty);
+                                editor.apply();
+                                break;
+
+                            case R.id.hard_btn:
+                                difficulty = getString(R.string.difficulty3);
+                                editor.putString("difficulty",difficulty);
+                                editor.apply();
+                                break;
+                        }
                     }
                 });
 
-                controlSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                controlRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                     @Override
-                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-                        control = adapterView.getItemAtPosition(i).toString();
+                    public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                        int id = radioGroup.getCheckedRadioButtonId();
                         SharedPreferences.Editor editor = sp.edit();
-                        editor.putString("control",control);
-                        editor.apply();
-                    }
 
-                    @Override
-                    public void onNothingSelected(AdapterView<?> adapterView) {
+                        switch (id)
+                        {
+                            case R.id.accelerometer_btn:
+                                control = getString(R.string.control1);
+                                editor.putString("control",control);
+                                editor.apply();
+                                break;
 
+                            case R.id.touch_btn:
+                                control = getString(R.string.control2);
+                                editor.putString("control",control);
+                                editor.apply();
+                                break;
+                        }
                     }
                 });
 
