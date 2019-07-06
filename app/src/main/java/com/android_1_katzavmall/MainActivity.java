@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -38,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
     Button howToPlayBtn;
     Button settingsBtn;
     List<HighScore> highScores;
+    String difficulty;
+    SharedPreferences sp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +56,16 @@ public class MainActivity extends AppCompatActivity {
         highScoreBtn = findViewById(R.id.high_score_btn);
         howToPlayBtn = findViewById(R.id.how_to_play_btn);
         settingsBtn = findViewById(R.id.settings_btn);
+
+        sp = getSharedPreferences("sp",MODE_PRIVATE);
+        difficulty = sp.getString("difficulty","");
+        if (difficulty.equals(""))
+        {
+            difficulty = getString(R.string.difficulty1);
+            SharedPreferences.Editor editor = sp.edit();
+            editor.putString("difficulty",difficulty);
+            editor.apply();
+        }
 
         loadData();
 
@@ -160,6 +173,10 @@ public class MainActivity extends AppCompatActivity {
                 dialog.setView(dialogView);
                 dialog.setCanceledOnTouchOutside(false);
 
+                if (difficulty.equalsIgnoreCase(getString(R.string.difficulty1))) difficultySpinner.setSelection(0);
+                else if (difficulty.equalsIgnoreCase(getString(R.string.difficulty2))) difficultySpinner.setSelection(1);
+                else difficultySpinner.setSelection(2);
+
                 saveBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -181,6 +198,22 @@ public class MainActivity extends AppCompatActivity {
                         sp.edit().remove("score_table").apply();
                         loadData();
                         Toast.makeText(MainActivity.this,R.string.reset_score_toast,Toast.LENGTH_LONG).show();
+                    }
+                });
+
+                difficultySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                        difficulty = adapterView.getItemAtPosition(i).toString();
+                        SharedPreferences.Editor editor = sp.edit();
+                        editor.putString("difficulty",difficulty);
+                        editor.apply();
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+
                     }
                 });
 
