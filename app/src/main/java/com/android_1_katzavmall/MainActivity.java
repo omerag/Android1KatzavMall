@@ -156,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
                 final AlertDialog dialog = new AlertDialog.Builder(MainActivity.this).create();
                 final View dialogView = getLayoutInflater().inflate(R.layout.settings_dialog,null);
 
-                Button cancelBtn = dialogView.findViewById(R.id.btn_cancel);
+                Button backBtn = dialogView.findViewById(R.id.back_btn);
                 Button resetScoreBtn = dialogView.findViewById(R.id.reset_score_table);
                 Spinner difficultySpinner = dialogView.findViewById(R.id.difficulty_spinner);
                 Spinner controlSpinner = dialogView.findViewById(R.id.control_spinner);
@@ -180,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
                 if (isSounds) soundsCheckBox.setChecked(true);
                 else soundsCheckBox.setChecked(false);
 
-                cancelBtn.setOnClickListener(new View.OnClickListener() {
+                backBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         dialog.dismiss();

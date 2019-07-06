@@ -1,7 +1,9 @@
 package com.android_1_katzavmall;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -11,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
@@ -335,8 +338,16 @@ public class LevelSelectActivity extends AppCompatActivity {
 
                 case R.id.custom_layout:
                     shoppingListName = customChoiceTV.getText().toString();
-
                     level_img_id = R.drawable.custom;
+
+                    final AlertDialog dialog = new AlertDialog.Builder(LevelSelectActivity.this).create();
+                    final View dialogView = getLayoutInflater().inflate(R.layout.custom_game_dialog, null);
+
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    dialog.setView(dialogView);
+                    dialog.setCanceledOnTouchOutside(false);
+
+                    dialog.show();
 
                     break;
             }

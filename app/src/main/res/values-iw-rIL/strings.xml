@@ -40,4 +40,5 @@
     <string name="reset_score">איפוס שיאים</string>
     <string name="reset_score_toast">טבלת השיאים אופסה</string>
     <string name="record_saved_toast">השיא נשמר</string>
+    <string name="back_btn">חזור</string>
 </resources>

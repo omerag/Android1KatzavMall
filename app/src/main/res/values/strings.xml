@@ -51,5 +51,6 @@
     <string name="reset_score">Reset Scores</string>
     <string name="reset_score_toast">Table of records has been reset!</string>
     <string name="record_saved_toast">The record is saved!</string>
+    <string name="back_btn">Back</string>
 
 </resources>
