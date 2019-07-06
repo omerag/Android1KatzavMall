@@ -44,5 +44,7 @@
     <string name="select">Select</string>
     <string name="quantity">quantity</string>
     <string name="play">Play</string>
+    <string name="exit_dialog">Are you sure you\n  want to leave ?</string>
+    <string name="resume_game">Continue</string>
 
 </resources>
