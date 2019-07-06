@@ -337,7 +337,7 @@
                     android:layout_width="140dp"
                     android:layout_height="140dp"
                     android:background="@drawable/custom_btn_shape"
-                    android:clickable="true">
+                    android:clickable="false">
 
                     <TextView
                         android:id="@+id/custom_tv"

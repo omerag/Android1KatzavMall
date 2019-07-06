@@ -352,6 +352,13 @@ public class LevelSelectActivity extends AppCompatActivity {
                     shoppingListName = customChoiceTV.getText().toString();
                     level_img_id = R.drawable.custom;
 
+
+
+                    forbiddenList.add(FoodType.EGGPLANT);
+                    forbiddenList.add(FoodType.BAGEL);
+                    forbiddenList.add(FoodType.HONEY);
+                    forbiddenList.add(FoodType.POMEGRANATE);
+                    forbiddenList.add(FoodType.CUCAMBER);
                     break;
             }
 
