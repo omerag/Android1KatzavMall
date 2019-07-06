@@ -89,6 +89,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     private boolean shopFlag = false;
     private boolean bonusFlag = true;
     private boolean isBonusStated = false;
+    private boolean bonusFoodMissed = false;
     private int bonusCounter = 500;
     private int bonusCounterReset = bonusCounter;
 
@@ -192,7 +193,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
                         if(startFlag && lives > 0){
                             updatePositions();
                             createFood();
-                            if(checkWin() && bonusFlag){
+                            if(bonusFlag && checkWin()){
                                 bonusFlag = false;
                                 startBonus();
                             }
@@ -307,6 +308,10 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
                             updateLives();
 
                         }
+                        else if(isBonusStated){
+                            vibrate();
+                            bonusFoodMissed = true;
+                        }
 
                         frame.removeView(foodObject);
                         container.removeFood(foodObject);
@@ -319,6 +324,9 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
                 animation.setDuration(diffultyFoodVel);
                 animation.setInterpolator(new AccelerateInterpolator());
                 foodObject.setAnimated(true);
+
+                System.out.println("" + diffultyFoodVel);
+
                 animation.start();
             }
         }
@@ -375,11 +383,12 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         if(isBonusStated && bonusCounter > 0){
             bonusCounter--;
         }
-        else if(bonusCounter < 1){
+        else if(bonusCounter < 1 && !bonusFoodMissed && diffultyFoodVel > 1000 && shopCounter < 2){
+            diffultyFoodVel = diffultyFoodVel - (long)50;
+        }
+        else if(bonusCounter < 1 && bonusFoodMissed){
             endBonus();
         }
-
-
 
     }
 
@@ -392,6 +401,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     }
 
     private boolean checkWin(){
+
 
         TextView foodStatus;
         for(int i = 0; i < container.getStaticShoppingList().size();i++){
@@ -614,11 +624,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
     }
 
-
-    private void updateLives(){
-        ImageView cartLives;
-
-
+    private void vibrate(){
         Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         // Vibrate for 500 milliseconds
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -627,8 +633,13 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             //deprecated in API 26
             v.vibrate(500);
         }
+    }
 
 
+    private void updateLives(){
+        ImageView cartLives;
+
+        vibrate();
         switch (lives){
             case 3:
                 cartLives = findViewById(R.id.cart_life_1);
@@ -761,6 +772,8 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         scoreTV.setText("" + score);
         startLabel.setVisibility(View.GONE);
 
+        bonusCounter = bonusCounterReset;
+
         setShoppingListLayout(shoppingList,shoppingListCounts);
         container.resetShoppingList();
     }
@@ -844,18 +857,23 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
         String controlStr = sp.getString("control","");
 
+        //if true game will use sensor else will use touch controls
         controlSensor = controlStr.equalsIgnoreCase(getString(R.string.control1));
 
         if(difficultyStr.equalsIgnoreCase(getString(R.string.difficulty2))){
             scoreMultiplier = 2;
             shopCounter = 80;
             shopCounterReset = shopCounter;
+            bonusCounter = 1000;
+            bonusCounterReset = bonusCounter;
             diffultyFoodVel = 3000;
         }
         else if (difficultyStr.equalsIgnoreCase(getString(R.string.difficulty3))){
             scoreMultiplier = 3;
             shopCounter = 60;
             shopCounterReset = shopCounter;
+            bonusCounter = 1500;
+            bonusCounterReset = bonusCounter;
             diffultyFoodVel = 2000;
         }
 
