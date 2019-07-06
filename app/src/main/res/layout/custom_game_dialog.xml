@@ -52,7 +52,6 @@
             android:textColor="@color/colorBlack"
             android:textSize="20sp"
             android:fontFamily="@font/kapow"
-            android:onClick="selectCustomGroceriesList"
             />
 
         <Button

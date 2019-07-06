@@ -97,8 +97,6 @@ public class LevelSelectActivity extends AppCompatActivity {
         passoverLock = findViewById(R.id.passover_lock);
         customLock = findViewById(R.id.custom_lock);
 
-        selectCustomDialogBtn = findViewById(R.id.select_btn);
-
         milkLayout.setOnClickListener(new selectLevelListener());
         meatLayout.setOnClickListener(new selectLevelListener());
         vegetarianLayout.setOnClickListener(new selectLevelListener());
@@ -113,6 +111,17 @@ public class LevelSelectActivity extends AppCompatActivity {
             public void onClick(View view) {
                 final AlertDialog dialog = new AlertDialog.Builder(LevelSelectActivity.this).create();
                 final View dialogView = getLayoutInflater().inflate(R.layout.custom_game_dialog, null);
+
+                Button selectCustomDialogBtn = dialogView.findViewById(R.id.select_btn);
+                selectCustomDialogBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        PopupMenu popupMenu = new PopupMenu(LevelSelectActivity.this, view);
+                        popupMenu.getMenuInflater().inflate(R.menu.groceries_menu, popupMenu.getMenu());
+                        popupMenu.show();
+                    }
+                });
+
 
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.setView(dialogView);
@@ -395,12 +404,5 @@ public class LevelSelectActivity extends AppCompatActivity {
             startActivity(levelIntent);
         }
 
-        public void selectCustomGroceriesList(View view){
-
-            PopupMenu popupMenu = new PopupMenu(LevelSelectActivity.this, selectCustomDialogBtn);
-            popupMenu.getMenuInflater().inflate(R.menu.groceries_menu, popupMenu.getMenu());
-            popupMenu.show();
-
-        }
     }
 }
