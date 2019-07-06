@@ -325,12 +325,21 @@
 
         </LinearLayout>
 
-        <ImageView
+ <!--       <ImageView
             android:id="@+id/cart"
             android:layout_width="70dp"
             android:layout_height="95dp"
             android:layout_gravity="bottom|center"
             android:src="@drawable/carton_bag" />
+            -->
+
+        <com.android_1_katzavmall.CartObject
+            android:id="@+id/cart"
+            android:layout_width="70dp"
+            android:layout_height="95dp"
+            android:layout_gravity="bottom|center"
+            />
+
 
     </FrameLayout>
 

@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.Interpolator;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
@@ -57,7 +58,8 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     private TextView scoreTV;
     private TextView startLabel;
     private TextView levelName;
-    private ImageView cart;
+   // private ImageView cart;
+    private CartObject cart;
     private FrameLayout frame;
     boolean isCartAnimated = false;
     private List<HighScore> highScores;
@@ -286,6 +288,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
                     public void run() {
                         if(container.getShoppingList().contains(foodObject.getType())){
                             score = score + 10*scoreMultiplier;
+                            cart.animateCoach();
                             updateFoodStatus(foodObject.getType());
                         }
                         else {
@@ -331,7 +334,6 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             }
         }
     }
-
 
     private synchronized void createFood(){
 
@@ -383,7 +385,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         if(isBonusStated && bonusCounter > 0){
             bonusCounter--;
         }
-        else if(bonusCounter < 1 && !bonusFoodMissed && diffultyFoodVel > 1000 && shopCounter < 2){
+        else if(bonusCounter < 1 && !bonusFoodMissed && diffultyFoodVel > 1000  && shopCounter < 2){
             diffultyFoodVel = diffultyFoodVel - (long)50;
         }
         else if(bonusCounter < 1 && bonusFoodMissed){
