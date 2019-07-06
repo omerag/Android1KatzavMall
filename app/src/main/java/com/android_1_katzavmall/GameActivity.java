@@ -152,6 +152,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         {
             level_sound_player = MediaPlayer.create(this,R.raw.game_level_sound);
             level_sound_player.setLooping(true);
+            level_sound_player.setVolume(10,10);
             level_sound_player.start();
         }
 
