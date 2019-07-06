@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/game_over_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/custom_list_str"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:paddingHorizontal="5dp"
+        android:fontFamily="@font/kid"
+        android:textColor="@color/colorBlack"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginVertical="20dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginHorizontal="30dp">
+
+    <CheckBox
+        android:id="@+id/apple_checkBox"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="15dp"
+        />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/em_apple"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginHorizontal="30dp">
+
+        <Button
+            android:id="@+id/apple_plus"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="+"/>
+
+        <TextView
+            android:id="@+id/apple_amount"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            />
+
+            <Button
+                android:id="@+id/apple_minus"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="-"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="7dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginHorizontal="30dp">
+
+            <CheckBox
+                android:id="@+id/hardCheese_checkBox"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="15dp"
+                />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/em_yellow_cheese"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginHorizontal="30dp">
+
+            <Button
+                android:id="@+id/hardCheese_plus"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="+"/>
+
+            <TextView
+                android:id="@+id/hardCheese_amount"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                />
+
+            <Button
+                android:id="@+id/hardCheese_minus"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="-"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="7dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginHorizontal="30dp">
+
+            <CheckBox
+                android:id="@+id/jar_checkBox"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="15dp"
+                />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/em_chocolate_jar"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginHorizontal="30dp">
+
+            <Button
+                android:id="@+id/jar_plus"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="+"/>
+
+            <TextView
+                android:id="@+id/jar_amount"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                />
+
+            <Button
+                android:id="@+id/jar_minus"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="-"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/hardCheese"
+        android:icon="@drawable/em_yellow_cheese"
+        android:title=""
+        android:layout_gravity="center"
+        />
+
+    <item
+        android:id="@+id/milk"
+        android:icon="@drawable/em_milk"
+        android:title=""
+        android:layout_gravity="center"
+        />
+
+    <item
+        android:id="@+id/creamCheese"
+        android:icon="@drawable/em_cream_cheese"
+        android:title=""
+        android:layout_gravity="center"
+        />
+
+    <item
+        android:id="@+id/chocolateMilk"
+        android:icon="@drawable/em_chocolate_milk"
+        android:title=""
+        android:layout_gravity="center"
+        />
+
+    <item
+        android:id="@+id/steik"
+        android:icon="@drawable/em_steik"
+        android:title=""
+        android:layout_gravity="center"
+        />
+
+    <item
+        android:id="@+id/skewer"
+        android:icon="@drawable/em_skewer"
+        android:title=""
+        android:layout_gravity="center"
+        />
+
+    <item
+        android:id="@+id/schnitzel"
+        android:icon="@drawable/em_schnitzel"
+        android:title=""
+        android:layout_gravity="center"
+        />
+
+    <item
+        android:id="@+id/hotDog"
+        android:icon="@drawable/em_hotdog"
+        android:title=""
+        android:layout_gravity="center"
+        />
+
+    <item
+        android:id="@+id/chicken"
+        android:icon="@drawable/em_chicken"
+        android:title=""
+        android:layout_gravity="center"
+        />
+
+    <item
+        android:id="@+id/waterMelon"
+        android:icon="@drawable/em_watermelon"
+        android:title=""
+        android:layout_gravity="center"
+        />
+
+    <item
+        android:id="@+id/tangerine"
+        android:icon="@drawable/em_tangerine"
+        android:title=""
+        android:layout_gravity="center"
+        />
+
+    <item
+        android:id="@+id/broccoli"
+        android:icon="@drawable/em_broccoli"
+        android:title=""
+        android:layout_gravity="center"
+        />
+
+    <item
+        android:id="@+id/avocado"
+        android:icon="@drawable/em_avocado"
+        android:title=""
+        android:layout_gravity="center"
+        />
+
+    <item
+        android:id="@+id/doughnut"
+        android:icon="@drawable/em_doughnut"
+        android:title=""
+        android:layout_gravity="center"
+        />
+
+    <item
+        android:id="@+id/croissant"
+        android:icon="@drawable/em_croissant"
+        android:title=""
+        android:layout_gravity="center"
+        />
+
+    <item
+        android:id="@+id/bread"
+        android:icon="@drawable/em_bread"
+        android:title=""
+        android:layout_gravity="center"
+        />
+
+    <item
+        android:id="@+id/baguette"
+        android:icon="@drawable/em_baguette"
+        android:title=""
+        android:layout_gravity="center"
+        />
+
+    <item
+        android:id="@+id/tomato"
+        android:icon="@drawable/em_tomato"
+        android:title=""
+        android:layout_gravity="center"
+        />
+
+    <item
+        android:id="@+id/shortCake"
+        android:icon="@drawable/em_shortcake"
+        android:title=""
+        android:layout_gravity="center"
+        />
+
+    <item
+        android:id="@+id/pancakes"
+        android:icon="@drawable/em_pancakes"
+        android:title=""
+        android:layout_gravity="center"
+        />
+
+    <item
+        android:id="@+id/egg"
+        android:icon="@drawable/em_egg"
+        android:title=""
+        android:layout_gravity="center"
+        />
+
+    <item
+        android:id="@+id/potato"
+        android:icon="@drawable/em_potato"
+        android:title=""
+        android:layout_gravity="center"
+        />
+
+    <item
+        android:id="@+id/beer"
+        android:icon="@drawable/em_beer"
+        android:title=""
+        android:layout_gravity="center"
+        />
+
+    <item
+        android:id="@+id/wine"
+        android:icon="@drawable/em_wine"
+        android:title=""
+        android:layout_gravity="center"/>
+
+    <item
+        android:id="@+id/fish"
+        android:icon="@drawable/em_fish"
+        android:title=""
+        android:layout_gravity="center"
+        />
+
+    <item
+        android:id="@+id/carrot"
+        android:icon="@drawable/em_carrot"
+        android:title=""
+        android:layout_gravity="center"
+        />
+
+    <item
+        android:id="@+id/apple"
+        android:icon="@drawable/em_apple"
+        android:title=""
+        android:layout_gravity="center"
+        />
+
+    <item
+        android:id="@+id/peanuts"
+        android:icon="@drawable/em_peanuts"
+        android:title=""
+        android:layout_gravity="center"
+        />
+
+    <item
+        android:id="@+id/matzah"
+        android:icon="@drawable/em_matzah"
+        android:title=""
+        android:layout_gravity="center"
+        />
+
+    <item
+        android:id="@+id/chocolateJar"
+        android:icon="@drawable/em_chocolate_jar"
+        android:title=""
+        android:layout_gravity="center"
+        />
+
+</menu>

@@ -10,6 +10,9 @@ import android.view.View;
 import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -97,6 +100,8 @@ public class LevelSelectActivity extends AppCompatActivity {
         lunchLayout.setOnClickListener(new selectLevelListener());
         roshHashanaLayout.setOnClickListener(new selectLevelListener());
         passoverLayout.setOnClickListener(new selectLevelListener());
+        customChoiceLayout.setOnClickListener(new selectLevelListener());
+
 
 
         // font
@@ -351,8 +356,6 @@ public class LevelSelectActivity extends AppCompatActivity {
                 case R.id.custom_layout:
                     shoppingListName = customChoiceTV.getText().toString();
                     level_img_id = R.drawable.custom;
-
-
 
                     forbiddenList.add(FoodType.EGGPLANT);
                     forbiddenList.add(FoodType.BAGEL);
