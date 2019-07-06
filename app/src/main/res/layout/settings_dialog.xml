@@ -100,6 +100,13 @@
         android:gravity="center_horizontal"
         android:layout_marginTop="10dp">
 
+        <ImageView
+            android:id="@+id/music_imgV"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/music_enabled"
+            android:layout_gravity="center_vertical"/>
+
         <CheckBox
             android:id="@+id/music_checkBox"
             android:layout_width="wrap_content"
@@ -107,11 +114,18 @@
             android:layout_gravity="center_horizontal"
             android:checked="true"/>
 
+        <ImageView
+            android:id="@+id/sound_imgV"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/sound_enabled"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="25dp"/>
+
         <CheckBox
             android:id="@+id/sounds_checkBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
             android:layout_gravity="center_horizontal"
             android:checked="true" />
 

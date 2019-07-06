@@ -201,8 +201,11 @@ public class MainActivity extends AppCompatActivity {
                 RadioButton accelerometerBtn = dialogView.findViewById(R.id.accelerometer_btn);
                 RadioButton touchBtn = dialogView.findViewById(R.id.touch_btn);
 
+                final ImageView musicImgV = dialogView.findViewById(R.id.music_imgV);
+                final ImageView soundImgV = dialogView.findViewById(R.id.sound_imgV);
 
-                CheckBox musicCheckBox = dialogView.findViewById(R.id.music_checkBox);
+
+                final CheckBox musicCheckBox = dialogView.findViewById(R.id.music_checkBox);
                 CheckBox soundsCheckBox = dialogView.findViewById(R.id.sounds_checkBox);
 
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -295,8 +298,16 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                         isMusic = compoundButton.isChecked();
-                        if (isMusic) mServ.resumeMusic();
-                        else mServ.pauseMusic();
+                        if (isMusic)
+                        {
+                            mServ.resumeMusic();
+                            musicImgV.setImageResource(R.drawable.music_enabled);
+                        }
+                        else
+                        {
+                            mServ.pauseMusic();
+                            musicImgV.setImageResource(R.drawable.music_disabled);
+                        }
 
                         SharedPreferences.Editor editor = sp.edit();
                         editor.putBoolean("music",isMusic);
@@ -309,6 +320,16 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                         isSounds = compoundButton.isChecked();
+
+                        if (isSounds)
+                        {
+                            soundImgV.setImageResource(R.drawable.sound_enabled);
+                        }
+                        else
+                        {
+                            soundImgV.setImageResource(R.drawable.sound_disabled);
+                        }
+
                         SharedPreferences.Editor editor = sp.edit();
                         editor.putBoolean("sounds",isSounds);
                         editor.apply();
@@ -333,7 +354,7 @@ public class MainActivity extends AppCompatActivity {
             highScores = new ArrayList<>();
             for (int i = 0; i < 10; i++)
             {
-                highScores.add(new HighScore(i+1,R.drawable.bakery,"---","---",0));
+                highScores.add(new HighScore(i+1,R.drawable.no_image_square,"---","---",0));
             }
             saveData();
         }
@@ -436,7 +457,6 @@ public class MainActivity extends AppCompatActivity {
                 mServ.pauseMusic();
             }
         }
-
     }
 
     @Override
