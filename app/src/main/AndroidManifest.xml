@@ -13,6 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <service
+            android:name=".MusicService"
+            android:enabled="true" />
         <activity android:name=".HighScoreActivity"></activity>
         <activity
             android:name=".MainActivity"
