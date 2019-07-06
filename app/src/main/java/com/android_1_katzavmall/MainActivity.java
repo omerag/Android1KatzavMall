@@ -188,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 final AlertDialog dialog = new AlertDialog.Builder(MainActivity.this).create();
-                final View dialogView = getLayoutInflater().inflate(R.layout.settings_dialog,null);
+                final View dialogView = getLayoutInflater().inflate(R.layout.settings_dialog, null);
 
                 TextView settings_tv = dialogView.findViewById(R.id.settings_tv);
                 TextView difficulty_tv = dialogView.findViewById(R.id.difficulty_tv);
@@ -238,23 +238,41 @@ public class MainActivity extends AppCompatActivity {
                 }
 
 
-
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.setView(dialogView);
                 dialog.setCanceledOnTouchOutside(false);
 
-                if (difficulty.equalsIgnoreCase(getString(R.string.difficulty1))) easyBtn.setChecked(true);
-                else if (difficulty.equalsIgnoreCase(getString(R.string.difficulty2))) mediumBtn.setChecked(true);
+                if (difficulty.equalsIgnoreCase(getString(R.string.difficulty1)))
+                    easyBtn.setChecked(true);
+                else if (difficulty.equalsIgnoreCase(getString(R.string.difficulty2)))
+                    mediumBtn.setChecked(true);
                 else hardBtn.setChecked(true);
 
-                if (control.equalsIgnoreCase(getString(R.string.control1))) accelerometerBtn.setChecked(true);
+                if (control.equalsIgnoreCase(getString(R.string.control1)))
+                    accelerometerBtn.setChecked(true);
                 else touchBtn.setChecked(true);
 
-                if (isMusic) musicCheckBox.setChecked(true);
-                else musicCheckBox.setChecked(false);
+                if (isMusic)
+                {
+                    musicCheckBox.setChecked(true);
+                    musicImgV.setImageResource(R.drawable.music_enabled);
+                }
+                else
+                {
+                    musicCheckBox.setChecked(false);
+                    musicImgV.setImageResource(R.drawable.music_disabled);
+                }
 
-                if (isSounds) soundsCheckBox.setChecked(true);
-                else soundsCheckBox.setChecked(false);
+                if (isSounds)
+                {
+                    soundsCheckBox.setChecked(true);
+                    soundImgV.setImageResource(R.drawable.sound_enabled);
+                }
+                else
+                {
+                    soundsCheckBox.setChecked(false);
+                    soundImgV.setImageResource(R.drawable.sound_disabled);
+                }
 
                 backBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
