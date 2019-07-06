@@ -34,8 +34,8 @@
     <string name="save_btn">שמור</string>
     <string name="select_difficulty">רמת קושי :</string>
     <string name="select_control">שליטה :</string>
-    <string name="control1">לחיצה במסך</string>
-    <string name="control2">חיישן תנועה</string>
+    <string name="control2">לחיצה במסך</string>
+    <string name="control1">חיישן תנועה</string>
     <string name="music_sound">מוזיקה וצלילים :</string>
     <string name="reset_score">איפוס שיאים</string>
     <string name="reset_score_toast">טבלת השיאים אופסה</string>

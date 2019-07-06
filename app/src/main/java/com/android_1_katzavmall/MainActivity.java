@@ -246,12 +246,21 @@ public class MainActivity extends AppCompatActivity {
     private void loadSettings()
     {
         sp = getSharedPreferences("sp",MODE_PRIVATE);
+
         difficulty = sp.getString("difficulty","");
         control = sp.getString("control","");
 
         if (difficulty.equals(""))
         {
             difficulty = getString(R.string.difficulty1);
+            SharedPreferences.Editor editor = sp.edit();
+            editor.putString("difficulty",difficulty);
+            editor.apply();
+        }
+
+        if (control.equals(""))
+        {
+            control = getString(R.string.control2);
             SharedPreferences.Editor editor = sp.edit();
             editor.putString("difficulty",difficulty);
             editor.apply();
