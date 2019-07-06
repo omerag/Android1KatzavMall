@@ -29,7 +29,7 @@ public class CartObject extends AppCompatImageView {
 
     void animateCoach(){
 
-        ScaleAnimation scaleUp = new ScaleAnimation(1f, 1.25f, 1f, 1.25f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 1.0f);
+        ScaleAnimation scaleUp = new ScaleAnimation(1f, 1.25f, 1f, 1.13f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 1.0f);
         scaleUp.setDuration(300);
         scaleUp.setRepeatMode(Animation.REVERSE);
         scaleUp.setRepeatCount(1);

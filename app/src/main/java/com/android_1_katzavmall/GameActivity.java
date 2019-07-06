@@ -282,25 +282,29 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         for(int i = 0; i < foodList.size(); i++ ){
             final FoodObject foodObject = foodList.get(i);
 
+            //check collision with food
             if(checkCollision(cart,foodObject)){
                 this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+
+                        //if we took food is in our shopping list
                         if(container.getShoppingList().contains(foodObject.getType())){
                             score = score + 10*scoreMultiplier;
                             cart.animateCoach();
                             updateFoodStatus(foodObject.getType());
+                            scoreTV.setText("" + score);
+
                         }
-                        else {
+                        else { //if we took food that is not in our shopping list
                             updateLives();
 
                         }
-                        scoreTV.setText("" + score);
                         frame.removeView(foodObject);
                         container.removeFood(foodObject);
                     }
                 });
-            }
+            }//if object out of the screen
             else if((int)foodObject.getY() > screenHeight){
 
                 this.runOnUiThread(new Runnable() {
