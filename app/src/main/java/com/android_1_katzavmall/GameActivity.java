@@ -38,6 +38,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.jinatonic.confetti.CommonConfetti;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -442,6 +443,9 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         {
             /* Confetti 1 */
 
+            CommonConfetti.rainingConfetti(frame, new int[] { Color.MAGENTA,Color.RED,Color.YELLOW })
+                    .infinite();
+
             final AlertDialog dialog = new AlertDialog.Builder(GameActivity.this).create();
             final View dialogView = getLayoutInflater().inflate(R.layout.win_new_highscore_dialog, null);
 
@@ -505,6 +509,9 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         else
         {
             /* Confetti 2 */
+
+            CommonConfetti.rainingConfetti(frame, new int[] { Color.GREEN,Color.BLUE,Color.BLACK })
+                    .infinite();
 
             final AlertDialog dialog = new AlertDialog.Builder(GameActivity.this).create();
             final View dialogView = getLayoutInflater().inflate(R.layout.win_no_highscore_dialog, null);
