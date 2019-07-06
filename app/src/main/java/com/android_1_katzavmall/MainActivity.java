@@ -169,6 +169,9 @@ public class MainActivity extends AppCompatActivity {
                 else if (difficulty.equalsIgnoreCase(getString(R.string.difficulty2))) difficultySpinner.setSelection(1);
                 else difficultySpinner.setSelection(2);
 
+                if (control.equalsIgnoreCase(getString(R.string.control1))) controlSpinner.setSelection(0);
+                else controlSpinner.setSelection(1);
+
                 saveBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -200,6 +203,22 @@ public class MainActivity extends AppCompatActivity {
                         difficulty = adapterView.getItemAtPosition(i).toString();
                         SharedPreferences.Editor editor = sp.edit();
                         editor.putString("difficulty",difficulty);
+                        editor.apply();
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+
+                    }
+                });
+
+                controlSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                        control = adapterView.getItemAtPosition(i).toString();
+                        SharedPreferences.Editor editor = sp.edit();
+                        editor.putString("control",control);
                         editor.apply();
                     }
 
@@ -260,9 +279,9 @@ public class MainActivity extends AppCompatActivity {
 
         if (control.equals(""))
         {
-            control = getString(R.string.control2);
+            control = getString(R.string.control1);
             SharedPreferences.Editor editor = sp.edit();
-            editor.putString("difficulty",difficulty);
+            editor.putString("control",control);
             editor.apply();
         }
     }

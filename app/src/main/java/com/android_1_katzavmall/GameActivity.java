@@ -61,6 +61,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     private FrameLayout frame;
     boolean isCartAnimated = false;
     private List<HighScore> highScores;
+    private SharedPreferences sp;
 
     private FoodContainer container;
     private FoodFactory factory;
@@ -456,9 +457,12 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
                 @Override
                 public void onClick(View view) {
                     String name = nameEt.getText().toString();
+                    sp = getSharedPreferences("sp",MODE_PRIVATE);
+                    String difficulty_str = sp.getString("difficulty","");
+
                     int img_id = getIntent().getIntExtra("level_img",0);
 
-                    insertScore(name,"easy",img_id,score);
+                    insertScore(name,difficulty_str,img_id,score);
                     Toast.makeText(GameActivity.this,R.string.record_saved_toast,Toast.LENGTH_LONG).show();
 
                     Intent intent = new Intent(GameActivity.this,MainActivity.class);
