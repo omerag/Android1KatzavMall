@@ -16,18 +16,25 @@
         <service
             android:name=".MusicService"
             android:enabled="true" />
-        <activity android:name=".HighScoreActivity"></activity>
+        <activity
+            android:name=".HighScoreActivity"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".MainActivity"
-            android:launchMode="singleTask">
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LevelSelectActivity"></activity>
-        <activity android:name=".GameActivity"></activity>
+        <activity
+            android:name=".LevelSelectActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".GameActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
