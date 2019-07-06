@@ -965,4 +965,55 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
                         | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
     }
 
+    @Override
+    public void onBackPressed() {
+
+        startFlag = false;
+        level_sound_player.pause();
+        final AlertDialog dialog = new AlertDialog.Builder(GameActivity.this).create();
+        final View dialogView = getLayoutInflater().inflate(R.layout.exit_dialog, null);
+
+        TextView exit_tv = dialogView.findViewById(R.id.exit_tv);
+        Button homeBtn = dialogView.findViewById(R.id.back_to_home_btn);
+        Button continueBtn = dialogView.findViewById(R.id.continue_btn);
+
+        // font
+        if (Locale.getDefault().toString().equals("iw_IL")) {
+            Typeface typeface1 = ResourcesCompat.getFont(this, R.font.koby);
+            exit_tv.setTypeface(typeface1);
+            Typeface typeface2 = ResourcesCompat.getFont(this, R.font.abraham);
+            homeBtn.setTypeface(typeface2);
+            continueBtn.setTypeface(typeface2);
+        }
+
+        // ZoomIn/Out animation:
+        final Animation zoomBtnAnimation = AnimationUtils.loadAnimation(this, R.anim.dlg_btns_anim);
+        homeBtn.startAnimation(zoomBtnAnimation);
+        continueBtn.startAnimation(zoomBtnAnimation);
+
+
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setView(dialogView);
+        dialog.setCanceledOnTouchOutside(false);
+
+        homeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(GameActivity.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        continueBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startFlag = true;
+                level_sound_player.start();
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
 }
+
