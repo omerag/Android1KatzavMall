@@ -113,6 +113,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
     private long diffultyFoodVel = 4000;
     private boolean controlSensor;
+    private int scoreMultiplier = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -283,7 +284,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
                     @Override
                     public void run() {
                         if(container.getShoppingList().contains(foodObject.getType())){
-                            score++;
+                            score = score + 10*scoreMultiplier;
                             updateFoodStatus(foodObject.getType());
                         }
                         else {
@@ -846,9 +847,15 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         controlSensor = controlStr.equalsIgnoreCase(getString(R.string.control1));
 
         if(difficultyStr.equalsIgnoreCase(getString(R.string.difficulty2))){
+            scoreMultiplier = 2;
+            shopCounter = 80;
+            shopCounterReset = shopCounter;
             diffultyFoodVel = 3000;
         }
         else if (difficultyStr.equalsIgnoreCase(getString(R.string.difficulty3))){
+            scoreMultiplier = 3;
+            shopCounter = 60;
+            shopCounterReset = shopCounter;
             diffultyFoodVel = 2000;
         }
 
