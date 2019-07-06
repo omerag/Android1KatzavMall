@@ -4,7 +4,10 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -12,18 +15,18 @@ import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
+import android.os.PowerManager;
 import android.view.View;
 import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -48,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     Boolean isMusic;
     Boolean isSounds;
     SharedPreferences sp;
-    MediaPlayer menuAudioPlayer;
+    HomeWatcher mHomeWatcher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +61,34 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //test
 
+
+        loadSettings();
+        loadData();
+        doBindService();
+        if (isMusic)
+        {
+            Intent music = new Intent();
+            music.setClass(this, MusicService.class);
+            startService(music);
+        }
+
+        mHomeWatcher = new HomeWatcher(this);
+        mHomeWatcher.setOnHomePressedListener(new HomeWatcher.OnHomePressedListener() {
+            @Override
+            public void onHomePressed() {
+                if (mServ != null) {
+                    mServ.pauseMusic();
+                }
+            }
+            @Override
+            public void onHomeLongPressed() {
+                if (mServ != null) {
+                    mServ.pauseMusic();
+                }
+            }
+        });
+        mHomeWatcher.startWatch();
+
         logo = findViewById(R.id.logo);
         man_with_bags = findViewById(R.id.man_with_bags);
         playBtn = findViewById(R.id.new_game_btn);
@@ -65,9 +96,6 @@ public class MainActivity extends AppCompatActivity {
         howToPlayBtn = findViewById(R.id.how_to_play_btn);
         settingsBtn = findViewById(R.id.settings_btn);
 
-        menuAudioPlayer = MediaPlayer.create(MainActivity.this,R.raw.menu_audio);
-        loadSettings();
-        loadData();
 
         //logo animation:
         final Animation logoAnimation = AnimationUtils.loadAnimation(this, R.anim.logo_anim);
@@ -267,8 +295,8 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                         isMusic = compoundButton.isChecked();
-                        if (!isMusic) menuAudioPlayer.pause();
-                        else menuAudioPlayer.start();
+                        if (isMusic) mServ.resumeMusic();
+                        else mServ.pauseMusic();
 
                         SharedPreferences.Editor editor = sp.edit();
                         editor.putBoolean("music",isMusic);
@@ -346,13 +374,7 @@ public class MainActivity extends AppCompatActivity {
             editor.apply();
         }
 
-        if (isMusic)
-        {
-            menuAudioPlayer.setLooping(true);
-            menuAudioPlayer.start();
-        }
     }
-
 
     @Override
     protected void onNewIntent(Intent intent) {
@@ -360,16 +382,72 @@ public class MainActivity extends AppCompatActivity {
         setIntent(intent);
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        menuAudioPlayer.pause();
+    private boolean mIsBound = false;
+    private MusicService mServ;
+    private ServiceConnection Scon =new ServiceConnection(){
+
+        public void onServiceConnected(ComponentName name, IBinder
+                binder) {
+            mServ = ((MusicService.ServiceBinder)binder).getService();
+        }
+
+        public void onServiceDisconnected(ComponentName name) {
+            mServ = null;
+        }
+    };
+
+    void doBindService(){
+        bindService(new Intent(this,MusicService.class),
+                Scon,Context.BIND_AUTO_CREATE);
+        mIsBound = true;
+    }
+
+    void doUnbindService()
+    {
+        if(mIsBound)
+        {
+            unbindService(Scon);
+            mIsBound = false;
+        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        if (isMusic) menuAudioPlayer.start();
+
+        if (mServ != null && isMusic) {
+            mServ.resumeMusic();
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        PowerManager pm = (PowerManager)
+                getSystemService(Context.POWER_SERVICE);
+        boolean isScreenOn = false;
+        if (pm != null) {
+            isScreenOn = pm.isScreenOn();
+        }
+
+        if (!isScreenOn) {
+            if (mServ != null) {
+                mServ.pauseMusic();
+            }
+        }
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        doUnbindService();
+        Intent music = new Intent();
+        music.setClass(this,MusicService.class);
+        stopService(music);
+
     }
 }
 
