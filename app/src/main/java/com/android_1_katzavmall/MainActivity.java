@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     Boolean isMusic;
     Boolean isSounds;
     SharedPreferences sp;
+    MediaPlayer menuAudioPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -338,6 +340,12 @@ public class MainActivity extends AppCompatActivity {
             SharedPreferences.Editor editor = sp.edit();
             editor.putString("control",control);
             editor.apply();
+        }
+
+        if (isMusic)
+        {
+            menuAudioPlayer = MediaPlayer.create(MainActivity.this,R.raw.menu_audio);
+            menuAudioPlayer.start();
         }
     }
 
