@@ -16,16 +16,16 @@
     <string name="how_to_play">How to Play</string>
     <string name="settings">Settings</string>
     <string name="tap_to_start">Tap to start</string>
-    <string name="game_over">Game Over !</string>
+    <string name="game_over">Game Over!</string>
     <string name="home_btn">Home</string>
     <string name="play_again">Play Again</string>
     <string name="champions">the Champions</string>
-    <string name="winner_str1">Congratulations !</string>
-    <string name="winner_str2">You\'ve made a new record !</string>
+    <string name="winner_str1">Congratulations!</string>
+    <string name="winner_str2">You\'ve made a new record!</string>
     <string name="save_score">Save Record</string>
     <string name="cancel_btn">Cancel</string>
     <string name="editext_hint">Enter your name</string>
-    <string name="winner_str3">You won !</string>
+    <string name="winner_str3">You won!</string>
     <string name="winner_str4">Want to break a record ?</string>
     <string name="difficulty1">Easy</string>
     <string name="difficulty2">Medium</string>
@@ -49,7 +49,7 @@
     <string name="control2">Accelerometer</string>
     <string name="music_sound">Music and Sounds :</string>
     <string name="reset_score">Reset Scores</string>
-    <string name="reset_score_toast">Table of records has been reset !</string>
-    <string name="record_saved_toast">The record is saved !</string>
+    <string name="reset_score_toast">Table of records has been reset!</string>
+    <string name="record_saved_toast">The record is saved!</string>
 
 </resources>

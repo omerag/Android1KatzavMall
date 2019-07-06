@@ -227,6 +227,7 @@
         android:textColor="@color/colorBlack"
         android:textStyle="bold"
         android:text="@string/score"
+        android:fontFamily="@font/kid"
         />
 
     <TextView
@@ -240,6 +241,7 @@
         android:textSize="20sp"
         android:textColor="@color/colorBlack"
         android:textStyle="bold"
+        android:fontFamily="@font/kid"
         />
 
     <LinearLayout
@@ -304,6 +306,8 @@
             android:layout_height="wrap_content"
             android:textColor="@color/colorBlack"
             android:textStyle="bold"
+            android:paddingHorizontal="5dp"
+            android:fontFamily="@font/kid"
             android:textSize="45sp"
             />
 
@@ -312,9 +316,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorBlack"
+            android:paddingHorizontal="5dp"
             android:textStyle="bold"
             android:textSize="35dp"
             android:text="@string/tap_to_start"
+            android:fontFamily="@font/kid"
             />
 
         </LinearLayout>

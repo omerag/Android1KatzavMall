@@ -17,16 +17,16 @@
     <string name="new_game">משחק חדש</string>
     <string name="settings">הגדרות</string>
     <string name="tap_to_start">לחץ להתחלה</string>
-    <string name="game_over">נפסלת !</string>
+    <string name="game_over">נפסלת!</string>
     <string name="home_btn">בית</string>
     <string name="play_again">שחק שוב</string>
     <string name="champions">שוברי השיאים</string>
-    <string name="winner_str1">ברכות !</string>
-    <string name="winner_str2">שברת שיא חדש !</string>
+    <string name="winner_str1">ברכות!</string>
+    <string name="winner_str2">שברת שיא חדש!</string>
     <string name="save_score">שמר שיא</string>
     <string name="cancel_btn">ביטול</string>
     <string name="editext_hint">הכנס שם</string>
-    <string name="winner_str3">ניצחת !</string>
+    <string name="winner_str3">ניצחת!</string>
     <string name="winner_str4">מעוניין לשבור שיא ?</string>
     <string name="difficulty1">קל</string>
     <string name="difficulty2">בינוני</string>
@@ -38,6 +38,6 @@
     <string name="control2">חיישן תנועה</string>
     <string name="music_sound">מוזיקה וצלילים :</string>
     <string name="reset_score">איפוס שיאים</string>
-    <string name="reset_score_toast">טבלת השיאים אופסה !</string>
-    <string name="record_saved_toast">השיא נשמר !</string>
+    <string name="reset_score_toast">טבלת השיאים אופסה</string>
+    <string name="record_saved_toast">השיא נשמר</string>
 </resources>

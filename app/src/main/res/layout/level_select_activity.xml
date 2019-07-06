@@ -27,14 +27,17 @@
                 android:layout_marginBottom="10dp">
 
                 <TextView
+                    android:id="@+id/what_meal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
+                    android:paddingHorizontal="5dp"
                     android:layout_marginHorizontal="5dp"
-                    android:textSize="25sp"
-                    android:textColor="@color/colorBlack"
+                    android:textSize="35sp"
+                    android:textColor="@color/colorBordo"
                     android:textStyle="bold"
+                    android:fontFamily="@font/kid"
                     android:text="@string/meal"
                     />
 
@@ -68,6 +71,7 @@
                         android:textSize="17sp"
                         android:textColor="@color/colorWhite"
                         android:textStyle="bold"
+                        android:fontFamily="@font/kapow"
                         android:text="@string/milk_str"
                         />
 
@@ -92,6 +96,7 @@
                         android:textSize="17sp"
                         android:textColor="@color/colorWhite"
                         android:textStyle="bold"
+                        android:fontFamily="@font/kapow"
                         android:text="@string/meat_str"
                         />
 
@@ -130,7 +135,9 @@
                         android:text="@string/vegetarian_str"
                         android:textColor="@color/colorWhite"
                         android:textSize="17sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:fontFamily="@font/kapow"
+                        />
 
                 </LinearLayout>
 
@@ -153,6 +160,7 @@
                         android:textColor="@color/colorWhite"
                         android:textStyle="bold"
                         android:text="@string/backery_str"
+                        android:fontFamily="@font/kapow"
                         />
 
                 </LinearLayout>
@@ -187,6 +195,7 @@
                         android:textColor="@color/colorWhite"
                         android:textStyle="bold"
                         android:text="@string/breakfast_str"
+                        android:fontFamily="@font/kapow"
                         />
 
                 </LinearLayout>
@@ -219,6 +228,7 @@
                         android:textColor="@color/colorWhite"
                         android:textStyle="bold"
                         android:text="@string/lunch_str"
+                        android:fontFamily="@font/kapow"
                         />
 
                 </LinearLayout>
@@ -273,7 +283,9 @@
                     android:layout_alignParentStart="true"
                     android:layout_marginEnd="4dp"
                     android:layout_toStartOf="@+id/passover_lock"
-                    android:src="@drawable/lock2" />
+                    android:src="@drawable/lock2"
+                    android:fontFamily="@font/kapow"
+                    />
 
                 <LinearLayout
                     android:id="@+id/passover_layout"
@@ -294,6 +306,7 @@
                         android:textColor="@color/colorWhite"
                         android:textStyle="bold"
                         android:text="@string/passover_str"
+                        android:fontFamily="@font/kapow"
                         />
 
                 </LinearLayout>
@@ -337,6 +350,7 @@
                         android:textColor="@color/colorWhite"
                         android:textStyle="bold"
                         android:text="@string/custom_list_str"
+                        android:fontFamily="@font/kapow"
                         />
 
                 </LinearLayout>

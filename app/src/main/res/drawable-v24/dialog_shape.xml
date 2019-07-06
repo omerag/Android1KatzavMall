@@ -13,8 +13,8 @@
             android:shape="rectangle">
 
             <stroke
-                android:width="4dp"
-                android:color="@color/colorTurquoise3" />
+                android:width="3dp"
+                android:color="@color/colorBlack" />
 
 
             <padding

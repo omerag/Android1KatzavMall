@@ -2,12 +2,15 @@ package com.android_1_katzavmall;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.Window;
 import android.view.animation.Animation;
@@ -24,6 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -52,22 +56,74 @@ public class MainActivity extends AppCompatActivity {
 
         loadData();
 
-        //Bounce animation:
-        final Animation bounceAnimation = AnimationUtils.loadAnimation(this, R.anim.logo_anim);
+        //logo animation:
+        final Animation logoAnimation = AnimationUtils.loadAnimation(this, R.anim.logo_anim);
         BounceInterpolator interpolator = new BounceInterpolator(0.5, 10);
-        bounceAnimation.setInterpolator(interpolator);
-        logo.startAnimation(bounceAnimation);
+        logoAnimation.setInterpolator(interpolator);
+        logo.startAnimation(logoAnimation);
 
         // slide right animation
-        final Animation slideRightAnimation = AnimationUtils.loadAnimation(this, R.anim.man_with_bags_anim);
-        man_with_bags.startAnimation(slideRightAnimation);
+        final Animation slideRightMan = AnimationUtils.loadAnimation(this, R.anim.man_with_bags_anim);
+        man_with_bags.startAnimation(slideRightMan);
 
-        // ZoomIn/Out animation:
-        //final Animation zoomBtnAnimation = AnimationUtils.loadAnimation(this, R.anim.main_btns_anim);
-        //playBtn.startAnimation(zoomBtnAnimation);
-        //highScoreBtn.startAnimation(zoomBtnAnimation);
-        //howToPlayBtn.startAnimation(zoomBtnAnimation);
-        //settingsBtn.startAnimation(zoomBtnAnimation);
+        final Animation slideRightBtns = AnimationUtils.loadAnimation(this, R.anim.main_btns_anim);
+        Handler playHandler = new Handler();
+        playHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Button play = findViewById(R.id.new_game_btn);
+                play.setVisibility(View.VISIBLE);
+                play.setEnabled(true);
+                play.startAnimation(slideRightBtns);
+
+                Handler highHandler = new Handler();
+                highHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Button high = findViewById(R.id.high_score_btn);
+                        high.setVisibility(View.VISIBLE);
+                        high.setEnabled(true);
+                        high.startAnimation(slideRightBtns);
+
+
+                        Handler howHandler = new Handler();
+                        howHandler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                Button how = findViewById(R.id.how_to_play_btn);
+                                how.setVisibility(View.VISIBLE);
+                                how.setEnabled(true);
+                                how.startAnimation(slideRightBtns);
+
+
+                                Handler settingsHandler = new Handler();
+                                settingsHandler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+
+                                        Button settings = findViewById(R.id.settings_btn);
+                                        settings.setVisibility(View.VISIBLE);
+                                        settings.setEnabled(true);
+                                        settings.startAnimation(slideRightBtns);
+
+                                    }
+                                }, 300);
+
+                            }
+                        }, 300);
+                    }
+                }, 300);
+            }
+        }, 1000);
+
+        // font
+        if (Locale.getDefault().toString().equals("iw_IL")) {
+            Typeface typeface = ResourcesCompat.getFont(this, R.font.abraham);
+            playBtn.setTypeface(typeface);
+            highScoreBtn.setTypeface(typeface);
+            howToPlayBtn.setTypeface(typeface);
+            settingsBtn.setTypeface(typeface);
+        }
 
         playBtn.setOnClickListener(new View.OnClickListener() {
             @Override

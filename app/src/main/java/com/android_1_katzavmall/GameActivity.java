@@ -2,12 +2,14 @@ package com.android_1_katzavmall;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -41,6 +43,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.Random;
 import java.util.Timer;
@@ -127,16 +130,24 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         frame = findViewById(R.id.frame);
 
 
-        //Bounce animation:
-        final Animation bounceAnimation = AnimationUtils.loadAnimation(this, R.anim.groceries_list_anim);
-        BounceInterpolator interpolator = new BounceInterpolator(0.5, 10);
-        bounceAnimation.setInterpolator(interpolator);
-        groceriesLayout.startAnimation(bounceAnimation);
+        // font
+        if (Locale.getDefault().toString().equals("iw_IL")) {
+            Typeface typeface1 = ResourcesCompat.getFont(this, R.font.koby);
+            levelName.setTypeface(typeface1);
+            startLabel.setTypeface(typeface1);
+            scoreLabel.setTypeface(typeface1);
+            scoreTV.setTypeface(typeface1);
+        }
 
-        // ZoomIn animation:
+        // groceries list animation
+        final Animation listAnimation = AnimationUtils.loadAnimation(this, R.anim.groceries_list_anim);
+        BounceInterpolator interpolator = new BounceInterpolator(0.5, 10);
+        listAnimation.setInterpolator(interpolator);
+        groceriesLayout.startAnimation(listAnimation);
+
+        // ZoomIn animation
         final Animation zoomAnimation = AnimationUtils.loadAnimation(this, R.anim.level_name_anim);
         level_name_layout.startAnimation(zoomAnimation);
-
 
 
         screenWidth = getResources().getDisplayMetrics().widthPixels;
@@ -409,12 +420,33 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
         if (isNewHighScore(score))
         {
+            /* Confetti 1 */
+
             final AlertDialog dialog = new AlertDialog.Builder(GameActivity.this).create();
             final View dialogView = getLayoutInflater().inflate(R.layout.win_new_highscore_dialog, null);
 
+            //TextView congratulations_tv = findViewById(R.id.congratulations_tv);
+            //TextView new_record_tv = findViewById(R.id.new_record_tv);
             Button saveScoreBtn = dialogView.findViewById(R.id.save_score_btn);
             Button cancelBtn = dialogView.findViewById(R.id.cancel_btn);
             final EditText nameEt = dialogView.findViewById(R.id.name_et);
+
+            // font
+            if (Locale.getDefault().toString().equals("iw_IL")) {
+                Typeface typeface1 = ResourcesCompat.getFont(this, R.font.koby);
+                //congratulations_tv.setTypeface(typeface1);
+                //new_record_tv.setTypeface(typeface1);
+                nameEt.setTypeface(typeface1);
+                Typeface typeface2 = ResourcesCompat.getFont(this, R.font.abraham);
+                saveScoreBtn.setTypeface(typeface2);
+                cancelBtn.setTypeface(typeface2);
+            }
+
+            // ZoomIn/Out animation:
+            final Animation zoomBtnAnimation = AnimationUtils.loadAnimation(this, R.anim.dlg_btns_anim);
+            saveScoreBtn.startAnimation(zoomBtnAnimation);
+            cancelBtn.startAnimation(zoomBtnAnimation);
+
 
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             dialog.setView(dialogView);
@@ -449,11 +481,32 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         }
         else
         {
+            /* Confetti 2 */
+
             final AlertDialog dialog = new AlertDialog.Builder(GameActivity.this).create();
             final View dialogView = getLayoutInflater().inflate(R.layout.win_no_highscore_dialog, null);
 
+            //TextView you_won_tv = findViewById(R.id.you_won_tv);
+            //TextView want_record_tv = findViewById(R.id.want_record_tv);
             Button playAgainBtn = dialogView.findViewById(R.id.btn_play_again);
             Button homeBtn = dialogView.findViewById(R.id.home_btn);
+
+
+            // font
+            if (Locale.getDefault().toString().equals("iw_IL")) {
+                Typeface typeface1 = ResourcesCompat.getFont(this, R.font.koby);
+                //you_won_tv.setTypeface(typeface1);
+                //want_record_tv.setTypeface(typeface1);
+                Typeface typeface2 = ResourcesCompat.getFont(this, R.font.abraham);
+                playAgainBtn.setTypeface(typeface2);
+                homeBtn.setTypeface(typeface2);
+            }
+
+            // ZoomIn/Out animation:
+            final Animation zoomBtnAnimation = AnimationUtils.loadAnimation(this, R.anim.dlg_btns_anim);
+            playAgainBtn.startAnimation(zoomBtnAnimation);
+            homeBtn.startAnimation(zoomBtnAnimation);
+
 
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             dialog.setView(dialogView);
@@ -586,8 +639,18 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             final AlertDialog dialog = new AlertDialog.Builder(GameActivity.this).create();
             final View dialogView = getLayoutInflater().inflate(R.layout.game_over_dialog,null);
 
+            //TextView game_over_tv = findViewById(R.id.game_over_tv);
             Button homeBtn = dialogView.findViewById(R.id.home_btn);
             Button playAgainBtn = dialogView.findViewById(R.id.play_again_btn);
+
+            // font
+            if (Locale.getDefault().toString().equals("iw_IL")) {
+                Typeface typeface1 = ResourcesCompat.getFont(this, R.font.koby);
+                //game_over_tv.setTypeface(typeface1);
+                Typeface typeface2 = ResourcesCompat.getFont(this, R.font.abraham);
+                homeBtn.setTypeface(typeface2);
+                playAgainBtn.setTypeface(typeface2);
+            }
 
             // ZoomIn/Out animation:
             final Animation zoomBtnAnimation = AnimationUtils.loadAnimation(this, R.anim.dlg_btns_anim);

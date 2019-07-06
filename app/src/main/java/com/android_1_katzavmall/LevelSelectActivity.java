@@ -1,6 +1,7 @@
 package com.android_1_katzavmall;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -11,38 +12,42 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class LevelSelectActivity extends AppCompatActivity {
 
-    LinearLayout milkLayout;
-    LinearLayout meatLayout;
-    LinearLayout vegetarianLayout;
-    LinearLayout backeryLayout;
-    LinearLayout breakfastLayout;
-    LinearLayout lunchLayout;
-    LinearLayout roshHashanaLayout;
-    LinearLayout passoverLayout;
-    LinearLayout customChoiceLayout;
+    private TextView what_meal;
 
-    TextView milkTV;
-    TextView meatTV;
-    TextView vegetarianTV;
-    TextView backeryTV;
-    TextView breakfastTV;
-    TextView lunchTV;
-    TextView roshHashanaTV;
-    TextView passoverTV;
-    TextView customChoiceTV;
+    private LinearLayout milkLayout;
+    private LinearLayout meatLayout;
+    private LinearLayout vegetarianLayout;
+    private LinearLayout backeryLayout;
+    private LinearLayout breakfastLayout;
+    private LinearLayout lunchLayout;
+    private LinearLayout roshHashanaLayout;
+    private LinearLayout passoverLayout;
+    private LinearLayout customChoiceLayout;
 
-    String shoppingListName;
+    private TextView milkTV;
+    private TextView meatTV;
+    private TextView vegetarianTV;
+    private TextView backeryTV;
+    private TextView breakfastTV;
+    private TextView lunchTV;
+    private TextView roshHashanaTV;
+    private TextView passoverTV;
+    private TextView customChoiceTV;
 
-    ImageView breakfastLock;
-    ImageView lunchLock;
-    ImageView roshHashanaLock;
-    ImageView passoverLock;
-    ImageView customLock;
+    private String shoppingListName;
+
+    private ImageView breakfastLock;
+    private ImageView lunchLock;
+    private ImageView roshHashanaLock;
+    private ImageView passoverLock;
+    private ImageView customLock;
 
 
     @Override
@@ -51,6 +56,8 @@ public class LevelSelectActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         setContentView(R.layout.level_select_activity);
+
+        what_meal = findViewById(R.id.what_meal);
 
         milkLayout = findViewById(R.id.milk_layout);
         meatLayout = findViewById(R.id.meat_layout);
@@ -86,6 +93,23 @@ public class LevelSelectActivity extends AppCompatActivity {
         lunchLayout.setOnClickListener(new selectLevelListener());
         roshHashanaLayout.setOnClickListener(new selectLevelListener());
         passoverLayout.setOnClickListener(new selectLevelListener());
+
+
+        // font
+        if (Locale.getDefault().toString().equals("iw_IL")) {
+            Typeface typeface1 = ResourcesCompat.getFont(this, R.font.koby);
+            what_meal.setTypeface(typeface1);
+            Typeface typeface2 = ResourcesCompat.getFont(this, R.font.abraham);
+            milkTV.setTypeface(typeface2);
+            meatTV.setTypeface(typeface2);
+            vegetarianTV.setTypeface(typeface2);
+            backeryTV.setTypeface(typeface2);
+            breakfastTV.setTypeface(typeface2);
+            lunchTV.setTypeface(typeface2);
+            roshHashanaTV.setTypeface(typeface2);
+            passoverTV.setTypeface(typeface2);
+            customChoiceTV.setTypeface(typeface2);
+        }
 
         // ZoomIn/Out animation:
         final Animation zoomBtnAnimation = AnimationUtils.loadAnimation(this, R.anim.level_slct_btns_anim);

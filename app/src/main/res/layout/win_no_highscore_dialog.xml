@@ -7,46 +7,74 @@
     android:background="@drawable/dialog_shape">
 
     <TextView
+        android:id="@+id/you_won_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/winner_str3"
-        android:textSize="25sp"
+        android:textSize="30sp"
+        android:paddingHorizontal="5dp"
+        android:textStyle="bold"
+        android:fontFamily="@font/kid"
+        android:textColor="@color/colorBlack"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="20dp"/>
 
     <TextView
+        android:id="@+id/want_record_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/winner_str4"
         android:textSize="25sp"
+        android:textStyle="bold"
+        android:paddingHorizontal="5dp"
+        android:fontFamily="@font/kid"
+        android:textColor="@color/colorBlack"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"/>
 
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center"
+        android:src="@drawable/no_record"
+        android:layout_marginTop="15dp"
+        />
+
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:layout_marginTop="10dp">
-
-        <Button
-            android:id="@+id/btn_play_again"
-            android:layout_width="100dp"
-            android:layout_height="60dp"
-            android:text="@string/play_again"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/main_button_shape2"/>
+        android:layout_gravity="center"
+        android:layout_marginVertical="20dp"
+        >
 
         <Button
             android:id="@+id/btn_home"
-            android:layout_width="100dp"
+            android:layout_width="120dp"
             android:layout_height="60dp"
             android:text="@string/home_btn"
             android:textAllCaps="false"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/main_button_shape2"/>
+            android:paddingHorizontal="10dp"
+            android:layout_marginHorizontal="15dp"
+            android:background="@drawable/main_button_shape2"
+            android:textColor="@color/colorBlack"
+            android:textSize="20sp"
+            android:fontFamily="@font/kapow"
+            />
+
+        <Button
+            android:id="@+id/btn_play_again"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:text="@string/play_again"
+            android:textAllCaps="false"
+            android:paddingHorizontal="10dp"
+            android:layout_marginHorizontal="15dp"
+            android:background="@drawable/main_button_shape2"
+            android:textColor="@color/colorBlack"
+            android:textSize="20sp"
+            android:fontFamily="@font/kapow"
+            />
 
     </LinearLayout>
 

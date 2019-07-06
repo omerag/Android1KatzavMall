@@ -1,51 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/dialog_shape">
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:orientation="vertical"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@drawable/dialog_shape">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/game_over"
-        android:textSize="25sp"
-        android:layout_gravity="center_horizontal"/>
+<TextView
+    android:id="@+id/game_over_tv"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/game_over"
+    android:textSize="30sp"
+    android:textStyle="bold"
+    android:paddingHorizontal="5dp"
+    android:fontFamily="@font/kid"
+    android:textColor="@color/colorBlack"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginVertical="20dp"/>
 
     <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:src="@drawable/game_over_img"/>
+    android:layout_width="100dp"
+    android:layout_height="100dp"
+    android:layout_gravity="center"
+    android:src="@drawable/game_over_img"
+
+    />
+
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:layout_marginTop="10dp">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:layout_gravity="center"
+    android:layout_marginVertical="20dp"
+    >
+
     <Button
         android:id="@+id/home_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
         android:text="@string/home_btn"
         android:textAllCaps="false"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/main_button_shape2"/>
+        android:paddingHorizontal="10dp"
+        android:layout_marginHorizontal="15dp"
+        android:background="@drawable/main_button_shape2"
+        android:textColor="@color/colorBlack"
+        android:textSize="20sp"
+        android:fontFamily="@font/kapow"
+        />
 
     <Button
         android:id="@+id/play_again_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
         android:text="@string/play_again"
         android:textAllCaps="false"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/main_button_shape2"/>
+        android:paddingHorizontal="10dp"
+        android:layout_marginHorizontal="15dp"
+        android:background="@drawable/main_button_shape2"
+        android:textColor="@color/colorBlack"
+        android:textSize="20sp"
+        android:fontFamily="@font/kapow"
+        />
 
-    </LinearLayout>
-
+</LinearLayout>
 
 </LinearLayout>
