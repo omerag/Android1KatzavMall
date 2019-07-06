@@ -61,10 +61,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //test
 
+
+        loadSettings();
+        loadData();
         doBindService();
-        Intent music = new Intent();
-        music.setClass(this, MusicService.class);
-        startService(music);
+        if (isMusic)
+        {
+            Intent music = new Intent();
+            music.setClass(this, MusicService.class);
+            startService(music);
+        }
 
         mHomeWatcher = new HomeWatcher(this);
         mHomeWatcher.setOnHomePressedListener(new HomeWatcher.OnHomePressedListener() {
@@ -90,8 +96,6 @@ public class MainActivity extends AppCompatActivity {
         howToPlayBtn = findViewById(R.id.how_to_play_btn);
         settingsBtn = findViewById(R.id.settings_btn);
 
-        loadSettings();
-        loadData();
 
         //logo animation:
         final Animation logoAnimation = AnimationUtils.loadAnimation(this, R.anim.logo_anim);
@@ -291,6 +295,9 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                         isMusic = compoundButton.isChecked();
+                        if (isMusic) mServ.resumeMusic();
+                        else mServ.pauseMusic();
+
                         SharedPreferences.Editor editor = sp.edit();
                         editor.putBoolean("music",isMusic);
                         editor.apply();
@@ -367,7 +374,6 @@ public class MainActivity extends AppCompatActivity {
             editor.apply();
         }
 
-
     }
 
     @Override
@@ -409,7 +415,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        if (mServ != null) {
+        if (mServ != null && isMusic) {
             mServ.resumeMusic();
         }
     }
