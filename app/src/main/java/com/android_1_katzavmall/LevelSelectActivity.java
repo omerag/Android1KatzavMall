@@ -340,15 +340,6 @@ public class LevelSelectActivity extends AppCompatActivity {
                     shoppingListName = customChoiceTV.getText().toString();
                     level_img_id = R.drawable.custom;
 
-                    final AlertDialog dialog = new AlertDialog.Builder(LevelSelectActivity.this).create();
-                    final View dialogView = getLayoutInflater().inflate(R.layout.custom_game_dialog, null);
-
-                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                    dialog.setView(dialogView);
-                    dialog.setCanceledOnTouchOutside(false);
-
-                    dialog.show();
-
                     break;
             }
 
