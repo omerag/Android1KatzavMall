@@ -31,11 +31,11 @@
     <string name="difficulty2">Medium</string>
     <string name="difficulty3">Hard</string>
     <string name="save_btn">Save</string>
-    <string name="select_difficulty">Difficulty :</string>
-    <string name="select_control">Control :</string>
+    <string name="select_difficulty">Difficulty</string>
+    <string name="select_control">Control</string>
     <string name="control2">Touch</string>
     <string name="control1">Accelerometer</string>
-    <string name="music_sound">Music and Sounds :</string>
+    <string name="music_sound">Music and Sounds</string>
     <string name="reset_score">Reset Scores</string>
     <string name="reset_score_toast">Table of records has been reset!</string>
     <string name="record_saved_toast">The record is saved!</string>

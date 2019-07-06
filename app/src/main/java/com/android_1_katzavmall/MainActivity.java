@@ -27,6 +27,7 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -189,6 +190,11 @@ public class MainActivity extends AppCompatActivity {
                 final AlertDialog dialog = new AlertDialog.Builder(MainActivity.this).create();
                 final View dialogView = getLayoutInflater().inflate(R.layout.settings_dialog,null);
 
+                TextView settings_tv = dialogView.findViewById(R.id.settings_tv);
+                TextView difficulty_tv = dialogView.findViewById(R.id.difficulty_tv);
+                TextView control_tv = dialogView.findViewById(R.id.control_tv);
+                TextView music_tv = dialogView.findViewById(R.id.music_tv);
+
                 Button backBtn = dialogView.findViewById(R.id.back_btn);
                 Button resetScoreBtn = dialogView.findViewById(R.id.reset_score_table);
 
@@ -207,6 +213,31 @@ public class MainActivity extends AppCompatActivity {
 
                 final CheckBox musicCheckBox = dialogView.findViewById(R.id.music_checkBox);
                 CheckBox soundsCheckBox = dialogView.findViewById(R.id.sounds_checkBox);
+
+
+                // ZoomIn/Out animation:
+                final Animation zoomBtnAnimation = AnimationUtils.loadAnimation(MainActivity.this, R.anim.dlg_btns_anim);
+                resetScoreBtn.startAnimation(zoomBtnAnimation);
+                backBtn.startAnimation(zoomBtnAnimation);
+
+                //font
+                if (Locale.getDefault().toString().equals("iw_IL")) {
+                    Typeface typeface1 = ResourcesCompat.getFont(MainActivity.this, R.font.koby);
+                    settings_tv.setTypeface(typeface1);
+                    difficulty_tv.setTypeface(typeface1);
+                    easyBtn.setTypeface(typeface1);
+                    mediumBtn.setTypeface(typeface1);
+                    hardBtn.setTypeface(typeface1);
+                    control_tv.setTypeface(typeface1);
+                    accelerometerBtn.setTypeface(typeface1);
+                    touchBtn.setTypeface(typeface1);
+                    music_tv.setTypeface(typeface1);
+                    Typeface typeface2 = ResourcesCompat.getFont(MainActivity.this, R.font.abraham);
+                    resetScoreBtn.setTypeface(typeface2);
+                    backBtn.setTypeface(typeface2);
+                }
+
+
 
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.setView(dialogView);
