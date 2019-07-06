@@ -266,6 +266,8 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                         isMusic = compoundButton.isChecked();
+                        if (!isMusic) menuAudioPlayer.pause();
+                        else menuAudioPlayer.start();
                         SharedPreferences.Editor editor = sp.edit();
                         editor.putBoolean("music",isMusic);
                         editor.apply();
