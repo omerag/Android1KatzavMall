@@ -249,9 +249,13 @@ public class LevelSelectActivity extends AppCompatActivity {
                     shoppingList.add(FoodType.CHOCOLATE);
                     shoppingListCounts.add(1*difficulty);
 
-                    forbiddenList.add(FoodType.BAGUETTE);
-                    forbiddenList.add(FoodType.STEAK);
+                    forbiddenList.add(FoodType.BAGEL);
+                    forbiddenList.add(FoodType.CHICKEN);
+                    forbiddenList.add(FoodType.FISH);
                     forbiddenList.add(FoodType.ORANGE);
+                    forbiddenList.add(FoodType.BEER);
+                    forbiddenList.add(FoodType.AVOKADO);
+
 
                     level_img_id = R.drawable.milk;
                     break;
@@ -270,9 +274,13 @@ public class LevelSelectActivity extends AppCompatActivity {
                     shoppingList.add(FoodType.SAUSAGE);
                     shoppingListCounts.add(8*difficulty);
 
-                    forbiddenList.add(FoodType.BAGUETTE);
+                    forbiddenList.add(FoodType.EGGPLANT);
                     forbiddenList.add(FoodType.MILK);
+                    forbiddenList.add(FoodType.WATERMELON);
+                    forbiddenList.add(FoodType.HARD_CHEESE);
+                    forbiddenList.add(FoodType.CHOCOLATE_SPREAD);
                     forbiddenList.add(FoodType.ORANGE);
+
 
                     level_img_id = R.drawable.meat;
 
@@ -293,8 +301,12 @@ public class LevelSelectActivity extends AppCompatActivity {
                     shoppingListCounts.add(5*difficulty);
 
                     forbiddenList.add(FoodType.CHICKEN);
-                    forbiddenList.add(FoodType.HARD_CHEESE);
+                    forbiddenList.add(FoodType.CHOCOLATE);
                     forbiddenList.add(FoodType.EGGS);
+                    forbiddenList.add(FoodType.PANCAKES);
+                    forbiddenList.add(FoodType.POMEGRANATE);
+                    forbiddenList.add(FoodType.FISH);
+
 
                     level_img_id = R.drawable.vegetarian;
 
@@ -317,6 +329,10 @@ public class LevelSelectActivity extends AppCompatActivity {
                     forbiddenList.add(FoodType.EGGPLANT);
                     forbiddenList.add(FoodType.AVOKADO);
                     forbiddenList.add(FoodType.WINE);
+                    forbiddenList.add(FoodType.WHITE_CHEESE);
+                    forbiddenList.add(FoodType.CHOCOLATE);
+                    forbiddenList.add(FoodType.TOMATO);
+
 
                     level_img_id = R.drawable.bakery;
 
@@ -339,6 +355,11 @@ public class LevelSelectActivity extends AppCompatActivity {
                     forbiddenList.add(FoodType.STEAK);
                     forbiddenList.add(FoodType.WATERMELON);
                     forbiddenList.add(FoodType.SCHNITZEL);
+                    forbiddenList.add(FoodType.FISH);
+                    forbiddenList.add(FoodType.POTATO);
+                    forbiddenList.add(FoodType.BEER);
+
+
 
                     level_img_id = R.drawable.breakfast;
 
@@ -363,6 +384,9 @@ public class LevelSelectActivity extends AppCompatActivity {
                     forbiddenList.add(FoodType.MILK);
                     forbiddenList.add(FoodType.EGGS);
                     forbiddenList.add(FoodType.DONUTS);
+                    forbiddenList.add(FoodType.AVOKADO);
+                    forbiddenList.add(FoodType.CROISSANT);
+                    forbiddenList.add(FoodType.CHOCOLATE_SPREAD);
 
                     level_img_id = R.drawable.lunch;
 
@@ -391,6 +415,9 @@ public class LevelSelectActivity extends AppCompatActivity {
                     forbiddenList.add(FoodType.BAGUETTE);
                     forbiddenList.add(FoodType.STEAK);
                     forbiddenList.add(FoodType.ORANGE);
+                    forbiddenList.add(FoodType.MILK);
+                    forbiddenList.add(FoodType.SAUSAGE);
+                    forbiddenList.add(FoodType.WATERMELON);
 
                     level_img_id = R.drawable.rosh_hashana;
 
@@ -416,9 +443,12 @@ public class LevelSelectActivity extends AppCompatActivity {
                     shoppingList.add(FoodType.CHICKEN);
                     shoppingListCounts.add(4*difficulty);
 
-                    forbiddenList.add(FoodType.BAGUETTE);
+                    forbiddenList.add(FoodType.STEAK);
                     forbiddenList.add(FoodType.BREAD);
                     forbiddenList.add(FoodType.DONUTS);
+                    forbiddenList.add(FoodType.PANCAKES);
+                    forbiddenList.add(FoodType.BEER);
+                    forbiddenList.add(FoodType.WATERMELON);
 
                     level_img_id = R.drawable.passover;
 
