@@ -16,8 +16,7 @@ import androidx.appcompat.widget.AppCompatImageView;
 
 public class CartObject extends AppCompatImageView {
 
-    int orginalWidth;
-    int originalHeight;
+
 
     private boolean isAnimated = false;
 
@@ -25,14 +24,12 @@ public class CartObject extends AppCompatImageView {
     public CartObject(Context context, AttributeSet st) {
         super(context, st);
 
-        orginalWidth = getWidth();
-        originalHeight = getHeight();
         setImageResource(R.drawable.carton_bag);
     }
 
     void animateCoach(){
 
-        ScaleAnimation scaleUp = new ScaleAnimation(1f, 1.25f, 1f, 1.25f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        ScaleAnimation scaleUp = new ScaleAnimation(1f, 1.25f, 1f, 1.25f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 1.0f);
         scaleUp.setDuration(300);
         scaleUp.setRepeatMode(Animation.REVERSE);
         scaleUp.setRepeatCount(1);
