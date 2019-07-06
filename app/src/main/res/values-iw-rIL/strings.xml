@@ -41,4 +41,8 @@
     <string name="reset_score_toast">טבלת השיאים אופסה</string>
     <string name="record_saved_toast">השיא נשמר</string>
     <string name="back_btn">חזור</string>
+    <string name="select_groceries">עד 8 מוצרים לבחירתך:</string>
+    <string name="select">בחר</string>
+    <string name="quantity">כמות</string>
+    <string name="play">שחק</string>
 </resources>

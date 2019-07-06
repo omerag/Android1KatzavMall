@@ -1,11 +1,13 @@
 package com.android_1_katzavmall;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.animation.Animation;
@@ -15,6 +17,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
@@ -56,6 +59,8 @@ public class LevelSelectActivity extends AppCompatActivity {
     private ImageView passoverLock;
     private ImageView customLock;
 
+    Button selectCustomDialogBtn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +97,8 @@ public class LevelSelectActivity extends AppCompatActivity {
         passoverLock = findViewById(R.id.passover_lock);
         customLock = findViewById(R.id.custom_lock);
 
+        selectCustomDialogBtn = findViewById(R.id.select_btn);
+
         milkLayout.setOnClickListener(new selectLevelListener());
         meatLayout.setOnClickListener(new selectLevelListener());
         vegetarianLayout.setOnClickListener(new selectLevelListener());
@@ -100,8 +107,21 @@ public class LevelSelectActivity extends AppCompatActivity {
         lunchLayout.setOnClickListener(new selectLevelListener());
         roshHashanaLayout.setOnClickListener(new selectLevelListener());
         passoverLayout.setOnClickListener(new selectLevelListener());
-        customChoiceLayout.setOnClickListener(new selectLevelListener());
 
+        customChoiceLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final AlertDialog dialog = new AlertDialog.Builder(LevelSelectActivity.this).create();
+                final View dialogView = getLayoutInflater().inflate(R.layout.custom_game_dialog, null);
+
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.setView(dialogView);
+                dialog.setCanceledOnTouchOutside(false);
+
+                dialog.show();
+            }
+
+        });
 
 
         // font
@@ -138,6 +158,7 @@ public class LevelSelectActivity extends AppCompatActivity {
         customLock.startAnimation(zoomBtnAnimation);
 
     }
+
 
     private class selectLevelListener implements View.OnClickListener {
 
@@ -372,6 +393,14 @@ public class LevelSelectActivity extends AppCompatActivity {
             levelIntent.putExtra("forbiddenList",forbiddenList);
             levelIntent.putExtra("level_img",level_img_id);
             startActivity(levelIntent);
+        }
+
+        public void selectCustomGroceriesList(View view){
+
+            PopupMenu popupMenu = new PopupMenu(LevelSelectActivity.this, selectCustomDialogBtn);
+            popupMenu.getMenuInflater().inflate(R.menu.groceries_menu, popupMenu.getMenu());
+            popupMenu.show();
+
         }
     }
 }

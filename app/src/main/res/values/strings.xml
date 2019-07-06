@@ -40,5 +40,9 @@
     <string name="reset_score_toast">Table of records has been reset!</string>
     <string name="record_saved_toast">The record is saved!</string>
     <string name="back_btn">Back</string>
+    <string name="select_groceries">Select up to 8 groceries:</string>
+    <string name="select">Select</string>
+    <string name="quantity">quantity</string>
+    <string name="play">Play</string>
 
 </resources>
