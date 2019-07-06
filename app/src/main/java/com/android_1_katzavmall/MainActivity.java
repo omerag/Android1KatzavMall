@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     Button settingsBtn;
     List<HighScore> highScores;
     String difficulty;
+    String control;
     SharedPreferences sp;
 
     @Override
@@ -57,16 +58,7 @@ public class MainActivity extends AppCompatActivity {
         howToPlayBtn = findViewById(R.id.how_to_play_btn);
         settingsBtn = findViewById(R.id.settings_btn);
 
-        sp = getSharedPreferences("sp",MODE_PRIVATE);
-        difficulty = sp.getString("difficulty","");
-        if (difficulty.equals(""))
-        {
-            difficulty = getString(R.string.difficulty1);
-            SharedPreferences.Editor editor = sp.edit();
-            editor.putString("difficulty",difficulty);
-            editor.apply();
-        }
-
+        loadSettings();
         loadData();
 
         //logo animation:
@@ -249,6 +241,21 @@ public class MainActivity extends AppCompatActivity {
         String json = gson.toJson(highScores);
         editor.putString("score_table",json);
         editor.apply();
+    }
+
+    private void loadSettings()
+    {
+        sp = getSharedPreferences("sp",MODE_PRIVATE);
+        difficulty = sp.getString("difficulty","");
+        control = sp.getString("control","");
+
+        if (difficulty.equals(""))
+        {
+            difficulty = getString(R.string.difficulty1);
+            SharedPreferences.Editor editor = sp.edit();
+            editor.putString("difficulty",difficulty);
+            editor.apply();
+        }
     }
 
 
