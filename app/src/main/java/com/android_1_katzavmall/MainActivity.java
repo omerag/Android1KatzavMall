@@ -299,7 +299,7 @@ public class MainActivity extends AppCompatActivity {
             highScores = new ArrayList<>();
             for (int i = 0; i < 10; i++)
             {
-                highScores.add(new HighScore(i+1,R.drawable.breakfast,"---","---",0));
+                highScores.add(new HighScore(i+1,R.drawable.bakery,"---","---",0));
             }
             saveData();
         }
