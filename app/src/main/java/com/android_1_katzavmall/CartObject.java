@@ -41,6 +41,14 @@ public class CartObject extends AppCompatImageView {
 
     }
 
+    public boolean isAnimated() {
+        return isAnimated;
+    }
+
+    public void setAnimated(boolean animated) {
+        isAnimated = animated;
+    }
+
     public void playGoodSound()
     {
         goodSoundPlayer.start();

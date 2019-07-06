@@ -55,4 +55,15 @@ public enum FoodType {
     PROMEGRANATE,
 
 
+    //bonus level
+    PIE,
+    LOLLIPOP,
+    ICE_CREAM,
+    CUPCAKE,
+    COOKIE,
+    CHOCOLATE_BAR,
+    CANDY,
+    BIRTHDAY_CAKE
+
+
 }

@@ -84,6 +84,14 @@ public class FoodContainer {
             case CARROT: return R.drawable.em_carrot;
             case MATZA:return R.drawable.em_matzah;
             case CHOCOLATE_SPREAD: return R.drawable.em_chocolate_jar;
+            case PIE: return R.drawable.em_pie;
+            case LOLLIPOP: return R.drawable.em_lollipop;
+            case ICE_CREAM: return R.drawable.em_ice_cream;
+            case CUPCAKE: return R.drawable.em_cupcake;
+            case COOKIE: return R.drawable.em_cookie;
+            case CHOCOLATE_BAR: return R.drawable.em_chocolate_bar;
+            case CANDY: return R.drawable.em_candy;
+            case BIRTHDAY_CAKE: return R.drawable.em_birthday_cake;
         }
 
         //foodType not found

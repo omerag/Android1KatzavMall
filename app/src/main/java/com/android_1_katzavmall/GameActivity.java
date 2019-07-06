@@ -63,7 +63,6 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
    // private ImageView cart;
     private CartObject cart;
     private FrameLayout frame;
-    boolean isCartAnimated = false;
     private List<HighScore> highScores;
     private SharedPreferences sp;
     private MediaPlayer winner_sound_player;
@@ -181,8 +180,6 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         setShoppingListLayout(shoppingList,shoppingListCounts);
 
         setSettings();
-
-
 
         ///////////
 
@@ -341,8 +338,6 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
                 animation.setInterpolator(new AccelerateInterpolator());
                 foodObject.setAnimated(true);
 
-                System.out.println("" + diffultyFoodVel);
-
                 animation.start();
             }
         }
@@ -354,9 +349,9 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         shopCounter--;
         if (shopCounter < 1){
             shopCounter = shopCounterReset;
-
+            //check is it shopping list turn to create food or if it's  the bonus level
             if(shopFlag || isBonusStated){
-                shopFlag =false;
+                shopFlag = false;
                 this.runOnUiThread(new Runnable() {
                     final Random rand = new Random();
 
@@ -387,7 +382,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
                         int pick = rand.nextInt(container.getForbiddenList().size());
 
-                        int x = rand.nextInt(screenWidth - cart.getWidth());
+                        int x = ((rand.nextInt(100)*10 + 40) % (screenWidth - cart.getWidth()));
                         factory.addFood(x,container.getForbiddenList().get(pick));
                     }
                 });
@@ -437,8 +432,14 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
         cleanLevel();
 
-        container.getShoppingList().add(FoodType.DONUTS);
-
+        container.getShoppingList().add(FoodType.PIE);
+        container.getShoppingList().add(FoodType.ICE_CREAM);
+        container.getShoppingList().add(FoodType.LOLLIPOP);
+        container.getShoppingList().add(FoodType.CUPCAKE);
+        container.getShoppingList().add(FoodType.COOKIE);
+        container.getShoppingList().add(FoodType.CHOCOLATE_BAR);
+        container.getShoppingList().add(FoodType.CANDY);
+        container.getShoppingList().add(FoodType.BIRTHDAY_CAKE);
 
     }
 
@@ -577,6 +578,10 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     private void updateFoodStatus(FoodType foodType){
         TextView textView;
         int index = container.getStaticShoppingList().indexOf(foodType);
+
+        if(isBonusStated){
+            return;
+        }
         switch (index){
             case 0:
                 textView = findViewById(R.id.foodStatus0);
@@ -605,20 +610,16 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             default:
                 return;
         }
-        int lefts = 0;
         String leftStr = textView.getText().toString();
-        if(!leftStr.equalsIgnoreCase("")){
-            lefts = Integer.parseInt(leftStr);
-            lefts--;
-            textView.setText( "" + lefts);
-            if(lefts == 0){
-                textView.setText("");
-                textView.setBackgroundResource(R.drawable.v_sign_with_background);
-                container.getForbiddenList().add(foodType);
-                container.getShoppingList().remove(foodType);
-            }
+        int lefts = Integer.parseInt(leftStr);
+        lefts--;
+        textView.setText( "" + lefts);
+        if(lefts < 1){
+            textView.setText("");
+            textView.setBackgroundResource(R.drawable.v_sign_with_background);
+            container.getForbiddenList().add(foodType);
+            container.getShoppingList().remove(foodType);
         }
-
     }
 
     private void setShoppingListLayout(List<FoodType> shoppingList,List<Integer> shoppingListCounts){
@@ -748,7 +749,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             startLabel.setVisibility(View.GONE);
         }
 
-        if(!controlSensor && startFlag  && !isCartAnimated && me.getAction() == MotionEvent.ACTION_UP){
+        if(!controlSensor && startFlag  && !cart.isAnimated() && me.getAction() == MotionEvent.ACTION_UP){
 
             float target = me.getRawX() - (float)cart.getLeft() - (float)cart.getWidth()/2;
 
@@ -760,17 +761,17 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
                 @Override
                 public void onAnimationStart(Animator animator) {
-                    isCartAnimated = true;
+                    cart.setAnimated(true);
 
                 }
 
                 @Override
                 public void onAnimationEnd(Animator animator) {
-                    isCartAnimated = false;
+                    cart.setAnimated(false);
                 }
 
                 @Override
-                public void onAnimationCancel(Animator animator) { isCartAnimated = false; }
+                public void onAnimationCancel(Animator animator) { cart.setAnimated(false); }
 
                 @Override
                 public void onAnimationRepeat(Animator animator) { }
