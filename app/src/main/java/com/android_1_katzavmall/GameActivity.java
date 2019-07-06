@@ -12,6 +12,7 @@ import android.graphics.Interpolator;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.animation.Animator;
@@ -65,6 +66,8 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     boolean isCartAnimated = false;
     private List<HighScore> highScores;
     private SharedPreferences sp;
+    private MediaPlayer winner_sound_player;
+    private MediaPlayer looser_sound_player;
 
     private FoodContainer container;
     private FoodFactory factory;
@@ -135,6 +138,9 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         levelName = findViewById(R.id.level_name_tv);
         cart = findViewById(R.id.cart);
         frame = findViewById(R.id.frame);
+
+        winner_sound_player = MediaPlayer.create(this,R.raw.winner);
+        looser_sound_player = MediaPlayer.create(this,R.raw.looser);
 
 
         // font
@@ -450,6 +456,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
             final AlertDialog dialog = new AlertDialog.Builder(GameActivity.this).create();
             final View dialogView = getLayoutInflater().inflate(R.layout.win_new_highscore_dialog, null);
+            winner_sound_player.start();
 
             TextView congratulations_tv = dialogView.findViewById(R.id.congratulations_tv);
             TextView new_record_tv = dialogView.findViewById(R.id.new_record_tv);
@@ -517,6 +524,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
             final AlertDialog dialog = new AlertDialog.Builder(GameActivity.this).create();
             final View dialogView = getLayoutInflater().inflate(R.layout.win_no_highscore_dialog, null);
+            winner_sound_player.start();
 
             TextView you_won_tv = dialogView.findViewById(R.id.you_won_tv);
             TextView want_record_tv = dialogView.findViewById(R.id.want_record_tv);
@@ -675,6 +683,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
             final AlertDialog dialog = new AlertDialog.Builder(GameActivity.this).create();
             final View dialogView = getLayoutInflater().inflate(R.layout.game_over_dialog,null);
+            looser_sound_player.start();
 
             TextView game_over_tv = dialogView.findViewById(R.id.game_over_tv);
             Button homeBtn = dialogView.findViewById(R.id.home_btn);
