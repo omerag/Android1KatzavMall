@@ -9,7 +9,6 @@
     <color name="colorBlack">#000000</color>
     <color name="colorPrimaryGray">#63000000</color>
     <color name="colorTurquoise1">#00CC99</color>
-    <color name="colorTurquoise2">#9DC3E6</color>
     <color name="colorWhite1">#2D000000</color>
     <color name="grey1">#CC7F7F7F</color>
     <color name="grey2">#CCD9D9D9</color>
@@ -18,5 +17,6 @@
     <color name="colorWhite2">#BEFFFFFF</color>
     <color name="colorTurquoise3">#996692E4</color>
     <color name="colorBordo">#BD4F59</color>
+    <color name="colorTurquoise2">#9DC3E6</color>
 
 </resources>
