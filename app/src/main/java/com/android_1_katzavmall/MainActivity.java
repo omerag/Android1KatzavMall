@@ -106,6 +106,8 @@ public class MainActivity extends AppCompatActivity {
 
         // slide right animation
         final Animation slideRightMan = AnimationUtils.loadAnimation(this, R.anim.man_with_bags_anim);
+        BounceInterpolator interpolator2 = new BounceInterpolator(0.18, 8);
+        slideRightMan.setInterpolator(interpolator);
         man_with_bags.startAnimation(slideRightMan);
 
         final Animation slideRightBtns = AnimationUtils.loadAnimation(this, R.anim.main_btns_anim);
@@ -115,6 +117,8 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 Button play = findViewById(R.id.new_game_btn);
                 play.setVisibility(View.VISIBLE);
+                BounceInterpolator interpolator = new BounceInterpolator(0.18, 8);
+                slideRightBtns.setInterpolator(interpolator);
                 play.startAnimation(slideRightBtns);
 
                 Handler highHandler = new Handler();
@@ -123,6 +127,8 @@ public class MainActivity extends AppCompatActivity {
                     public void run() {
                         Button high = findViewById(R.id.high_score_btn);
                         high.setVisibility(View.VISIBLE);
+                        BounceInterpolator interpolator = new BounceInterpolator(0.18, 8);
+                        slideRightBtns.setInterpolator(interpolator);
                         high.startAnimation(slideRightBtns);
 
 
@@ -132,6 +138,8 @@ public class MainActivity extends AppCompatActivity {
                             public void run() {
                                 Button how = findViewById(R.id.how_to_play_btn);
                                 how.setVisibility(View.VISIBLE);
+                                BounceInterpolator interpolator = new BounceInterpolator(0.18, 8);
+                                slideRightBtns.setInterpolator(interpolator);
                                 how.startAnimation(slideRightBtns);
 
 
@@ -142,7 +150,10 @@ public class MainActivity extends AppCompatActivity {
 
                                         Button settings = findViewById(R.id.settings_btn);
                                         settings.setVisibility(View.VISIBLE);
+                                        BounceInterpolator interpolator = new BounceInterpolator(0.18, 8);
+                                        slideRightBtns.setInterpolator(interpolator);
                                         settings.startAnimation(slideRightBtns);
+
                                         settings.setEnabled(true);
 
                                         Button play = findViewById(R.id.new_game_btn);
