@@ -66,8 +66,7 @@ public class MainActivity extends AppCompatActivity {
         loadSettings();
         loadData();
         doBindService();
-        if (isMusic)
-        {
+        if (isMusic) {
             Intent music = new Intent();
             music.setClass(this, MusicService.class);
             startService(music);
@@ -81,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
                     mServ.pauseMusic();
                 }
             }
+
             @Override
             public void onHomeLongPressed() {
                 if (mServ != null) {
@@ -193,7 +193,7 @@ public class MainActivity extends AppCompatActivity {
         highScoreBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent highScoreIntent = new Intent(MainActivity.this,HighScoreActivity.class);
+                Intent highScoreIntent = new Intent(MainActivity.this, HighScoreActivity.class);
                 startActivity(highScoreIntent);
             }
         });
@@ -204,9 +204,40 @@ public class MainActivity extends AppCompatActivity {
                 final AlertDialog dialog = new AlertDialog.Builder(MainActivity.this).create();
                 final View dialogView = getLayoutInflater().inflate(R.layout.how_to_play_dialog, null);
 
+                TextView how_to_play_tv = dialogView.findViewById(R.id.how_to_play_tv);
+                ImageView how_to_play_img = dialogView.findViewById(R.id.how_to_play_img);
+                Button back_btn = dialogView.findViewById(R.id.back_btn);
 
+
+                // ZoomIn/Out animation:
+                final Animation zoomBtnAnimation = AnimationUtils.loadAnimation(MainActivity.this, R.anim.dlg_btns_anim);
+                back_btn.startAnimation(zoomBtnAnimation);
+
+
+                //font
+                if (Locale.getDefault().toString().equals("iw_IL")) {
+                    Typeface typeface1 = ResourcesCompat.getFont(MainActivity.this, R.font.koby);
+                    how_to_play_tv.setTypeface(typeface1);
+                    Typeface typeface2 = ResourcesCompat.getFont(MainActivity.this, R.font.abraham);
+                    back_btn.setTypeface(typeface2);
+                }
+
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.setView(dialogView);
+                dialog.setCanceledOnTouchOutside(false);
+
+
+                back_btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
             }
         });
+
+
 
         settingsBtn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -2,6 +2,7 @@
 <resources>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorTurquoise2">#9DC3E6</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorPich">#FEF3D5</color>
@@ -17,6 +18,5 @@
     <color name="colorWhite2">#BEFFFFFF</color>
     <color name="colorTurquoise3">#996692E4</color>
     <color name="colorBordo">#BD4F59</color>
-    <color name="colorTurquoise2">#9DC3E6</color>
 
 </resources>
