@@ -665,10 +665,11 @@ public class LevelSelectActivity extends AppCompatActivity {
         saveLockUnlock();
     }
 
-
-
-
-
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+    }
 
     private void saveLockUnlock()
     {
