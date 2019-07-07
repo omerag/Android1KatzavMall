@@ -369,6 +369,10 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     private synchronized void createFood(){
 
 
+        System.out.println("shopping list size: " + container.getShoppingList().size());
+        System.out.println("forbidden list size: " + container.getFoodList().size());
+
+
         shopCounter--;
         if (shopCounter < 1){
             shopCounter = shopCounterReset;
@@ -583,6 +587,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
                 @Override
                 public void onClick(View view) {
                     if (isMusic)level_sound_player.start();
+                    cleanLevel();
                     resetLevel();
                     dialog.dismiss();
                 }

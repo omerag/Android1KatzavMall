@@ -5,14 +5,14 @@ import java.util.List;
 
 public class FoodContainer {
     private List<FoodObject> foodList = new ArrayList<>();
-    private List<FoodType> ForbiddenList = new ArrayList<>();
-    private List<FoodType> ShoppingList = new ArrayList<>();
-    private List<FoodType> StaticShoppingList = new ArrayList<>();
+    private List<FoodType> forbiddenList = new ArrayList<>();
+    private List<FoodType> shoppingList = new ArrayList<>();
+    private List<FoodType> staticShoppingList = new ArrayList<>();
 
     public FoodContainer(List<FoodType> ShoppingList, List<FoodType> ForbiddenList){
-        this.ShoppingList.addAll(ShoppingList);
-        this.ForbiddenList.addAll(ForbiddenList);
-        this.StaticShoppingList.addAll(ShoppingList);
+        this.shoppingList.addAll(ShoppingList);
+        this.forbiddenList.addAll(ForbiddenList);
+        this.staticShoppingList.addAll(ShoppingList);
     }
 
     public  void addFood(FoodObject food){
@@ -28,19 +28,20 @@ public class FoodContainer {
     }
 
     public List<FoodType> getStaticShoppingList() {
-        return StaticShoppingList;
+        return staticShoppingList;
     }
 
     public List<FoodType> getShoppingList() {
-        return ShoppingList;
+        return shoppingList;
     }
 
     public List<FoodType> getForbiddenList() {
-        return ForbiddenList;
+        return forbiddenList;
     }
 
     public void resetShoppingList(){
-        this.ShoppingList.addAll(StaticShoppingList);
+        shoppingList.clear();
+        this.shoppingList.addAll(staticShoppingList);
     }
 
 
