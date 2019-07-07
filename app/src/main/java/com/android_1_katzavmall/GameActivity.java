@@ -117,6 +117,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
     private List<FoodType> shoppingList;
     private List<Integer> shoppingListCounts;
+    ArrayList<Boolean> lockBoolArray ;
 
     private int[] foodStatusArray = {R.id.foodStatus0, R.id.foodStatus1, R.id.foodStatus2, R.id.foodStatus3,
             R.id.foodStatus4, R.id.foodStatus5, R.id.foodStatus6, R.id.foodStatus7};
@@ -485,6 +486,11 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
         cleanLevel();
         startFlag = false;
+
+        loadLockUnlock();
+        int level_number = getIntent().getIntExtra("level_number",0);
+        if (level_number != 7) lockBoolArray.set(level_number+1,true);
+        saveLockUnlock();
 
         if (isNewHighScore(score))
         {
@@ -1042,6 +1048,25 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
         dialog.show();
 
+    }
+
+    private void loadLockUnlock()
+    {
+        SharedPreferences sp = getSharedPreferences("sp",MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = sp.getString("LockUnlock",null);
+        Type type = new TypeToken<List<Boolean>>() {}.getType();
+        lockBoolArray = gson.fromJson(json,type);
+    }
+
+    private void saveLockUnlock()
+    {
+        SharedPreferences sp = getSharedPreferences("sp",MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(lockBoolArray);
+        editor.putString("LockUnlock",json);
+        editor.apply();
     }
 }
 

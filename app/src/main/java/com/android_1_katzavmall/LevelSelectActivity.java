@@ -81,6 +81,7 @@ public class LevelSelectActivity extends AppCompatActivity {
     HomeWatcher mHomeWatcher;
     SharedPreferences sp;
     boolean isMusic;
+    ArrayList<Boolean> lockBoolArray ;
 
 
     @Override
@@ -244,13 +245,12 @@ public class LevelSelectActivity extends AppCompatActivity {
                 difficulty = 3;
             }
 
-            int levelBackground = 0;
-
 
             ArrayList<FoodType> shoppingList = new ArrayList<>();
             ArrayList<Integer> shoppingListCounts = new ArrayList<>();
             ArrayList<FoodType> forbiddenList = new ArrayList<>();
             int level_img_id = 0;
+            int level_num = 0;
 
 
             switch (view.getId()){
@@ -283,7 +283,7 @@ public class LevelSelectActivity extends AppCompatActivity {
 
 
                     level_img_id = R.drawable.milk;
-                    levelBackground = R.drawable.game_background1;
+                    level_num = 0;
                     break;
 
                 case R.id.meat_layout:
@@ -315,7 +315,7 @@ public class LevelSelectActivity extends AppCompatActivity {
 
 
                     level_img_id = R.drawable.meat;
-                    levelBackground = R.drawable.game_background2;
+                    level_num = 1;
 
                     break;
 
@@ -348,7 +348,8 @@ public class LevelSelectActivity extends AppCompatActivity {
 
 
                     level_img_id = R.drawable.vegetarian;
-                    levelBackground = R.drawable.game_background3;
+                    level_num = 2;
+
                     break;
 
                 case R.id.bakery_layout:
@@ -380,7 +381,8 @@ public class LevelSelectActivity extends AppCompatActivity {
 
 
                     level_img_id = R.drawable.bakery;
-                    levelBackground = R.drawable.game_background4;
+                    level_num = 3;
+
                     break;
 
                 case R.id.breakfast_layout:
@@ -413,7 +415,8 @@ public class LevelSelectActivity extends AppCompatActivity {
 
 
                     level_img_id = R.drawable.breakfast;
-                    levelBackground = R.drawable.game_background5;
+                    level_num = 4;
+
                     break;
 
                 case R.id.lunch_layout:
@@ -446,7 +449,8 @@ public class LevelSelectActivity extends AppCompatActivity {
                     forbiddenList.add(FoodType.BAGUETTE);
 
                     level_img_id = R.drawable.lunch;
-                    levelBackground = R.drawable.game_background6;
+                    level_num = 5;
+
                     break;
 
                 case R.id.rosh_hashana_layout:
@@ -483,7 +487,8 @@ public class LevelSelectActivity extends AppCompatActivity {
                     forbiddenList.add(FoodType.WATERMELON);
 
                     level_img_id = R.drawable.rosh_hashana;
-                    levelBackground = R.drawable.game_background7;
+                    level_num = 6;
+
                     break;
 
                 case R.id.passover_layout:
@@ -520,7 +525,8 @@ public class LevelSelectActivity extends AppCompatActivity {
                     forbiddenList.add(FoodType.BAGEL);
 
                     level_img_id = R.drawable.passover;
-                    levelBackground = R.drawable.game_background8;
+                    level_num = 7;
+
                     break;
 
                 case R.id.custom_layout:
@@ -541,7 +547,7 @@ public class LevelSelectActivity extends AppCompatActivity {
             levelIntent.putExtra("shoppingListCounts",shoppingListCounts);
             levelIntent.putExtra("forbiddenList",forbiddenList);
             levelIntent.putExtra("level_img",level_img_id);
-            levelIntent.putExtra("background",levelBackground);
+            levelIntent.putExtra("level_number",level_num);
             mServ.pauseMusic();
             mHomeWatcher.stopWatch();
             startActivity(levelIntent);
@@ -583,6 +589,7 @@ public class LevelSelectActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
+        loadLockUnlock();
         if (mServ != null && isMusic) {
             mHomeWatcher.startWatch();
             mServ.resumeMusic();
@@ -662,12 +669,12 @@ public class LevelSelectActivity extends AppCompatActivity {
         int[] lockArray = {0,R.id.meat_lock,R.id.vegetarian_lock,R.id.bakery_lock,R.id.breakfast_lock,
                             R.id.lunch_lock,R.id.rosh_hashana_lock,R.id.passover_lock};
 
-        boolean[] lockBoolArray ;//= sp.getBoolean();
+        loadLockUnlock();
         for(int i = 1; i < levelArray.length; i++){
             LinearLayout level = findViewById(levelArray[i]);
             ImageView lockImage = findViewById(lockArray[i]);
 
-            if(lockBoolArray[i]){
+            if(lockBoolArray.get(i)){
                 level.setEnabled(true);
                 lockImage.setVisibility(View.INVISIBLE);
             }
@@ -676,8 +683,35 @@ public class LevelSelectActivity extends AppCompatActivity {
                 lockImage.setVisibility(View.VISIBLE);
             }
         }
-
-
     }
 
+    private void loadLockUnlock()
+    {
+        SharedPreferences sp = getSharedPreferences("sp",MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = sp.getString("LockUnlock",null);
+        Type type = new TypeToken<List<Boolean>>() {}.getType();
+        lockBoolArray = gson.fromJson(json,type);
+
+        if (lockBoolArray == null)
+        {
+            lockBoolArray = new ArrayList<>();
+            lockBoolArray.add(0,true);
+            for (int i = 1; i < 8; i++)
+            {
+                lockBoolArray.add(i,false);
+            }
+        }
+        saveLockUnlock();
+    }
+
+    private void saveLockUnlock()
+    {
+        SharedPreferences sp = getSharedPreferences("sp",MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(lockBoolArray);
+        editor.putString("LockUnlock",json);
+        editor.apply();
+    }
 }
