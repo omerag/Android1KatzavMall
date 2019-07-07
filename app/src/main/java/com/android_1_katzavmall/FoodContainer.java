@@ -44,8 +44,6 @@ public class FoodContainer {
         this.shoppingList.addAll(staticShoppingList);
     }
 
-
-
     public int getFoodTypeDrawable(FoodType foodType){
 
         switch (foodType){
