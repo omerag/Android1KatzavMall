@@ -34,6 +34,7 @@ import androidx.appcompat.view.menu.MenuPopupHelper;
 import androidx.core.content.res.ResourcesCompat;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 public class LevelSelectActivity extends AppCompatActivity {

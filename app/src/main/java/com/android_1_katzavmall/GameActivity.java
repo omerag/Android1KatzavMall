@@ -68,6 +68,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     private MediaPlayer winner_sound_player;
     private MediaPlayer looser_sound_player;
     private MediaPlayer level_sound_player;
+    private MediaPlayer bonus_sound_player;
     boolean isMusic;
     boolean isSounds;
 
@@ -143,6 +144,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
         winner_sound_player = MediaPlayer.create(this, R.raw.winner);
         looser_sound_player = MediaPlayer.create(this, R.raw.looser);
+        bonus_sound_player = MediaPlayer.create(this,R.raw.bonus_sound);
 
         sp = getSharedPreferences("sp", MODE_PRIVATE);
         isMusic = sp.getBoolean("music", true);
@@ -447,6 +449,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
     private void startBonus(){
 
+        bonus_sound_player.start();
         isBonusStated = true;
         shopCounter = 30;
         shopCounterReset = shopCounter;
