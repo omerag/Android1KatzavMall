@@ -21,11 +21,12 @@
 
     <ImageView
         android:id="@+id/how_to_play_img"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="550dp"
         android:layout_gravity="center"
         android:padding="10dp"
         android:layout_marginTop="15dp"
+        android:src="@drawable/how_to_play_heb"
         />
 
     <Button

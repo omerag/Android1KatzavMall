@@ -205,8 +205,8 @@ public class MainActivity extends AppCompatActivity {
                 final View dialogView = getLayoutInflater().inflate(R.layout.how_to_play_dialog, null);
 
                 TextView how_to_play_tv = dialogView.findViewById(R.id.how_to_play_tv);
-                TextView how_to_play_img = dialogView.findViewById(R.id.how_to_play_img);
-                TextView back_btn = dialogView.findViewById(R.id.back_btn);
+                ImageView how_to_play_img = dialogView.findViewById(R.id.how_to_play_img);
+                Button back_btn = dialogView.findViewById(R.id.back_btn);
 
 
                 // ZoomIn/Out animation:
