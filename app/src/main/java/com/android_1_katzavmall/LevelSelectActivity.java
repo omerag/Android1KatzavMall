@@ -521,6 +521,7 @@ public class LevelSelectActivity extends AppCompatActivity {
             levelIntent.putExtra("forbiddenList",forbiddenList);
             levelIntent.putExtra("level_img",level_img_id);
             mServ.pauseMusic();
+            mHomeWatcher.stopWatch();
             startActivity(levelIntent);
 
         }
@@ -561,8 +562,12 @@ public class LevelSelectActivity extends AppCompatActivity {
         super.onResume();
 
         if (mServ != null && isMusic) {
+            mHomeWatcher.startWatch();
             mServ.resumeMusic();
+
         }
+
+
 
     }
 

@@ -490,6 +490,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
 
         if (mServ != null && isMusic) {
+            mHomeWatcher.startWatch();
             mServ.resumeMusic();
         }
     }
