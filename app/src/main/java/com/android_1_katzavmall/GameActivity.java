@@ -120,7 +120,8 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     private int[] foodStatusArray = {R.id.foodStatus0, R.id.foodStatus1, R.id.foodStatus2, R.id.foodStatus3,
             R.id.foodStatus4, R.id.foodStatus5, R.id.foodStatus6, R.id.foodStatus7};
 
-    private long diffultyFoodVel = 4000;
+    private long difficultyFoodVel = 4000;
+    private long difficultyFoodVelReset = difficultyFoodVel;
     private boolean controlSensor;
     private int scoreMultiplier = 1;
 
@@ -321,6 +322,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
                         //if we took food is in our shopping list
                         if(container.getShoppingList().contains(foodObject.getType())){
                             score = score + 10*scoreMultiplier;
+                            difficultyFoodVel = difficultyFoodVel - 10;
                             if (isSounds) cart.playGoodSound();
                             cart.animateCoach();
                             updateFoodStatus(foodObject.getType());
@@ -360,7 +362,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             }
             else if(false &&!foodObject.isAnimated()){
                 ObjectAnimator animation = ObjectAnimator.ofFloat(foodObject, "translationY", screenHeight);
-                animation.setDuration(diffultyFoodVel);
+                animation.setDuration(difficultyFoodVel);
                 animation.setInterpolator(new AccelerateInterpolator());
                 foodObject.setAnimated(true);
 
@@ -372,9 +374,6 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
     private synchronized void createFood(){
 
-
-        System.out.println("shopping list size: " + container.getShoppingList().size());
-        System.out.println("forbidden list size: " + container.getFoodList().size());
 
 
         shopCounter--;
@@ -398,7 +397,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
                         int pick = rand.nextInt(size);
 
                         int x = ((rand.nextInt(100)*10 + 40) % (screenWidth - cart.getWidth())); //new food wont be too close to each other
-                        factory.addFood(x,container.getShoppingList().get(pick),diffultyFoodVel);
+                        factory.addFood(x,container.getShoppingList().get(pick), difficultyFoodVel);
                     }
                 });
             }
@@ -414,7 +413,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
                         int pick = rand.nextInt(container.getForbiddenList().size());
 
                         int x = ((rand.nextInt(100)*10 + 40) % (screenWidth - cart.getWidth()));
-                        factory.addFood(x,container.getForbiddenList().get(pick),diffultyFoodVel);
+                        factory.addFood(x,container.getForbiddenList().get(pick), difficultyFoodVel);
                     }
                 });
             }
@@ -424,8 +423,8 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         if(isBonusStated && bonusCounter > 0){
             bonusCounter--;
         }
-        else if(bonusCounter < 1 && !bonusFoodMissed && diffultyFoodVel > 1000  && shopCounter < 2){
-            diffultyFoodVel = diffultyFoodVel - (long)50;
+        else if(bonusCounter < 1 && !bonusFoodMissed && difficultyFoodVel > 1000  && shopCounter < 2){
+            difficultyFoodVel = difficultyFoodVel - (long)50;
         }
         else if(bonusCounter < 1 && bonusFoodMissed){
             endBonus();
@@ -835,6 +834,8 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         scoreTV.setText("" + score);
         startLabel.setVisibility(View.GONE);
 
+        difficultyFoodVel = difficultyFoodVelReset;
+
         bonusCounter = bonusCounterReset;
 
         setShoppingListLayout(shoppingList,shoppingListCounts);
@@ -929,7 +930,8 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             shopCounterReset = shopCounter;
             bonusCounter = 1000;
             bonusCounterReset = bonusCounter;
-            diffultyFoodVel = 3000;
+            difficultyFoodVel = 3000;
+            difficultyFoodVelReset = difficultyFoodVel;
         }
         else if (difficultyStr.equalsIgnoreCase(getString(R.string.difficulty3))){
             scoreMultiplier = 3;
@@ -937,7 +939,8 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             shopCounterReset = shopCounter;
             bonusCounter = 1500;
             bonusCounterReset = bonusCounter;
-            diffultyFoodVel = 2000;
+            difficultyFoodVel = 2000;
+            difficultyFoodVelReset = difficultyFoodVel;
         }
 
     }
