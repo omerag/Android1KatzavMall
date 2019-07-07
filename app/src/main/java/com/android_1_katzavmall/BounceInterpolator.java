@@ -4,12 +4,12 @@ import android.view.animation.Interpolator;
 
 public class BounceInterpolator implements Interpolator {
 
-    private double myAmplitude = 0.5;
-    private double myFrequancy = 10;
+    double myAmplitude;
+    double myFrequancy;
 
     BounceInterpolator(double amplitude, double frequancy){
-        amplitude = myAmplitude;
-        frequancy = myFrequancy;
+        myAmplitude = amplitude;
+        myFrequancy = frequancy;
     }
     @Override
     public float getInterpolation(float time) {
