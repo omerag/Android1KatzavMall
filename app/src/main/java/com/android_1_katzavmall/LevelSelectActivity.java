@@ -44,7 +44,7 @@ public class LevelSelectActivity extends AppCompatActivity {
     private LinearLayout milkLayout;
     private LinearLayout meatLayout;
     private LinearLayout vegetarianLayout;
-    private LinearLayout backeryLayout;
+    private LinearLayout bakeryLayout;
     private LinearLayout breakfastLayout;
     private LinearLayout lunchLayout;
     private LinearLayout roshHashanaLayout;
@@ -54,7 +54,7 @@ public class LevelSelectActivity extends AppCompatActivity {
     private TextView milkTV;
     private TextView meatTV;
     private TextView vegetarianTV;
-    private TextView backeryTV;
+    private TextView bakeryTV;
     private TextView breakfastTV;
     private TextView lunchTV;
     private TextView roshHashanaTV;
@@ -63,11 +63,15 @@ public class LevelSelectActivity extends AppCompatActivity {
 
     private String shoppingListName;
 
+    private ImageView meatLock;
+    private ImageView vegetarianLock;
+    private ImageView bakeryLock;
     private ImageView breakfastLock;
     private ImageView lunchLock;
     private ImageView roshHashanaLock;
     private ImageView passoverLock;
     private ImageView customLock;
+
 
     Button selectCustomDialogBtn;
     HomeWatcher mHomeWatcher;
@@ -115,7 +119,7 @@ public class LevelSelectActivity extends AppCompatActivity {
         milkLayout = findViewById(R.id.milk_layout);
         meatLayout = findViewById(R.id.meat_layout);
         vegetarianLayout = findViewById(R.id.vegetarian_layout);
-        backeryLayout = findViewById(R.id.backery_layout);
+        bakeryLayout = findViewById(R.id.bakery_layout);
         breakfastLayout = findViewById(R.id.breakfast_layout);
         lunchLayout = findViewById(R.id.lunch_layout);
         roshHashanaLayout = findViewById(R.id.rosh_hashana_layout);
@@ -125,13 +129,17 @@ public class LevelSelectActivity extends AppCompatActivity {
         milkTV = findViewById(R.id.milk_tv);
         meatTV = findViewById(R.id.meat_tv);
         vegetarianTV = findViewById(R.id.vegetarian_tv);
-        backeryTV = findViewById(R.id.bakery_tv);
+        bakeryTV = findViewById(R.id.bakery_tv);
         breakfastTV = findViewById(R.id.breakfast_tv);
         lunchTV = findViewById(R.id.lunch_tv);
         roshHashanaTV = findViewById(R.id.rosh_hashana_tv);
         passoverTV = findViewById(R.id.passover_tv);
         customChoiceTV = findViewById(R.id.custom_tv);
 
+
+        meatLock = findViewById(R.id.meat_lock);
+        vegetarianLock = findViewById(R.id.vegetarian_lock);
+        bakeryLock = findViewById(R.id.bakery_lock);
         breakfastLock = findViewById(R.id.breakfast_lock);
         lunchLock = findViewById(R.id.lunch_lock);
         roshHashanaLock = findViewById(R.id.rosh_hashana_lock);
@@ -141,7 +149,7 @@ public class LevelSelectActivity extends AppCompatActivity {
         milkLayout.setOnClickListener(new selectLevelListener());
         meatLayout.setOnClickListener(new selectLevelListener());
         vegetarianLayout.setOnClickListener(new selectLevelListener());
-        backeryLayout.setOnClickListener(new selectLevelListener());
+        bakeryLayout.setOnClickListener(new selectLevelListener());
         breakfastLayout.setOnClickListener(new selectLevelListener());
         lunchLayout.setOnClickListener(new selectLevelListener());
         roshHashanaLayout.setOnClickListener(new selectLevelListener());
@@ -183,7 +191,7 @@ public class LevelSelectActivity extends AppCompatActivity {
             milkTV.setTypeface(typeface2);
             meatTV.setTypeface(typeface2);
             vegetarianTV.setTypeface(typeface2);
-            backeryTV.setTypeface(typeface2);
+            bakeryTV.setTypeface(typeface2);
             breakfastTV.setTypeface(typeface2);
             lunchTV.setTypeface(typeface2);
             roshHashanaTV.setTypeface(typeface2);
@@ -195,8 +203,11 @@ public class LevelSelectActivity extends AppCompatActivity {
         final Animation zoomBtnAnimation = AnimationUtils.loadAnimation(this, R.anim.level_slct_btns_anim);
         milkLayout.startAnimation(zoomBtnAnimation);
         meatLayout.startAnimation(zoomBtnAnimation);
+        meatLock.startAnimation(zoomBtnAnimation);
         vegetarianLayout.startAnimation(zoomBtnAnimation);
-        backeryLayout.startAnimation(zoomBtnAnimation);
+        vegetarianLock.startAnimation(zoomBtnAnimation);
+        bakeryLayout.startAnimation(zoomBtnAnimation);
+        bakeryLock.startAnimation(zoomBtnAnimation);
         breakfastLayout.startAnimation(zoomBtnAnimation);
         breakfastLock.startAnimation(zoomBtnAnimation);
         lunchLayout.startAnimation(zoomBtnAnimation);
@@ -331,8 +342,8 @@ public class LevelSelectActivity extends AppCompatActivity {
 
                     break;
 
-                case R.id.backery_layout:
-                    shoppingListName = backeryTV.getText().toString();
+                case R.id.bakery_layout:
+                    shoppingListName = bakeryTV.getText().toString();
 
                     shoppingList.add(FoodType.BAGEL);
                     shoppingListCounts.add(8*difficulty);

@@ -102,6 +102,14 @@
 
                 </LinearLayout>
 
+                <ImageView
+                    android:id="@+id/meat_lock"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/lock2"
+                    />
+
             </RelativeLayout>
 
             <RelativeLayout
@@ -120,7 +128,7 @@
                     android:layout_height="140dp"
                     android:layout_alignParentStart="true"
                     android:layout_marginEnd="4dp"
-                    android:layout_toStartOf="@+id/backery_layout"
+                    android:layout_toStartOf="@+id/bakery_layout"
                     android:background="@drawable/vegetarian_btn_shape"
                     android:clickable="true">
 
@@ -141,8 +149,9 @@
 
                 </LinearLayout>
 
+
                 <LinearLayout
-                    android:id="@+id/backery_layout"
+                    android:id="@+id/bakery_layout"
                     android:layout_width="140dp"
                     android:layout_height="140dp"
                     android:layout_alignParentEnd="true"
@@ -159,11 +168,28 @@
                         android:textSize="17sp"
                         android:textColor="@color/colorWhite"
                         android:textStyle="bold"
-                        android:text="@string/backery_str"
+                        android:text="@string/bakery_str"
                         android:fontFamily="@font/kapow"
                         />
-
                 </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/bakery_lock"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/lock2"
+                    />
+
+                <ImageView
+                    android:id="@+id/vegetarian_lock"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:layout_alignParentStart="true"
+                    android:src="@drawable/lock2"
+                    />
+
+
 
             </RelativeLayout>
             <RelativeLayout

@@ -5,7 +5,7 @@
     <string name="meat_str">Meat</string>
     <string name="milk_str">Milk</string>
     <string name="vegetarian_str">Vegetarian</string>
-    <string name="backery_str">Backery</string>
+    <string name="bakery_str">Bakery</string>
     <string name="breakfast_str">Breakfast</string>
     <string name="lunch_str">Lunch</string>
     <string name="rosh_hashana_str">Rosh Hashana</string>
@@ -26,7 +26,7 @@
     <string name="cancel_btn">Cancel</string>
     <string name="editext_hint">Enter your name</string>
     <string name="winner_str3">You won!</string>
-    <string name="winner_str4">Want to break a record ?</string>
+    <string name="winner_str4">Want to break a record</string>
     <string name="difficulty1">Easy</string>
     <string name="difficulty2">Medium</string>
     <string name="difficulty3">Hard</string>
@@ -44,7 +44,7 @@
     <string name="select">Select</string>
     <string name="quantity">quantity</string>
     <string name="play">Play</string>
-    <string name="exit_dialog">Are you sure you\n  want to leave?</string>
+    <string name="exit_dialog">Are you sure you\n  want to leave</string>
     <string name="resume_game">Continue</string>
     <string name="bonus">Bonus!!</string>
     <string name="collect_all">Collect All</string>

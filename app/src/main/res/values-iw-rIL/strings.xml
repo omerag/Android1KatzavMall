@@ -3,7 +3,7 @@
     <string name="app_name">Android1_Final_Project</string>
     <string name="score">"ניקוד: "</string>
     <string name="meal">לאיזו ארוחה נערכים הפעם?</string>
-    <string name="backery_str">מאפים</string>
+    <string name="bakery_str">מאפים</string>
     <string name="breakfast_str">ארוחת בוקר</string>
     <string name="custom_list_str">בהתאמה אישית</string>
     <string name="lunch_str">ארוחת צהריים</string>
@@ -27,7 +27,7 @@
     <string name="cancel_btn">ביטול</string>
     <string name="editext_hint">הכנס שם</string>
     <string name="winner_str3">ניצחת!</string>
-    <string name="winner_str4">מעוניין לשבור שיא ?</string>
+    <string name="winner_str4">מעוניין לשבור שיא</string>
     <string name="difficulty1">קל</string>
     <string name="difficulty2">בינוני</string>
     <string name="difficulty3">קשה</string>
@@ -45,7 +45,7 @@
     <string name="select">בחר</string>
     <string name="quantity">כמות</string>
     <string name="play">שחק</string>
-    <string name="exit_dialog">האם אתה בטוח \nשברצונך לצאת?</string>
+    <string name="exit_dialog">האם אתה בטוח \nשברצונך לצאת</string>
     <string name="resume_game">המשך</string>
     <string name="bonus">שלב בונוס!!</string>
     <string name="collect_all">אסוף הכל</string>
