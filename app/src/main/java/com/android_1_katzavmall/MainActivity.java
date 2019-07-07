@@ -198,6 +198,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        howToPlayBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final AlertDialog dialog = new AlertDialog.Builder(MainActivity.this).create();
+                final View dialogView = getLayoutInflater().inflate(R.layout.how_to_play_dialog, null);
+
+
+            }
+        });
+
         settingsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

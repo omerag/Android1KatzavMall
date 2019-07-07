@@ -1,6 +1,5 @@
 package com.android_1_katzavmall;
 
-import android.annotation.SuppressLint;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -12,16 +11,11 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.PowerManager;
-import android.view.ContextThemeWrapper;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
@@ -29,8 +23,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.view.menu.MenuBuilder;
-import androidx.appcompat.view.menu.MenuPopupHelper;
 import androidx.core.content.res.ResourcesCompat;
 
 import com.google.gson.Gson;
@@ -165,7 +157,7 @@ public class LevelSelectActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 final AlertDialog dialog = new AlertDialog.Builder(LevelSelectActivity.this).create();
-                final View dialogView = getLayoutInflater().inflate(R.layout.custom_game_dialog, null);
+                final View dialogView = getLayoutInflater().inflate(R.layout.how_to_play_dialog, null);
 
                 Button selectCustomDialogBtn = dialogView.findViewById(R.id.select_btn);
                 selectCustomDialogBtn.setOnClickListener(new View.OnClickListener() {
