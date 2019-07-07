@@ -160,11 +160,12 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
         // font
         if (Locale.getDefault().toString().equals("iw_IL")) {
-            Typeface typeface1 = ResourcesCompat.getFont(this, R.font.abraham);
+            Typeface typeface1 = ResourcesCompat.getFont(this, R.font.koby);
             levelName.setTypeface(typeface1);
             startLabel.setTypeface(typeface1);
-            scoreLabel.setTypeface(typeface1);
-            scoreTV.setTypeface(typeface1);
+            Typeface typeface2 = ResourcesCompat.getFont(this, R.font.abraham);
+            scoreLabel.setTypeface(typeface2);
+            scoreTV.setTypeface(typeface2);
         }
 
         // groceries list animation
@@ -499,7 +500,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
             // font
             if (Locale.getDefault().toString().equals("iw_IL")) {
-                Typeface typeface1 = ResourcesCompat.getFont(this, R.font.abraham);
+                Typeface typeface1 = ResourcesCompat.getFont(this, R.font.koby);
                 congratulations_tv.setTypeface(typeface1);
                 new_record_tv.setTypeface(typeface1);
                 nameEt.setTypeface(typeface1);
@@ -540,7 +541,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
                 @Override
                 public void onClick(View view) {
 
-                    Intent intent = new Intent(GameActivity.this, MainActivity.class);
+                    Intent intent = new Intent(GameActivity.this, LevelSelectActivity.class);
                     startActivity(intent);
                     finish();
                 }
@@ -563,23 +564,23 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             TextView you_won_tv = dialogView.findViewById(R.id.you_won_tv);
             TextView want_record_tv = dialogView.findViewById(R.id.want_record_tv);
             Button playAgainBtn = dialogView.findViewById(R.id.btn_play_again);
-            Button homeBtn = dialogView.findViewById(R.id.btn_home);
+            Button back_btn = dialogView.findViewById(R.id.back_btn);
 
 
             // font
             if (Locale.getDefault().toString().equals("iw_IL")) {
-                Typeface typeface1 = ResourcesCompat.getFont(this, R.font.abraham);
+                Typeface typeface1 = ResourcesCompat.getFont(this, R.font.koby);
                 you_won_tv.setTypeface(typeface1);
                 want_record_tv.setTypeface(typeface1);
                 Typeface typeface2 = ResourcesCompat.getFont(this, R.font.abraham);
                 playAgainBtn.setTypeface(typeface2);
-                homeBtn.setTypeface(typeface2);
+                back_btn.setTypeface(typeface2);
             }
 
             // ZoomIn/Out animation:
             final Animation zoomBtnAnimation = AnimationUtils.loadAnimation(this, R.anim.dlg_btns_anim);
             playAgainBtn.startAnimation(zoomBtnAnimation);
-            homeBtn.startAnimation(zoomBtnAnimation);
+            back_btn.startAnimation(zoomBtnAnimation);
 
 
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -596,10 +597,10 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
                 }
             });
 
-            homeBtn.setOnClickListener(new View.OnClickListener() {
+            back_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(GameActivity.this,MainActivity.class);
+                    Intent intent = new Intent(GameActivity.this,LevelSelectActivity.class);
                     startActivity(intent);
                     finish();
                 }
@@ -723,31 +724,31 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             looser_sound_player.start();
 
             TextView game_over_tv = dialogView.findViewById(R.id.game_over_tv);
-            Button homeBtn = dialogView.findViewById(R.id.home_btn);
+            Button cancel_btn = dialogView.findViewById(R.id.cancelBtn);
             Button playAgainBtn = dialogView.findViewById(R.id.play_again_btn);
 
             // font
             if (Locale.getDefault().toString().equals("iw_IL")) {
-                Typeface typeface1 = ResourcesCompat.getFont(this, R.font.abraham);
+                Typeface typeface1 = ResourcesCompat.getFont(this, R.font.koby);
                 game_over_tv.setTypeface(typeface1);
                 Typeface typeface2 = ResourcesCompat.getFont(this, R.font.abraham);
-                homeBtn.setTypeface(typeface2);
+                cancel_btn.setTypeface(typeface2);
                 playAgainBtn.setTypeface(typeface2);
             }
 
             // ZoomIn/Out animation:
             final Animation zoomBtnAnimation = AnimationUtils.loadAnimation(this, R.anim.dlg_btns_anim);
-            homeBtn.startAnimation(zoomBtnAnimation);
+            cancel_btn.startAnimation(zoomBtnAnimation);
             playAgainBtn.startAnimation(zoomBtnAnimation);
 
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             dialog.setView(dialogView);
             dialog.setCanceledOnTouchOutside(false);
 
-            homeBtn.setOnClickListener(new View.OnClickListener() {
+            cancel_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(GameActivity.this,MainActivity.class);
+                    Intent intent = new Intent(GameActivity.this, LevelSelectActivity.class);
                     startActivity(intent);
                     finish();
                 }
@@ -991,21 +992,21 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         final View dialogView = getLayoutInflater().inflate(R.layout.exit_dialog, null);
 
         TextView exit_tv = dialogView.findViewById(R.id.exit_tv);
-        Button homeBtn = dialogView.findViewById(R.id.back_to_home_btn);
+        Button finish_btn = dialogView.findViewById(R.id.finish_btn);
         Button continueBtn = dialogView.findViewById(R.id.continue_btn);
 
         // font
         if (Locale.getDefault().toString().equals("iw_IL")) {
-            Typeface typeface1 = ResourcesCompat.getFont(this, R.font.abraham);
+            Typeface typeface1 = ResourcesCompat.getFont(this, R.font.koby);
             exit_tv.setTypeface(typeface1);
             Typeface typeface2 = ResourcesCompat.getFont(this, R.font.abraham);
-            homeBtn.setTypeface(typeface2);
+            finish_btn.setTypeface(typeface2);
             continueBtn.setTypeface(typeface2);
         }
 
         // ZoomIn/Out animation:
         final Animation zoomBtnAnimation = AnimationUtils.loadAnimation(this, R.anim.dlg_btns_anim);
-        homeBtn.startAnimation(zoomBtnAnimation);
+        finish_btn.startAnimation(zoomBtnAnimation);
         continueBtn.startAnimation(zoomBtnAnimation);
 
 
@@ -1014,10 +1015,10 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         dialog.setCanceledOnTouchOutside(false);
 
 
-        homeBtn.setOnClickListener(new View.OnClickListener() {
+        finish_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(GameActivity.this,MainActivity.class);
+                Intent intent = new Intent(GameActivity.this, LevelSelectActivity.class);
                 startActivity(intent);
                 finish();
             }
