@@ -6,11 +6,13 @@
     android:layout_height="match_parent"
     android:background="@drawable/dialog_shape">
 
+
     <TextView
         android:id="@+id/exit_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/exit_dialog"
+        android:gravity="center"
         android:textSize="30sp"
         android:textStyle="bold"
         android:paddingHorizontal="5dp"
@@ -19,8 +21,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginVertical="20dp"/>
 
-
-    <LinearLayout
+       <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
