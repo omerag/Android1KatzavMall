@@ -681,7 +681,7 @@ public class LevelSelectActivity extends AppCompatActivity {
 
             if(lockBoolArray.get(i)){
                 level.setEnabled(true);
-                lockImage.setVisibility(View.INVISIBLE);
+                lockImage.setVisibility(View.GONE);
             }
             else{
                 level.setEnabled(false);
