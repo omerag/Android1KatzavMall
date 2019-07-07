@@ -1,5 +1,7 @@
 package com.android_1_katzavmall;
 
+import android.animation.ObjectAnimator;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +44,24 @@ public class FoodContainer {
     public void resetShoppingList(){
         shoppingList.clear();
         this.shoppingList.addAll(staticShoppingList);
+    }
+
+    public void puaseFoodAnimation(){
+        for (FoodObject foodObject : foodList){
+            ObjectAnimator animator = foodObject.getObjectAnimator();
+            if(animator != null) {
+                animator.pause();
+            }
+        }
+    }
+
+    public void resumeFoodAnimation(){
+        for (FoodObject foodObject : foodList){
+            ObjectAnimator animator = foodObject.getObjectAnimator();
+            if(animator != null) {
+                animator.resume();
+            }
+        }
     }
 
     public int getFoodTypeDrawable(FoodType foodType){

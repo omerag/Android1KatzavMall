@@ -8,7 +8,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.graphics.Interpolator;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
@@ -190,7 +189,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         levelName.setText("" + shoppingListStr);
 
         container = new FoodContainer(shoppingList,forbiddenList);
-        factory = new FoodFactory(this,container,frame);
+        factory = new FoodFactory(this,container,frame,screenHeight);
 
         setShoppingListLayout(shoppingList,shoppingListCounts);
 
@@ -241,6 +240,8 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         super.onPause();
         startFlag = false;
         isResumed = true;
+
+        container.puaseFoodAnimation();
     }
 
     @Override
@@ -255,6 +256,8 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             startLabel.setVisibility(View.GONE);
             isResumed = false;
         }
+
+        container.resumeFoodAnimation();
 
     }
 
@@ -355,11 +358,12 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
                 });
 
             }
-            else if(!foodObject.isAnimated()){
+            else if(false &&!foodObject.isAnimated()){
                 ObjectAnimator animation = ObjectAnimator.ofFloat(foodObject, "translationY", screenHeight);
                 animation.setDuration(diffultyFoodVel);
                 animation.setInterpolator(new AccelerateInterpolator());
                 foodObject.setAnimated(true);
+
 
                 animation.start();
             }
@@ -394,7 +398,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
                         int pick = rand.nextInt(size);
 
                         int x = ((rand.nextInt(100)*10 + 40) % (screenWidth - cart.getWidth())); //new food wont be too close to each other
-                        factory.addFood(x,container.getShoppingList().get(pick));
+                        factory.addFood(x,container.getShoppingList().get(pick),diffultyFoodVel);
                     }
                 });
             }
@@ -410,7 +414,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
                         int pick = rand.nextInt(container.getForbiddenList().size());
 
                         int x = ((rand.nextInt(100)*10 + 40) % (screenWidth - cart.getWidth()));
-                        factory.addFood(x,container.getForbiddenList().get(pick));
+                        factory.addFood(x,container.getForbiddenList().get(pick),diffultyFoodVel);
                     }
                 });
             }

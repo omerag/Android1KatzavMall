@@ -9,15 +9,17 @@ public class FoodFactory {
     private Context context;
     private FoodContainer container;
     private FrameLayout frame;
-    FoodFactory(Context context, FoodContainer container , FrameLayout frame){
+    private int screenHight;
+    FoodFactory(Context context, FoodContainer container , FrameLayout frame,int screenHight){
         this.context = context;
         this.container = container;
         this.frame = frame;
+        this.screenHight = screenHight;
     }
 
-    public ImageView addFood(float x, FoodType foodType){
+    public ImageView addFood(float x, FoodType foodType,long diffultyFoodVel){
 
-        final FoodObject food = new FoodObject(context,foodType);
+        final FoodObject food = new FoodObject(context,foodType,diffultyFoodVel,screenHight);
 
         food.setImageResource(container.getFoodTypeDrawable(foodType));
 
@@ -28,8 +30,10 @@ public class FoodFactory {
 
         frame.addView(food);
         container.addFood(food);
+        food.startMoveAnimation();
 
         return food;
     }
+
 
 }
