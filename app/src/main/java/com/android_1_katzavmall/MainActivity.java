@@ -115,7 +115,6 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 Button play = findViewById(R.id.new_game_btn);
                 play.setVisibility(View.VISIBLE);
-                play.setEnabled(true);
                 play.startAnimation(slideRightBtns);
 
                 Handler highHandler = new Handler();
@@ -124,7 +123,6 @@ public class MainActivity extends AppCompatActivity {
                     public void run() {
                         Button high = findViewById(R.id.high_score_btn);
                         high.setVisibility(View.VISIBLE);
-                        high.setEnabled(true);
                         high.startAnimation(slideRightBtns);
 
 
@@ -134,7 +132,6 @@ public class MainActivity extends AppCompatActivity {
                             public void run() {
                                 Button how = findViewById(R.id.how_to_play_btn);
                                 how.setVisibility(View.VISIBLE);
-                                how.setEnabled(true);
                                 how.startAnimation(slideRightBtns);
 
 
@@ -145,8 +142,15 @@ public class MainActivity extends AppCompatActivity {
 
                                         Button settings = findViewById(R.id.settings_btn);
                                         settings.setVisibility(View.VISIBLE);
-                                        settings.setEnabled(true);
                                         settings.startAnimation(slideRightBtns);
+                                        settings.setEnabled(true);
+
+                                        Button play = findViewById(R.id.new_game_btn);
+                                        play.setEnabled(true);
+                                        Button high = findViewById(R.id.high_score_btn);
+                                        high.setEnabled(true);
+                                        Button how = findViewById(R.id.how_to_play_btn);
+                                        how.setEnabled(true);
 
                                     }
                                 }, 300);
