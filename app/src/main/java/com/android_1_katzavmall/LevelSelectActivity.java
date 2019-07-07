@@ -233,6 +233,7 @@ public class LevelSelectActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             Intent levelIntent = new Intent(LevelSelectActivity.this, GameActivity.class);
+            int background = 0;
 
             SharedPreferences sp = getSharedPreferences("sp", MODE_PRIVATE);
             String difficultyStr = sp.getString("difficulty","");
@@ -281,7 +282,7 @@ public class LevelSelectActivity extends AppCompatActivity {
                     forbiddenList.add(FoodType.PANCAKES);
                     forbiddenList.add(FoodType.BROCOLI);
 
-
+                    background = R.drawable.game_background1;
                     level_img_id = R.drawable.milk;
                     level_num = 0;
                     break;
@@ -313,7 +314,7 @@ public class LevelSelectActivity extends AppCompatActivity {
                     forbiddenList.add(FoodType.DANI);
                     forbiddenList.add(FoodType.ORANGE);
 
-
+                    background = R.drawable.game_background2;
                     level_img_id = R.drawable.meat;
                     level_num = 1;
 
@@ -346,7 +347,7 @@ public class LevelSelectActivity extends AppCompatActivity {
                     forbiddenList.add(FoodType.MILK);
                     forbiddenList.add(FoodType.BAGEL);
 
-
+                    background = R.drawable.game_background3;
                     level_img_id = R.drawable.vegetarian;
                     level_num = 2;
 
@@ -379,7 +380,7 @@ public class LevelSelectActivity extends AppCompatActivity {
                     forbiddenList.add(FoodType.SAUSAGE);
                     forbiddenList.add(FoodType.CUCAMBER);
 
-
+                    background = R.drawable.game_background4;
                     level_img_id = R.drawable.bakery;
                     level_num = 3;
 
@@ -413,7 +414,7 @@ public class LevelSelectActivity extends AppCompatActivity {
                     forbiddenList.add(FoodType.SAUSAGE);
 
 
-
+                    background = R.drawable.game_background5;
                     level_img_id = R.drawable.breakfast;
                     level_num = 4;
 
@@ -448,6 +449,7 @@ public class LevelSelectActivity extends AppCompatActivity {
                     forbiddenList.add(FoodType.PEANUTS);
                     forbiddenList.add(FoodType.BAGUETTE);
 
+                    background = R.drawable.game_background6;
                     level_img_id = R.drawable.lunch;
                     level_num = 5;
 
@@ -486,6 +488,7 @@ public class LevelSelectActivity extends AppCompatActivity {
                     forbiddenList.add(FoodType.BROCOLI);
                     forbiddenList.add(FoodType.WATERMELON);
 
+                    background = R.drawable.game_background7;
                     level_img_id = R.drawable.rosh_hashana;
                     level_num = 6;
 
@@ -524,6 +527,7 @@ public class LevelSelectActivity extends AppCompatActivity {
                     forbiddenList.add(FoodType.APPLE);
                     forbiddenList.add(FoodType.BAGEL);
 
+                    background = R.drawable.game_background8;
                     level_img_id = R.drawable.passover;
                     level_num = 7;
 
@@ -548,6 +552,7 @@ public class LevelSelectActivity extends AppCompatActivity {
             levelIntent.putExtra("forbiddenList",forbiddenList);
             levelIntent.putExtra("level_img",level_img_id);
             levelIntent.putExtra("level_number",level_num);
+            levelIntent.putExtra("background",background);
             mServ.pauseMusic();
             mHomeWatcher.stopWatch();
             startActivity(levelIntent);
@@ -704,6 +709,11 @@ public class LevelSelectActivity extends AppCompatActivity {
         }
         saveLockUnlock();
     }
+
+
+
+
+
 
     private void saveLockUnlock()
     {
