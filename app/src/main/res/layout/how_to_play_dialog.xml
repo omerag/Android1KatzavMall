@@ -17,15 +17,14 @@
         android:paddingHorizontal="5dp"
         android:textColor="@color/colorBlack"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="15dp"/>
 
     <ImageView
         android:id="@+id/how_to_play_img"
-        android:layout_width="300dp"
-        android:layout_height="550dp"
+        android:layout_width="210dp"
+        android:layout_height="380dp"
         android:layout_gravity="center"
-        android:padding="10dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginVertical="10dp"
         android:src="@drawable/how_to_play_heb"
         />
 
@@ -35,14 +34,12 @@
         android:layout_height="60dp"
         android:text="@string/back_btn"
         android:textAllCaps="false"
-        android:layout_gravity="center"
         android:gravity="center"
-        android:paddingHorizontal="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_gravity="center"
         android:background="@drawable/main_button_shape2"
         android:textColor="@color/colorBlack"
         android:textSize="17sp"
+        android:layout_marginBottom="15dp"
         android:fontFamily="@font/kapow"
         />
 
