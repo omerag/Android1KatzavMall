@@ -997,11 +997,13 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         dialog.setView(dialogView);
         dialog.setCanceledOnTouchOutside(false);
 
+
         homeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(GameActivity.this,MainActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -1015,6 +1017,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         });
 
         dialog.show();
+
     }
 }
 
