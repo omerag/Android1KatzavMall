@@ -449,7 +449,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
     private void startBonus(){
 
-        bonus_sound_player.start();
+        if (isSounds)bonus_sound_player.start();
         isBonusStated = true;
         shopCounter = 30;
         shopCounterReset = shopCounter;
