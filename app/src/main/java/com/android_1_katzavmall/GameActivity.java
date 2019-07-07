@@ -160,7 +160,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
         // font
         if (Locale.getDefault().toString().equals("iw_IL")) {
-            Typeface typeface1 = ResourcesCompat.getFont(this, R.font.koby);
+            Typeface typeface1 = ResourcesCompat.getFont(this, R.font.abraham);
             levelName.setTypeface(typeface1);
             startLabel.setTypeface(typeface1);
             scoreLabel.setTypeface(typeface1);
@@ -496,7 +496,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
             // font
             if (Locale.getDefault().toString().equals("iw_IL")) {
-                Typeface typeface1 = ResourcesCompat.getFont(this, R.font.koby);
+                Typeface typeface1 = ResourcesCompat.getFont(this, R.font.abraham);
                 congratulations_tv.setTypeface(typeface1);
                 new_record_tv.setTypeface(typeface1);
                 nameEt.setTypeface(typeface1);
@@ -565,7 +565,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
             // font
             if (Locale.getDefault().toString().equals("iw_IL")) {
-                Typeface typeface1 = ResourcesCompat.getFont(this, R.font.koby);
+                Typeface typeface1 = ResourcesCompat.getFont(this, R.font.abraham);
                 you_won_tv.setTypeface(typeface1);
                 want_record_tv.setTypeface(typeface1);
                 Typeface typeface2 = ResourcesCompat.getFont(this, R.font.abraham);
@@ -725,7 +725,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
             // font
             if (Locale.getDefault().toString().equals("iw_IL")) {
-                Typeface typeface1 = ResourcesCompat.getFont(this, R.font.koby);
+                Typeface typeface1 = ResourcesCompat.getFont(this, R.font.abraham);
                 game_over_tv.setTypeface(typeface1);
                 Typeface typeface2 = ResourcesCompat.getFont(this, R.font.abraham);
                 homeBtn.setTypeface(typeface2);
@@ -988,7 +988,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
         // font
         if (Locale.getDefault().toString().equals("iw_IL")) {
-            Typeface typeface1 = ResourcesCompat.getFont(this, R.font.koby);
+            Typeface typeface1 = ResourcesCompat.getFont(this, R.font.abraham);
             exit_tv.setTypeface(typeface1);
             Typeface typeface2 = ResourcesCompat.getFont(this, R.font.abraham);
             homeBtn.setTypeface(typeface2);
