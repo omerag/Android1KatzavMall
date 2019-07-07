@@ -1,5 +1,6 @@
 package com.android_1_katzavmall;
 
+import android.graphics.Typeface;
 import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +22,6 @@ public class HighScoreAdapter extends RecyclerView.Adapter<HighScoreAdapter.High
     }
 
 
-
     public class HighScoreViewHolder extends RecyclerView.ViewHolder{
 
         TextView rankTv;
@@ -37,6 +37,7 @@ public class HighScoreAdapter extends RecyclerView.Adapter<HighScoreAdapter.High
             difficultyTv = itemView.findViewById(R.id.difTv);
             nameTv = itemView.findViewById(R.id.nameTv);
             scoreTv = itemView.findViewById(R.id.high_score_tv);
+
         }
     }
 
