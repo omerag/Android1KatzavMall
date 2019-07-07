@@ -237,7 +237,7 @@ public class MainActivity extends AppCompatActivity {
 
                 //font
                 if (Locale.getDefault().toString().equals("iw_IL")) {
-                    Typeface typeface1 = ResourcesCompat.getFont(MainActivity.this, R.font.abraham);
+                    Typeface typeface1 = ResourcesCompat.getFont(MainActivity.this, R.font.koby);
                     settings_tv.setTypeface(typeface1);
                     difficulty_tv.setTypeface(typeface1);
                     easyBtn.setTypeface(typeface1);

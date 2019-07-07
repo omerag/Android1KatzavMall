@@ -26,7 +26,7 @@
     <string name="cancel_btn">Cancel</string>
     <string name="editext_hint">Enter your name</string>
     <string name="winner_str3">You won!</string>
-    <string name="winner_str4">Try to break a record:</string>
+    <string name="winner_str4">Want to break a record?</string>
     <string name="difficulty1">Easy</string>
     <string name="difficulty2">Medium</string>
     <string name="difficulty3">Hard</string>
@@ -40,7 +40,7 @@
     <string name="reset_score_toast">Table of records has been reset!</string>
     <string name="record_saved_toast">The record is saved!</string>
     <string name="back_btn">Back</string>
-    <string name="select_groceries">Select up to 8 groceries:</string>
+    <string name="finish_game">Finish game</string>
     <string name="select">Select</string>
     <string name="quantity">quantity</string>
     <string name="play">Play</string>
