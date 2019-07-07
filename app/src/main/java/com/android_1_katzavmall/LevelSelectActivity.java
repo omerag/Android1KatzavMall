@@ -237,10 +237,10 @@ public class LevelSelectActivity extends AppCompatActivity {
             String difficultyStr = sp.getString("difficulty","");
             int difficulty = 1;
 
-            if(difficultyStr.equalsIgnoreCase("medium")){
+            if(difficultyStr.equalsIgnoreCase(getString(R.string.difficulty2))){
                 difficulty = 2;
             }
-            else if (difficultyStr.equalsIgnoreCase("hard")){
+            else if (difficultyStr.equalsIgnoreCase(getString(R.string.difficulty3))){
                 difficulty = 3;
             }
 
