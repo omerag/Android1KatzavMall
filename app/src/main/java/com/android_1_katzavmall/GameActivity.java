@@ -35,6 +35,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -141,6 +142,11 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         levelName = findViewById(R.id.level_name_tv);
         cart = findViewById(R.id.cart);
         frame = findViewById(R.id.frame);
+
+
+        int background = getIntent().getIntExtra("background",0);
+        RelativeLayout relativeLayout = findViewById(R.id.gameLayout);
+        relativeLayout.setBackgroundResource(background);
 
         winner_sound_player = MediaPlayer.create(this, R.raw.winner);
         looser_sound_player = MediaPlayer.create(this, R.raw.looser);

@@ -244,6 +244,8 @@ public class LevelSelectActivity extends AppCompatActivity {
                 difficulty = 3;
             }
 
+            int levelBackground = 0;
+
 
             ArrayList<FoodType> shoppingList = new ArrayList<>();
             ArrayList<Integer> shoppingListCounts = new ArrayList<>();
@@ -281,6 +283,7 @@ public class LevelSelectActivity extends AppCompatActivity {
 
 
                     level_img_id = R.drawable.milk;
+                    levelBackground = R.drawable.game_background1;
                     break;
 
                 case R.id.meat_layout:
@@ -312,6 +315,7 @@ public class LevelSelectActivity extends AppCompatActivity {
 
 
                     level_img_id = R.drawable.meat;
+                    levelBackground = R.drawable.game_background2;
 
                     break;
 
@@ -344,7 +348,7 @@ public class LevelSelectActivity extends AppCompatActivity {
 
 
                     level_img_id = R.drawable.vegetarian;
-
+                    levelBackground = R.drawable.game_background3;
                     break;
 
                 case R.id.bakery_layout:
@@ -376,7 +380,7 @@ public class LevelSelectActivity extends AppCompatActivity {
 
 
                     level_img_id = R.drawable.bakery;
-
+                    levelBackground = R.drawable.game_background4;
                     break;
 
                 case R.id.breakfast_layout:
@@ -409,7 +413,7 @@ public class LevelSelectActivity extends AppCompatActivity {
 
 
                     level_img_id = R.drawable.breakfast;
-
+                    levelBackground = R.drawable.game_background5;
                     break;
 
                 case R.id.lunch_layout:
@@ -442,7 +446,7 @@ public class LevelSelectActivity extends AppCompatActivity {
                     forbiddenList.add(FoodType.BAGUETTE);
 
                     level_img_id = R.drawable.lunch;
-
+                    levelBackground = R.drawable.game_background6;
                     break;
 
                 case R.id.rosh_hashana_layout:
@@ -479,7 +483,7 @@ public class LevelSelectActivity extends AppCompatActivity {
                     forbiddenList.add(FoodType.WATERMELON);
 
                     level_img_id = R.drawable.rosh_hashana;
-
+                    levelBackground = R.drawable.game_background7;
                     break;
 
                 case R.id.passover_layout:
@@ -516,7 +520,7 @@ public class LevelSelectActivity extends AppCompatActivity {
                     forbiddenList.add(FoodType.BAGEL);
 
                     level_img_id = R.drawable.passover;
-
+                    levelBackground = R.drawable.game_background8;
                     break;
 
                 case R.id.custom_layout:
@@ -537,6 +541,7 @@ public class LevelSelectActivity extends AppCompatActivity {
             levelIntent.putExtra("shoppingListCounts",shoppingListCounts);
             levelIntent.putExtra("forbiddenList",forbiddenList);
             levelIntent.putExtra("level_img",level_img_id);
+            levelIntent.putExtra("background",levelBackground);
             mServ.pauseMusic();
             mHomeWatcher.stopWatch();
             startActivity(levelIntent);
