@@ -241,13 +241,13 @@ public class LevelSelectActivity extends AppCompatActivity {
                     shoppingList.add(FoodType.DANI);
                     shoppingListCounts.add(5*difficulty);
                     shoppingList.add(FoodType.HARD_CHEESE);
-                    shoppingListCounts.add(3*difficulty);
+                    shoppingListCounts.add(5*difficulty);
                     shoppingList.add(FoodType.MILK);
-                    shoppingListCounts.add(2*difficulty);
+                    shoppingListCounts.add(3*difficulty);
                     shoppingList.add(FoodType.WHITE_CHEESE);
                     shoppingListCounts.add(3*difficulty);
                     shoppingList.add(FoodType.CHOCOLATE);
-                    shoppingListCounts.add(1*difficulty);
+                    shoppingListCounts.add(4*difficulty);
 
                     forbiddenList.add(FoodType.BAGEL);
                     forbiddenList.add(FoodType.CHICKEN);
@@ -255,6 +255,12 @@ public class LevelSelectActivity extends AppCompatActivity {
                     forbiddenList.add(FoodType.ORANGE);
                     forbiddenList.add(FoodType.BEER);
                     forbiddenList.add(FoodType.AVOKADO);
+                    forbiddenList.add(FoodType.SAUSAGE);
+                    forbiddenList.add(FoodType.CARROT);
+                    forbiddenList.add(FoodType.EGGPLANT);
+                    forbiddenList.add(FoodType.PEANUTS);
+                    forbiddenList.add(FoodType.PANCAKES);
+                    forbiddenList.add(FoodType.BROCOLI);
 
 
                     level_img_id = R.drawable.milk;
@@ -264,21 +270,27 @@ public class LevelSelectActivity extends AppCompatActivity {
                     shoppingListName = meatTV.getText().toString();
 
                     shoppingList.add(FoodType.STEAK);
-                    shoppingListCounts.add(2*difficulty);
+                    shoppingListCounts.add(5*difficulty);
                     shoppingList.add(FoodType.SKEWER);
-                    shoppingListCounts.add(4*difficulty);
+                    shoppingListCounts.add(6*difficulty);
                     shoppingList.add(FoodType.SCHNITZEL);
-                    shoppingListCounts.add(2*difficulty);
-                    shoppingList.add(FoodType.CHICKEN);
                     shoppingListCounts.add(3*difficulty);
+                    shoppingList.add(FoodType.CHICKEN);
+                    shoppingListCounts.add(4*difficulty);
                     shoppingList.add(FoodType.SAUSAGE);
-                    shoppingListCounts.add(8*difficulty);
+                    shoppingListCounts.add(7*difficulty);
 
                     forbiddenList.add(FoodType.EGGPLANT);
                     forbiddenList.add(FoodType.MILK);
                     forbiddenList.add(FoodType.WATERMELON);
                     forbiddenList.add(FoodType.HARD_CHEESE);
+                    forbiddenList.add(FoodType.CHOCOLATE);
+                    forbiddenList.add(FoodType.TOMATO);
+                    forbiddenList.add(FoodType.DONUTS);
                     forbiddenList.add(FoodType.CHOCOLATE_SPREAD);
+                    forbiddenList.add(FoodType.EGGS);
+                    forbiddenList.add(FoodType.BEER);
+                    forbiddenList.add(FoodType.DANI);
                     forbiddenList.add(FoodType.ORANGE);
 
 
@@ -290,22 +302,28 @@ public class LevelSelectActivity extends AppCompatActivity {
                     shoppingListName = vegetarianTV.getText().toString();
 
                     shoppingList.add(FoodType.WATERMELON);
-                    shoppingListCounts.add(2*difficulty);
+                    shoppingListCounts.add(8*difficulty);
                     shoppingList.add(FoodType.ORANGE);
-                    shoppingListCounts.add(7*difficulty);
-                    shoppingList.add(FoodType.EGGPLANT);
-                    shoppingListCounts.add(2*difficulty);
-                    shoppingList.add(FoodType.BROCOLI);
-                    shoppingListCounts.add(2*difficulty);
-                    shoppingList.add(FoodType.AVOKADO);
                     shoppingListCounts.add(5*difficulty);
+                    shoppingList.add(FoodType.EGGPLANT);
+                    shoppingListCounts.add(6*difficulty);
+                    shoppingList.add(FoodType.BROCOLI);
+                    shoppingListCounts.add(5*difficulty);
+                    shoppingList.add(FoodType.AVOKADO);
+                    shoppingListCounts.add(6*difficulty);
 
                     forbiddenList.add(FoodType.CHICKEN);
                     forbiddenList.add(FoodType.CHOCOLATE);
                     forbiddenList.add(FoodType.EGGS);
                     forbiddenList.add(FoodType.PANCAKES);
-                    forbiddenList.add(FoodType.POMEGRANATE);
+                    forbiddenList.add(FoodType.CROISSANT);
+                    forbiddenList.add(FoodType.STEAK);
+                    forbiddenList.add(FoodType.SKEWER);
+                    forbiddenList.add(FoodType.WINE);
                     forbiddenList.add(FoodType.FISH);
+                    forbiddenList.add(FoodType.STEAK);
+                    forbiddenList.add(FoodType.MILK);
+                    forbiddenList.add(FoodType.BAGEL);
 
 
                     level_img_id = R.drawable.vegetarian;
@@ -316,13 +334,13 @@ public class LevelSelectActivity extends AppCompatActivity {
                     shoppingListName = backeryTV.getText().toString();
 
                     shoppingList.add(FoodType.BAGEL);
-                    shoppingListCounts.add(4*difficulty);
+                    shoppingListCounts.add(8*difficulty);
                     shoppingList.add(FoodType.DONUTS);
-                    shoppingListCounts.add(4*difficulty);
+                    shoppingListCounts.add(7*difficulty);
                     shoppingList.add(FoodType.CROISSANT);
-                    shoppingListCounts.add(3*difficulty);
+                    shoppingListCounts.add(9*difficulty);
                     shoppingList.add(FoodType.BREAD);
-                    shoppingListCounts.add(2*difficulty);
+                    shoppingListCounts.add(5*difficulty);
                     shoppingList.add(FoodType.BAGUETTE);
                     shoppingListCounts.add(6*difficulty);
 
@@ -331,7 +349,13 @@ public class LevelSelectActivity extends AppCompatActivity {
                     forbiddenList.add(FoodType.WINE);
                     forbiddenList.add(FoodType.WHITE_CHEESE);
                     forbiddenList.add(FoodType.CHOCOLATE);
+                    forbiddenList.add(FoodType.POMEGRANATE);
                     forbiddenList.add(FoodType.TOMATO);
+                    forbiddenList.add(FoodType.CHOCOLATE_SPREAD);
+                    forbiddenList.add(FoodType.EGGS);
+                    forbiddenList.add(FoodType.SCHNITZEL);
+                    forbiddenList.add(FoodType.SAUSAGE);
+                    forbiddenList.add(FoodType.CUCAMBER);
 
 
                     level_img_id = R.drawable.bakery;
@@ -343,14 +367,14 @@ public class LevelSelectActivity extends AppCompatActivity {
 
                     shoppingList.add(FoodType.DANI);
                     shoppingListCounts.add(5*difficulty);
-                    shoppingList.add(FoodType.TOMATO);
-                    shoppingListCounts.add(4*difficulty);
                     shoppingList.add(FoodType.PANCAKES);
-                    shoppingListCounts.add(2*difficulty);
+                    shoppingListCounts.add(9*difficulty);
                     shoppingList.add(FoodType.EGGS);
-                    shoppingListCounts.add(2*difficulty);
+                    shoppingListCounts.add(4*difficulty);
+                    shoppingList.add(FoodType.TOMATO);
+                    shoppingListCounts.add(7*difficulty);
                     shoppingList.add(FoodType.BAGUETTE);
-                    shoppingListCounts.add(3*difficulty);
+                    shoppingListCounts.add(5*difficulty);
 
                     forbiddenList.add(FoodType.STEAK);
                     forbiddenList.add(FoodType.WATERMELON);
@@ -358,6 +382,12 @@ public class LevelSelectActivity extends AppCompatActivity {
                     forbiddenList.add(FoodType.FISH);
                     forbiddenList.add(FoodType.POTATO);
                     forbiddenList.add(FoodType.BEER);
+                    forbiddenList.add(FoodType.ORANGE);
+                    forbiddenList.add(FoodType.PEANUTS);
+                    forbiddenList.add(FoodType.SKEWER);
+                    forbiddenList.add(FoodType.EGGPLANT);
+                    forbiddenList.add(FoodType.CUCAMBER);
+                    forbiddenList.add(FoodType.SAUSAGE);
 
 
 
@@ -368,25 +398,31 @@ public class LevelSelectActivity extends AppCompatActivity {
                 case R.id.lunch_layout:
                     shoppingListName = lunchTV.getText().toString();
 
-                    shoppingList.add(FoodType.TOMATO);
-                    shoppingListCounts.add(4*difficulty);
-                    shoppingList.add(FoodType.STEAK);
-                    shoppingListCounts.add(2*difficulty);
                     shoppingList.add(FoodType.POTATO);
-                    shoppingListCounts.add(5*difficulty);
-                    shoppingList.add(FoodType.CUCAMBER);
                     shoppingListCounts.add(4*difficulty);
-                    shoppingList.add(FoodType.CHICKEN);
-                    shoppingListCounts.add(2*difficulty);
-                    shoppingList.add(FoodType.BEER);
+                    shoppingList.add(FoodType.TOMATO);
                     shoppingListCounts.add(6*difficulty);
+                    shoppingList.add(FoodType.CHICKEN);
+                    shoppingListCounts.add(3*difficulty);
+                    shoppingList.add(FoodType.CUCAMBER);
+                    shoppingListCounts.add(5*difficulty);
+                    shoppingList.add(FoodType.STEAK);
+                    shoppingListCounts.add(5*difficulty);
+                    shoppingList.add(FoodType.BEER);
+                    shoppingListCounts.add(7*difficulty);
 
                     forbiddenList.add(FoodType.MILK);
                     forbiddenList.add(FoodType.EGGS);
                     forbiddenList.add(FoodType.DONUTS);
                     forbiddenList.add(FoodType.AVOKADO);
                     forbiddenList.add(FoodType.CROISSANT);
+                    forbiddenList.add(FoodType.DANI);
+                    forbiddenList.add(FoodType.WHITE_CHEESE);
                     forbiddenList.add(FoodType.CHOCOLATE_SPREAD);
+                    forbiddenList.add(FoodType.WATERMELON);
+                    forbiddenList.add(FoodType.CHOCOLATE);
+                    forbiddenList.add(FoodType.PEANUTS);
+                    forbiddenList.add(FoodType.BAGUETTE);
 
                     level_img_id = R.drawable.lunch;
 
@@ -396,19 +432,19 @@ public class LevelSelectActivity extends AppCompatActivity {
                     shoppingListName = roshHashanaTV.getText().toString();
 
                     shoppingList.add(FoodType.WINE);
-                    shoppingListCounts.add(3*difficulty);
+                    shoppingListCounts.add(4*difficulty);
                     shoppingList.add(FoodType.POTATO);
                     shoppingListCounts.add(4*difficulty);
                     shoppingList.add(FoodType.POMEGRANATE);
-                    shoppingListCounts.add(5*difficulty);
+                    shoppingListCounts.add(6*difficulty);
                     shoppingList.add(FoodType.HONEY);
-                    shoppingListCounts.add(2*difficulty);
+                    shoppingListCounts.add(5*difficulty);
                     shoppingList.add(FoodType.FISH);
-                    shoppingListCounts.add(1*difficulty);
+                    shoppingListCounts.add(6*difficulty);
                     shoppingList.add(FoodType.CARROT);
                     shoppingListCounts.add(4*difficulty);
                     shoppingList.add(FoodType.BREAD);
-                    shoppingListCounts.add(2*difficulty);
+                    shoppingListCounts.add(3*difficulty);
                     shoppingList.add(FoodType.APPLE);
                     shoppingListCounts.add(8*difficulty);
 
@@ -417,6 +453,12 @@ public class LevelSelectActivity extends AppCompatActivity {
                     forbiddenList.add(FoodType.ORANGE);
                     forbiddenList.add(FoodType.MILK);
                     forbiddenList.add(FoodType.SAUSAGE);
+                    forbiddenList.add(FoodType.PANCAKES);
+                    forbiddenList.add(FoodType.CUCAMBER);
+                    forbiddenList.add(FoodType.EGGPLANT);
+                    forbiddenList.add(FoodType.EGGS);
+                    forbiddenList.add(FoodType.CHOCOLATE_SPREAD);
+                    forbiddenList.add(FoodType.BROCOLI);
                     forbiddenList.add(FoodType.WATERMELON);
 
                     level_img_id = R.drawable.rosh_hashana;
@@ -426,29 +468,35 @@ public class LevelSelectActivity extends AppCompatActivity {
                 case R.id.passover_layout:
                     shoppingListName = passoverTV.getText().toString();
 
-                    shoppingList.add(FoodType.WINE);
-                    shoppingListCounts.add(3*difficulty);
                     shoppingList.add(FoodType.POTATO);
-                    shoppingListCounts.add(4*difficulty);
+                    shoppingListCounts.add(3*difficulty);
                     shoppingList.add(FoodType.STEAK);
-                    shoppingListCounts.add(2*difficulty);
-                    shoppingList.add(FoodType.PEANUTS);
-                    shoppingListCounts.add(2*difficulty);
-                    shoppingList.add(FoodType.MATZA);
-                    shoppingListCounts.add(10*difficulty);
-                    shoppingList.add(FoodType.EGGS);
                     shoppingListCounts.add(6*difficulty);
-                    shoppingList.add(FoodType.CHOCOLATE_SPREAD);
-                    shoppingListCounts.add(1*difficulty);
-                    shoppingList.add(FoodType.CHICKEN);
+                    shoppingList.add(FoodType.PEANUTS);
                     shoppingListCounts.add(4*difficulty);
+                    shoppingList.add(FoodType.MATZA);
+                    shoppingListCounts.add(9*difficulty);
+                    shoppingList.add(FoodType.CHOCOLATE_SPREAD);
+                    shoppingListCounts.add(7*difficulty);
+                    shoppingList.add(FoodType.WINE);
+                    shoppingListCounts.add(4*difficulty);
+                    shoppingList.add(FoodType.EGGS);
+                    shoppingListCounts.add(5*difficulty);
+                    shoppingList.add(FoodType.CHICKEN);
+                    shoppingListCounts.add(5*difficulty);
 
-                    forbiddenList.add(FoodType.STEAK);
+                    forbiddenList.add(FoodType.FISH);
                     forbiddenList.add(FoodType.BREAD);
                     forbiddenList.add(FoodType.DONUTS);
                     forbiddenList.add(FoodType.PANCAKES);
                     forbiddenList.add(FoodType.BEER);
-                    forbiddenList.add(FoodType.WATERMELON);
+                    forbiddenList.add(FoodType.POMEGRANATE);
+                    forbiddenList.add(FoodType.BROCOLI);
+                    forbiddenList.add(FoodType.BAGUETTE);
+                    forbiddenList.add(FoodType.CROISSANT);
+                    forbiddenList.add(FoodType.AVOKADO);
+                    forbiddenList.add(FoodType.APPLE);
+                    forbiddenList.add(FoodType.BAGEL);
 
                     level_img_id = R.drawable.passover;
 
