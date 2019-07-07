@@ -553,7 +553,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             TextView you_won_tv = dialogView.findViewById(R.id.you_won_tv);
             TextView want_record_tv = dialogView.findViewById(R.id.want_record_tv);
             Button playAgainBtn = dialogView.findViewById(R.id.btn_play_again);
-            Button homeBtn = dialogView.findViewById(R.id.home_btn);
+            Button homeBtn = dialogView.findViewById(R.id.btn_home);
 
 
             // font
