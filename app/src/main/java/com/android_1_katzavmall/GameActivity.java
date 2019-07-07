@@ -476,7 +476,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             CommonConfetti.rainingConfetti(frame, new int[] { Color.MAGENTA,Color.RED,Color.YELLOW, Color.GREEN, Color.BLUE })
                     .infinite();
 
-            if (isMusic)level_sound_player.stop();
+            if (isMusic)level_sound_player.pause();
             final AlertDialog dialog = new AlertDialog.Builder(GameActivity.this).create();
             final View dialogView = getLayoutInflater().inflate(R.layout.win_new_highscore_dialog, null);
             winner_sound_player.start();
