@@ -649,4 +649,30 @@ public class LevelSelectActivity extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
     }
 
+    private void setLockUnlock(){
+        int[] levelArray = {0,R.id.meat_layout,R.id.vegetarian_layout,R.id.bakery_layout,
+                            R.id.breakfast_layout,R.id.lunch_layout,R.id.rosh_hashana_layout,
+                            R.id.passover_layout};
+
+        int[] lockArray = {0,R.id.meat_lock,R.id.vegetarian_lock,R.id.bakery_lock,R.id.breakfast_lock,
+                            R.id.lunch_lock,R.id.rosh_hashana_lock,R.id.passover_lock};
+
+        boolean[] lockBoolArray ;//= sp.getBoolean();
+        for(int i = 1; i < levelArray.length; i++){
+            LinearLayout level = findViewById(levelArray[i]);
+            ImageView lockImage = findViewById(lockArray[i]);
+
+            if(lockBoolArray[i]){
+                level.setEnabled(true);
+                lockImage.setVisibility(View.INVISIBLE);
+            }
+            else{
+                level.setEnabled(false);
+                lockImage.setVisibility(View.VISIBLE);
+            }
+        }
+
+
+    }
+
 }
