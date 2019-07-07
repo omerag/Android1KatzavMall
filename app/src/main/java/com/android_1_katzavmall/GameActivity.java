@@ -982,6 +982,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     public void onBackPressed() {
 
         startFlag = false;
+        container.puaseFoodAnimation();
         if (isMusic)level_sound_player.pause();
         final AlertDialog dialog = new AlertDialog.Builder(GameActivity.this).create();
         final View dialogView = getLayoutInflater().inflate(R.layout.exit_dialog, null);
@@ -1023,6 +1024,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             @Override
             public void onClick(View view) {
                 startFlag = true;
+                container.resumeFoodAnimation();
                 if (isMusic)level_sound_player.start();
                 dialog.dismiss();
             }

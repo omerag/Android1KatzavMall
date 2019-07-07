@@ -33,6 +33,10 @@ import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.appcompat.view.menu.MenuPopupHelper;
 import androidx.core.content.res.ResourcesCompat;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -125,6 +129,7 @@ public class LevelSelectActivity extends AppCompatActivity {
         roshHashanaLayout = findViewById(R.id.rosh_hashana_layout);
         passoverLayout = findViewById(R.id.passover_layout);
         customChoiceLayout = findViewById(R.id.custom_layout);
+
 
         milkTV = findViewById(R.id.milk_tv);
         meatTV = findViewById(R.id.meat_tv);
@@ -576,11 +581,7 @@ public class LevelSelectActivity extends AppCompatActivity {
         if (mServ != null && isMusic) {
             mHomeWatcher.startWatch();
             mServ.resumeMusic();
-
         }
-
-
-
     }
 
     @Override
@@ -647,4 +648,5 @@ public class LevelSelectActivity extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
     }
+
 }
