@@ -476,7 +476,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             CommonConfetti.rainingConfetti(frame, new int[] { Color.MAGENTA,Color.RED,Color.YELLOW, Color.GREEN, Color.BLUE })
                     .infinite();
 
-            level_sound_player.stop();
+            if (isMusic)level_sound_player.stop();
             final AlertDialog dialog = new AlertDialog.Builder(GameActivity.this).create();
             final View dialogView = getLayoutInflater().inflate(R.layout.win_new_highscore_dialog, null);
             winner_sound_player.start();
@@ -545,7 +545,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             CommonConfetti.rainingConfetti(frame, new int[] { Color.GREEN,Color.BLUE,Color.BLACK })
                     .infinite();
 
-            level_sound_player.pause();
+            if (isMusic)level_sound_player.pause();
             final AlertDialog dialog = new AlertDialog.Builder(GameActivity.this).create();
             final View dialogView = getLayoutInflater().inflate(R.layout.win_no_highscore_dialog, null);
             winner_sound_player.start();
@@ -579,7 +579,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             playAgainBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    level_sound_player.start();
+                    if (isMusic)level_sound_player.start();
                     resetLevel();
                     dialog.dismiss();
                 }
@@ -706,7 +706,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         if(lives == 0){
             cleanLevel();
 
-            level_sound_player.pause();
+            if (isMusic)level_sound_player.pause();
             final AlertDialog dialog = new AlertDialog.Builder(GameActivity.this).create();
             final View dialogView = getLayoutInflater().inflate(R.layout.game_over_dialog,null);
             looser_sound_player.start();
@@ -745,7 +745,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             playAgainBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    level_sound_player.start();
+                    if (isMusic)level_sound_player.start();
                     resetLevel();
                     dialog.dismiss();
                 }
@@ -970,7 +970,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     public void onBackPressed() {
 
         startFlag = false;
-        level_sound_player.pause();
+        if (isMusic)level_sound_player.pause();
         final AlertDialog dialog = new AlertDialog.Builder(GameActivity.this).create();
         final View dialogView = getLayoutInflater().inflate(R.layout.exit_dialog, null);
 
@@ -1011,7 +1011,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             @Override
             public void onClick(View view) {
                 startFlag = true;
-                level_sound_player.start();
+                if (isMusic)level_sound_player.start();
                 dialog.dismiss();
             }
         });
