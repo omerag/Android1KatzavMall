@@ -347,49 +347,6 @@
 
             </RelativeLayout>
 
-            <RelativeLayout
-                android:layout_width="284dp"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:layout_marginBottom="10dp"
-                android:layout_marginHorizontal="10dp"
-                >
-
-
-                <LinearLayout
-                    android:id="@+id/custom_layout"
-                    android:layout_width="140dp"
-                    android:layout_height="140dp"
-                    android:background="@drawable/custom_btn_shape"
-                    android:clickable="false">
-
-                    <TextView
-                        android:id="@+id/custom_tv"
-                        android:layout_width="140dp"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:layout_gravity="bottom"
-                        android:layout_marginBottom="8dp"
-                        android:textSize="17sp"
-                        android:textColor="@color/colorWhite"
-                        android:textStyle="bold"
-                        android:text="@string/custom_list_str"
-                        android:fontFamily="@font/kapow"
-                        />
-
-                </LinearLayout>
-
-                <ImageView
-                    android:id="@+id/custom_lock"
-                    android:layout_width="140dp"
-                    android:layout_height="140dp"
-                    android:src="@drawable/lock2"
-                    />
-
-
-            </RelativeLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

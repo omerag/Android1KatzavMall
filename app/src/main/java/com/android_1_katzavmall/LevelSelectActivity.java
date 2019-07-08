@@ -45,7 +45,6 @@ public class LevelSelectActivity extends AppCompatActivity {
     private LinearLayout lunchLayout;
     private LinearLayout roshHashanaLayout;
     private LinearLayout passoverLayout;
-    private LinearLayout customChoiceLayout;
 
     private TextView milkTV;
     private TextView meatTV;
@@ -55,7 +54,6 @@ public class LevelSelectActivity extends AppCompatActivity {
     private TextView lunchTV;
     private TextView roshHashanaTV;
     private TextView passoverTV;
-    private TextView customChoiceTV;
 
     private String shoppingListName;
 
@@ -66,10 +64,8 @@ public class LevelSelectActivity extends AppCompatActivity {
     private ImageView lunchLock;
     private ImageView roshHashanaLock;
     private ImageView passoverLock;
-    private ImageView customLock;
 
 
-    Button selectCustomDialogBtn;
     HomeWatcher mHomeWatcher;
     SharedPreferences sp;
     boolean isMusic;
@@ -121,7 +117,6 @@ public class LevelSelectActivity extends AppCompatActivity {
         lunchLayout = findViewById(R.id.lunch_layout);
         roshHashanaLayout = findViewById(R.id.rosh_hashana_layout);
         passoverLayout = findViewById(R.id.passover_layout);
-        customChoiceLayout = findViewById(R.id.custom_layout);
 
 
         milkTV = findViewById(R.id.milk_tv);
@@ -132,7 +127,6 @@ public class LevelSelectActivity extends AppCompatActivity {
         lunchTV = findViewById(R.id.lunch_tv);
         roshHashanaTV = findViewById(R.id.rosh_hashana_tv);
         passoverTV = findViewById(R.id.passover_tv);
-        customChoiceTV = findViewById(R.id.custom_tv);
 
 
         meatLock = findViewById(R.id.meat_lock);
@@ -142,7 +136,6 @@ public class LevelSelectActivity extends AppCompatActivity {
         lunchLock = findViewById(R.id.lunch_lock);
         roshHashanaLock = findViewById(R.id.rosh_hashana_lock);
         passoverLock = findViewById(R.id.passover_lock);
-        customLock = findViewById(R.id.custom_lock);
 
         milkLayout.setOnClickListener(new selectLevelListener());
         meatLayout.setOnClickListener(new selectLevelListener());
@@ -168,7 +161,6 @@ public class LevelSelectActivity extends AppCompatActivity {
             lunchTV.setTypeface(typeface2);
             roshHashanaTV.setTypeface(typeface2);
             passoverTV.setTypeface(typeface2);
-            customChoiceTV.setTypeface(typeface2);
         }
 
         // ZoomIn/Out animation:
@@ -188,8 +180,6 @@ public class LevelSelectActivity extends AppCompatActivity {
         roshHashanaLock.startAnimation(zoomBtnAnimation);
         passoverLayout.startAnimation(zoomBtnAnimation);
         passoverLock.startAnimation(zoomBtnAnimation);
-        customChoiceLayout.startAnimation(zoomBtnAnimation);
-        customLock.startAnimation(zoomBtnAnimation);
 
     }
 
@@ -247,7 +237,6 @@ public class LevelSelectActivity extends AppCompatActivity {
                     forbiddenList.add(FoodType.PEANUTS);
                     forbiddenList.add(FoodType.PANCAKES);
                     forbiddenList.add(FoodType.BROCOLI);
-                    forbiddenList.add(FoodType.EGGS);
 
                     background = R.drawable.game_background1_milk_;
                     level_img_id = R.drawable.milk;

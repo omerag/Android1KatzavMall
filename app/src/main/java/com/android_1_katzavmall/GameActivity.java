@@ -565,7 +565,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         {
             /* Confetti 2 */
 
-            CommonConfetti.rainingConfetti(frame, new int[] { Color.GREEN,Color.BLUE,Color.BLACK, Color.MAGENTA })
+            CommonConfetti.rainingConfetti(frame, new int[] { Color.GREEN,Color.BLUE, Color.MAGENTA })
                     .infinite();
 
             if (isMusic)level_sound_player.pause();
