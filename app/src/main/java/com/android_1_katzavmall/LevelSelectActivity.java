@@ -549,9 +549,10 @@ public class LevelSelectActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
+        mHomeWatcher.startWatch();
+
         setLockUnlock();
         if (mServ != null && isMusic) {
-            mHomeWatcher.startWatch();
             mServ.resumeMusic();
         }
     }
