@@ -215,15 +215,15 @@ public class LevelSelectActivity extends AppCompatActivity {
                     shoppingListName = milkTV.getText().toString();
 
                     shoppingList.add(FoodType.DANI);
-                    shoppingListCounts.add(4*difficulty);
-                    shoppingList.add(FoodType.HARD_CHEESE);
-                    shoppingListCounts.add(4*difficulty);
-                    shoppingList.add(FoodType.MILK);
-                    shoppingListCounts.add(2*difficulty);
-                    shoppingList.add(FoodType.WHITE_CHEESE);
-                    shoppingListCounts.add(2*difficulty);
-                    shoppingList.add(FoodType.CHOCOLATE);
                     shoppingListCounts.add(3*difficulty);
+                    shoppingList.add(FoodType.HARD_CHEESE);
+                    shoppingListCounts.add(3*difficulty);
+                    shoppingList.add(FoodType.MILK);
+                    shoppingListCounts.add(1*difficulty);
+                    shoppingList.add(FoodType.WHITE_CHEESE);
+                    shoppingListCounts.add(1*difficulty);
+                    shoppingList.add(FoodType.CHOCOLATE);
+                    shoppingListCounts.add(2*difficulty);
 
                     forbiddenList.add(FoodType.BAGEL);
                     forbiddenList.add(FoodType.CHICKEN);
@@ -247,15 +247,15 @@ public class LevelSelectActivity extends AppCompatActivity {
                     shoppingListName = meatTV.getText().toString();
 
                     shoppingList.add(FoodType.STEAK);
-                    shoppingListCounts.add(4*difficulty);
-                    shoppingList.add(FoodType.SKEWER);
-                    shoppingListCounts.add(5*difficulty);
-                    shoppingList.add(FoodType.SCHNITZEL);
-                    shoppingListCounts.add(2*difficulty);
-                    shoppingList.add(FoodType.CHICKEN);
                     shoppingListCounts.add(3*difficulty);
+                    shoppingList.add(FoodType.SKEWER);
+                    shoppingListCounts.add(4*difficulty);
+                    shoppingList.add(FoodType.SCHNITZEL);
+                    shoppingListCounts.add(1*difficulty);
+                    shoppingList.add(FoodType.CHICKEN);
+                    shoppingListCounts.add(2*difficulty);
                     shoppingList.add(FoodType.SAUSAGE);
-                    shoppingListCounts.add(6*difficulty);
+                    shoppingListCounts.add(5*difficulty);
 
                     forbiddenList.add(FoodType.EGGPLANT);
                     forbiddenList.add(FoodType.MILK);
@@ -280,15 +280,15 @@ public class LevelSelectActivity extends AppCompatActivity {
                     shoppingListName = vegetarianTV.getText().toString();
 
                     shoppingList.add(FoodType.WATERMELON);
-                    shoppingListCounts.add(7*difficulty);
-                    shoppingList.add(FoodType.ORANGE);
                     shoppingListCounts.add(6*difficulty);
+                    shoppingList.add(FoodType.ORANGE);
+                    shoppingListCounts.add(5*difficulty);
                     shoppingList.add(FoodType.EGGPLANT);
-                    shoppingListCounts.add(5*difficulty);
-                    shoppingList.add(FoodType.BROCOLI);
                     shoppingListCounts.add(4*difficulty);
+                    shoppingList.add(FoodType.BROCOLI);
+                    shoppingListCounts.add(3*difficulty);
                     shoppingList.add(FoodType.AVOKADO);
-                    shoppingListCounts.add(5*difficulty);
+                    shoppingListCounts.add(4*difficulty);
 
                     forbiddenList.add(FoodType.CHICKEN);
                     forbiddenList.add(FoodType.CHOCOLATE);
@@ -313,15 +313,15 @@ public class LevelSelectActivity extends AppCompatActivity {
                     shoppingListName = bakeryTV.getText().toString();
 
                     shoppingList.add(FoodType.BAGEL);
-                    shoppingListCounts.add(6*difficulty);
-                    shoppingList.add(FoodType.DONUTS);
                     shoppingListCounts.add(5*difficulty);
-                    shoppingList.add(FoodType.CROISSANT);
-                    shoppingListCounts.add(7*difficulty);
-                    shoppingList.add(FoodType.BREAD);
-                    shoppingListCounts.add(3*difficulty);
-                    shoppingList.add(FoodType.BAGUETTE);
+                    shoppingList.add(FoodType.DONUTS);
                     shoppingListCounts.add(4*difficulty);
+                    shoppingList.add(FoodType.CROISSANT);
+                    shoppingListCounts.add(6*difficulty);
+                    shoppingList.add(FoodType.BREAD);
+                    shoppingListCounts.add(2*difficulty);
+                    shoppingList.add(FoodType.BAGUETTE);
+                    shoppingListCounts.add(3*difficulty);
 
                     forbiddenList.add(FoodType.EGGPLANT);
                     forbiddenList.add(FoodType.AVOKADO);
@@ -346,15 +346,15 @@ public class LevelSelectActivity extends AppCompatActivity {
                     shoppingListName = breakfastTV.getText().toString();
 
                     shoppingList.add(FoodType.DANI);
-                    shoppingListCounts.add(3*difficulty);
-                    shoppingList.add(FoodType.PANCAKES);
-                    shoppingListCounts.add(7*difficulty);
-                    shoppingList.add(FoodType.EGGS);
                     shoppingListCounts.add(2*difficulty);
+                    shoppingList.add(FoodType.PANCAKES);
+                    shoppingListCounts.add(6*difficulty);
+                    shoppingList.add(FoodType.EGGS);
+                    shoppingListCounts.add(1*difficulty);
                     shoppingList.add(FoodType.TOMATO);
-                    shoppingListCounts.add(5*difficulty);
+                    shoppingListCounts.add(4*difficulty);
                     shoppingList.add(FoodType.BAGUETTE);
-                    shoppingListCounts.add(3*difficulty);
+                    shoppingListCounts.add(2*difficulty);
 
                     forbiddenList.add(FoodType.STEAK);
                     forbiddenList.add(FoodType.WATERMELON);
@@ -429,7 +429,7 @@ public class LevelSelectActivity extends AppCompatActivity {
                     shoppingList.add(FoodType.BREAD);
                     shoppingListCounts.add(2*difficulty);
                     shoppingList.add(FoodType.APPLE);
-                    shoppingListCounts.add(6*difficulty);
+                    shoppingListCounts.add(5*difficulty);
 
                     forbiddenList.add(FoodType.BAGUETTE);
                     forbiddenList.add(FoodType.STEAK);
@@ -460,15 +460,15 @@ public class LevelSelectActivity extends AppCompatActivity {
                     shoppingList.add(FoodType.PEANUTS);
                     shoppingListCounts.add(2*difficulty);
                     shoppingList.add(FoodType.MATZA);
-                    shoppingListCounts.add(7*difficulty);
-                    shoppingList.add(FoodType.CHOCOLATE_SPREAD);
                     shoppingListCounts.add(5*difficulty);
+                    shoppingList.add(FoodType.CHOCOLATE_SPREAD);
+                    shoppingListCounts.add(4*difficulty);
                     shoppingList.add(FoodType.WINE);
                     shoppingListCounts.add(2*difficulty);
                     shoppingList.add(FoodType.EGGS);
                     shoppingListCounts.add(3*difficulty);
                     shoppingList.add(FoodType.CHICKEN);
-                    shoppingListCounts.add(5*difficulty);
+                    shoppingListCounts.add(4*difficulty);
 
                     forbiddenList.add(FoodType.FISH);
                     forbiddenList.add(FoodType.BREAD);
