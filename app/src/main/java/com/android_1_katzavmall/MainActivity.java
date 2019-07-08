@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
@@ -208,6 +209,13 @@ public class MainActivity extends AppCompatActivity {
                 ImageView how_to_play_img = dialogView.findViewById(R.id.how_to_play_img);
                 Button back_btn = dialogView.findViewById(R.id.back_btn);
 
+                Configuration config = getResources().getConfiguration();
+                if(config.getLayoutDirection() == View.LAYOUT_DIRECTION_RTL) {
+                    how_to_play_img.setImageResource(R.drawable.how_to_play_heb);
+                }
+                else if (config.getLayoutDirection() == View.LAYOUT_DIRECTION_LTR) {
+                    how_to_play_img.setImageResource(R.drawable.how_to_play_en);
+                }
 
                 // ZoomIn/Out animation:
                 final Animation zoomBtnAnimation = AnimationUtils.loadAnimation(MainActivity.this, R.anim.dlg_btns_anim);

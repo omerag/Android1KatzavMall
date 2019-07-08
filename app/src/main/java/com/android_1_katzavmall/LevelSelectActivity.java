@@ -247,6 +247,7 @@ public class LevelSelectActivity extends AppCompatActivity {
                     forbiddenList.add(FoodType.PEANUTS);
                     forbiddenList.add(FoodType.PANCAKES);
                     forbiddenList.add(FoodType.BROCOLI);
+                    forbiddenList.add(FoodType.EGGS);
 
                     background = R.drawable.game_background1_milk_;
                     level_img_id = R.drawable.milk;
