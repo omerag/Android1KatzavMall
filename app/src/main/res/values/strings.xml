@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Android1_Final_Project</string>
+    <string name="app_name">MarketHero</string>
     <string name="score">"Score: "</string>
     <string name="meal">What meal are you taking?</string>
     <string name="meat_str">Meat</string>

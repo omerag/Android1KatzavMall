@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Android1_Final_Project</string>
+    <string name="app_name">" MarketHero"</string>
     <string name="score">"ניקוד: "</string>
     <string name="meal">לאיזו ארוחה נערכים הפעם?</string>
     <string name="bakery_str">מאפים</string>
